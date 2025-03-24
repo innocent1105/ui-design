@@ -1,4 +1,4 @@
-import { BookOpen, Bot, Settings2, SquareTerminal, MenuIcon, DoorClosedIcon } from 'lucide-react';
+import { MenuIcon, DoorClosedIcon, Table, FormInputIcon, ToggleLeftIcon,  TypeIcon, LayoutDashboard } from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
 import {
@@ -16,13 +16,13 @@ const data = {
 		{
 			title: 'Dashboard',
 			url: '#',
-			icon: SquareTerminal,
+			icon: LayoutDashboard,
 			isActive: true
 		},
 		{
 			title: 'Tables',
 			url: '#',
-			icon: Bot,
+			icon: Table,
 			items: [
 				{
 					title: 'Genesis',
@@ -41,25 +41,25 @@ const data = {
 		{
 			title: 'Form View',
 			url: '#',
-			icon: BookOpen
+			icon: FormInputIcon
 		},
 		{
 			title: 'Buttons',
 			url: '#',
-			icon: Settings2
+			icon: ToggleLeftIcon
 		},
 		{
 			title: 'Typography',
 			url: '#',
-			icon: Settings2
+			icon: TypeIcon
 		}
 	]
 };
 
 export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
 	return (
-		<Sidebar collapsible="icon">
-			<SidebarHeader>
+		<Sidebar collapsible="icon" >
+			<SidebarHeader className='py-3.5 mb-1'>
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton>
@@ -72,10 +72,6 @@ export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: b
 					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarHeader>
-			{/* <SidebarContent>
-
-				<NavMain items={data.navMain} />
-			</SidebarContent> */}
 			{data.navMain.map(
 				(item) =>
 					item?.items && item?.items.length > 0 ? (
