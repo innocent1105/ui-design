@@ -8,11 +8,11 @@ import { ValidationForm } from '@/components/validation-form';
 
 export default function FormView() {
 	return (
-		<div className="flex min-h-screen bg-[#fafafa]">
+		<div className="flex min-h-screen">
 			<main className="flex-1 space-y-4 p-1">
 				<div className="flex items-center space-x-2">
 					<nav className="flex items-center space-x-2 text-sm text-muted-foreground">
-						<a href="#" className="text-foreground hover:text-primary">
+						<a href="/" className="text-foreground hover:text-primary">
 							Home Page
 						</a>
 						<span>/</span>

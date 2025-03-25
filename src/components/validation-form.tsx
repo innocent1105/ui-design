@@ -50,7 +50,7 @@ export function ValidationForm() {
             City
           </Label>
           <Select value={city} onValueChange={setCity}>
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Choose" />
             </SelectTrigger>
             <SelectContent>
