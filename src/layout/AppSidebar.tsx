@@ -15,7 +15,7 @@ const data = {
 	navMain: [
 		{
 			title: 'Dashboard',
-			url: '#',
+			url: '/',
 			icon: LayoutDashboard,
 			isActive: true
 		},
@@ -40,7 +40,7 @@ const data = {
 		},
 		{
 			title: 'Form View',
-			url: '#',
+			url: '/form-view',
 			icon: FormInputIcon
 		},
 		{
@@ -78,7 +78,7 @@ export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: b
 						<NavMain item={item} />
 					) : (
 						<SidebarGroup key={item.title}>
-							<SidebarMenuButton tooltip={item.title}>
+							<SidebarMenuButton tooltip={item.title} onClick={() => window.location.href = item.url}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                 </SidebarMenuButton>
