@@ -19,7 +19,7 @@ export default function FormView() {
 						<span>Form View</span>
 					</nav>
 				</div>
-				<h1 className="text-3xl font-semibold tracking-tight text-[#325adb]">Form View</h1>
+				<h1 className="text-3xl font-semibold tracking-tight text-[#325adb] !font-bold">Form View</h1>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
 					<Card>
 						<CardHeader>
