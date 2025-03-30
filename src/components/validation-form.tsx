@@ -14,18 +14,36 @@ import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
+const cities = [
+  { value: 'new-york', label: 'New York' },
+  { value: 'los-angeles', label: 'Los Angeles' },
+  { value: 'chicago', label: 'Chicago' },
+  { value: 'houston', label: 'Houston' },
+];
+
 export function ValidationForm() {
-  const [firstName, setFirstName] = useState("Oran")
-  const [lastName, setLastName] = useState("Chanofsky")
-  const [city, setCity] = useState("")
-  const [state, setState] = useState("")
-  const [zip, setZip] = useState("")
-  const [date, setDate] = useState<Date | undefined>(undefined)
-  const [callJohn, setCallJohn] = useState(false)
+  const [form, setForm] = useState({
+    firstName: "Oran",
+    lastName: "Chanofsky",
+    city: "",
+    state: "",
+    zip: "",
+    date: undefined as Date | undefined,
+    callJohn: false,
+  });
+  
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = event.target;
+    const checked = (event.target as HTMLInputElement).checked;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({ firstName, lastName, city, state, zip, date, callJohn })
+    console.log(form)
   }
 
   return (
@@ -35,13 +53,13 @@ export function ValidationForm() {
           <Label htmlFor="firstName" className="text-sm font-medium">
             First Name <span className="text-red-500">*</span>
           </Label>
-          <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+          <Input  id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required />
         </div>
         <div className="space-y-2">
           <Label htmlFor="lastName" className="text-sm font-medium">
             Last Name <span className="text-red-500">*</span>
           </Label>
-          <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+          <Input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required />
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
@@ -49,15 +67,16 @@ export function ValidationForm() {
           <Label htmlFor="city" className="text-sm font-medium">
             City
           </Label>
-          <Select value={city} onValueChange={setCity}>
+          <Select value={form.city} onValueChange={(value) => setForm((prev) => ({ ...prev, city: value }))} name="city">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Choose" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="new-york">New York</SelectItem>
-              <SelectItem value="los-angeles">Los Angeles</SelectItem>
-              <SelectItem value="chicago">Chicago</SelectItem>
-              <SelectItem value="houston">Houston</SelectItem>
+              {cities.map((city) => (
+                <SelectItem key={city.value} value={city.value}>
+                  {city.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -65,13 +84,13 @@ export function ValidationForm() {
           <Label htmlFor="state" className="text-sm font-medium">
             State
           </Label>
-          <Input id="state" placeholder="Enter" value={state} onChange={(e) => setState(e.target.value)} />
+          <Input id="state" name="state" placeholder="Enter" value={form.state} onChange={handleChange} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="zip" className="text-sm font-medium">
             Zip
           </Label>
-          <Input id="zip" placeholder="Enter" value={zip} onChange={(e) => setZip(e.target.value)} />
+          <Input id="zip" name="zip" placeholder="Enter" value={form.zip} onChange={handleChange} />
         </div>
       </div>
       <div className="space-y-2">
@@ -82,22 +101,23 @@ export function ValidationForm() {
           <PopoverTrigger asChild>
             <Button
               variant={"outline"}
-              className={cn("w-full justify-start text-left font-normal !bg-transparent", !date && "text-muted-foreground")}
+              className={cn("w-full justify-start text-left font-normal !bg-transparent", !form.date && "text-muted-foreground")}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
-              {date ? format(date, "PPP") : "Datepicker"}
+              {form.date ? format(form.date, "PPP") : "Datepicker"}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0">
-            <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+            <Calendar mode="single" selected={form.date} onSelect={(date) => setForm((prev) => ({ ...prev, date }))} initialFocus />
           </PopoverContent>
         </Popover>
       </div>
       <div className="flex items-center space-x-2">
         <Checkbox
           id="callJohnValidation"
-          checked={callJohn}
-          onCheckedChange={(checked) => setCallJohn(checked as boolean)}
+          name="callJohn"
+          checked={form.callJohn}
+          onCheckedChange={(checked) => setForm((prev) => ({ ...prev, callJohn: checked as boolean }))}
         />
         <Label htmlFor="callJohnValidation" className="text-sm font-medium">
           Call John for dinner

@@ -1,5 +1,5 @@
 'use client';
-import { BasicForm } from '@/components/basic-form';
+import BasicForm from '@/components/basic-form';
 import { HorizontalForm } from '@/components/horizontal-form';
 import { ListView } from '@/components/list-view';
 import { ListViewWithSwitch } from '@/components/list-view-with-switch';
