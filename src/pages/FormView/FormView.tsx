@@ -30,9 +30,7 @@ export default function FormView() {
 					</FormCard>
 				</div>
 				<FormCard title="Horizontal Form">
-					<CardContent>
-						<HorizontalForm />
-					</CardContent>
+					<HorizontalForm />
 				</FormCard>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
 					<FormCard title="List View">

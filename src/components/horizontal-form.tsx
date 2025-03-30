@@ -40,7 +40,7 @@ export function HorizontalForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-12 items-center gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
         <Label htmlFor="horizontalEmail" className="col-span-2 text-sm font-medium">
           Email Address <RequiredAsterisk />
         </Label>
@@ -52,10 +52,11 @@ export function HorizontalForm() {
             value={form.email}
             onChange={handleChange}
             required
+            autoComplete="off"
           />
         </div>
       </div>
-      <div className="grid grid-cols-12 items-center gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
         <Label htmlFor="horizontalPassword" className="col-span-2 text-sm font-medium">
           Password <RequiredAsterisk />
         </Label>
@@ -68,10 +69,11 @@ export function HorizontalForm() {
             value={form.password}
             onChange={handleChange}
             required
+            autoComplete="off"
           />
         </div>
       </div>
-      <div className="grid grid-cols-12 items-start gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
         <div className="col-span-2 text-sm font-medium">Radio Buttons</div>
         <div className="col-span-10 space-y-2">
           <RadioGroup value={form.radioOption} onValueChange={(value) => setForm((prev) => ({ ...prev, radioOption: value }))} >
@@ -86,7 +88,7 @@ export function HorizontalForm() {
           </RadioGroup>
         </div>
       </div>
-      <div className="grid grid-cols-12 items-center gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
         <div className="col-span-2 text-sm font-medium">Checkbox</div>
         <div className="col-span-10">
           <div className="flex items-center space-x-2">
@@ -97,7 +99,7 @@ export function HorizontalForm() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
         <div className="col-span-2"></div>
         <div className="col-span-10">
           <Button type="submit" >
