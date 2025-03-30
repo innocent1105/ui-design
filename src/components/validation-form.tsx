@@ -82,7 +82,7 @@ export function ValidationForm() {
           <PopoverTrigger asChild>
             <Button
               variant={"outline"}
-              className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
+              className={cn("w-full justify-start text-left font-normal !bg-transparent", !date && "text-muted-foreground")}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, "PPP") : "Datepicker"}
@@ -103,7 +103,7 @@ export function ValidationForm() {
           Call John for dinner
         </Label>
       </div>
-      <Button type="submit" className="bg-[#325adb] hover:bg-[#2a4cba]">
+      <Button type="submit" >
         Sign In
       </Button>
     </form>

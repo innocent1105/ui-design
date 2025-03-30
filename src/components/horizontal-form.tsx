@@ -90,7 +90,7 @@ export function HorizontalForm() {
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-2"></div>
         <div className="col-span-10">
-          <Button type="submit" className="bg-[#325adb] hover:bg-[#2a4cba]">
+          <Button type="submit" >
             Sign In
           </Button>
         </div>

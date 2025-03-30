@@ -45,7 +45,7 @@ export function BasicForm() {
           Call John for dinner
         </Label>
       </div>
-      <Button type="submit" className="bg-[#325adb] hover:bg-[#2a4cba]">
+      <Button type="submit" >
         Submit
       </Button>
     </form>
