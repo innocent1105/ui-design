@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import RequiredAsterisk from '@/components/required-asterisk';
 
 const BasicForm: React.FC = () => {
 	const [ form, setForm ] = useState({
@@ -30,7 +31,7 @@ const BasicForm: React.FC = () => {
 		<form onSubmit={handleSubmit} className="space-y-4">
 			<div className="space-y-2">
 				<Label htmlFor="email" className="text-sm font-medium">
-					Email Address <span className="text-red-500">*</span>
+					Email Address <RequiredAsterisk />
 				</Label>
 				<Input
 					id="email"
@@ -39,12 +40,13 @@ const BasicForm: React.FC = () => {
 					value={form.email}
 					onChange={handleChange}
 					required
+					autoComplete="off"
 				/>
 				<p className="text-xs text-muted-foreground">We'll never share your email with anyone else.</p>
 			</div>
 			<div className="space-y-2">
 				<Label htmlFor="password" className="text-sm font-medium">
-					Password1 <span className="text-red-500">*</span>
+					Password <RequiredAsterisk />
 				</Label>
 				<Input
 					id="password"
@@ -54,6 +56,7 @@ const BasicForm: React.FC = () => {
 					value={form.password}
 					onChange={handleChange}
 					required
+					autoComplete="new-password"
 				/>
 			</div>
 			<div className="flex items-center space-x-2">

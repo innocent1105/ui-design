@@ -1,9 +1,10 @@
 'use client';
 import BasicForm from '@/components/basic-form';
+import FormCard from '@/components/form-card';
 import { HorizontalForm } from '@/components/horizontal-form';
 import { ListView } from '@/components/list-view';
 import { ListViewWithSwitch } from '@/components/list-view-with-switch';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
 import { ValidationForm } from '@/components/validation-form';
 
 export default function FormView() {
@@ -21,48 +22,25 @@ export default function FormView() {
 				</div>
 				<h1 className="text-3xl font-semibold tracking-tight text-[#325adb] !font-bold">Form View</h1>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-					<Card>
-						<CardHeader>
-							<CardTitle>Basic Form</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<BasicForm />
-						</CardContent>
-					</Card>
-					<Card>
-						<CardHeader>
-							<CardTitle>Validation</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<ValidationForm />
-						</CardContent>
-					</Card>
+					<FormCard title="Basic Form">
+						<BasicForm />
+					</FormCard>
+					<FormCard title="Validation">
+						<ValidationForm />
+					</FormCard>
 				</div>
-				<Card>
-					<CardHeader>
-						<CardTitle>Horizontal Form</CardTitle>
-					</CardHeader>
+				<FormCard title="Horizontal Form">
 					<CardContent>
 						<HorizontalForm />
 					</CardContent>
-				</Card>
+				</FormCard>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-					<Card>
-						<CardHeader>
-							<CardTitle>List View</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<ListView />
-						</CardContent>
-					</Card>
-					<Card>
-						<CardHeader>
-							<CardTitle>List View with Switch</CardTitle>
-						</CardHeader>
-						<CardContent>
-							<ListViewWithSwitch />
-						</CardContent>
-					</Card>
+					<FormCard title="List View">
+						<ListView />
+					</FormCard>
+					<FormCard title="List View with Switch">
+						<ListViewWithSwitch />
+					</FormCard>
 				</div>
 			</main>
 		</div>

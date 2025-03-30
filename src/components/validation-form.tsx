@@ -13,6 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
+import RequiredAsterisk from '@/components/required-asterisk'
 
 const cities = [
   { value: 'new-york', label: 'New York' },
@@ -51,13 +52,13 @@ export function ValidationForm() {
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName" className="text-sm font-medium">
-            First Name <span className="text-red-500">*</span>
+            First Name <RequiredAsterisk />
           </Label>
           <Input  id="firstName" name="firstName" value={form.firstName} onChange={handleChange} required />
         </div>
         <div className="space-y-2">
           <Label htmlFor="lastName" className="text-sm font-medium">
-            Last Name <span className="text-red-500">*</span>
+            Last Name <RequiredAsterisk />
           </Label>
           <Input id="lastName" name="lastName" value={form.lastName} onChange={handleChange} required />
         </div>

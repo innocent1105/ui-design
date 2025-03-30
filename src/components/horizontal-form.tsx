@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import RequiredAsterisk from '@/components/required-asterisk'
 
 const radioOptions = [
   { value: 'option1', id: 'option1', label: 'Option one is this and that—be sure to include why it\'s great' },
@@ -41,7 +42,7 @@ export function HorizontalForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-12 items-center gap-4">
         <Label htmlFor="horizontalEmail" className="col-span-2 text-sm font-medium">
-          Email Address <span className="text-red-500">*</span>
+          Email Address <RequiredAsterisk />
         </Label>
         <div className="col-span-10">
           <Input
@@ -56,7 +57,7 @@ export function HorizontalForm() {
       </div>
       <div className="grid grid-cols-12 items-center gap-4">
         <Label htmlFor="horizontalPassword" className="col-span-2 text-sm font-medium">
-          Password <span className="text-red-500">*</span>
+          Password <RequiredAsterisk />
         </Label>
         <div className="col-span-10">
           <Input
