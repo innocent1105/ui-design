@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashborad/Dashboard';
 import AppLayout from './layout/AppLayout';
 import FormView from './pages/FormView/FormView';
 import Typography from './pages/Typography/Typography';
+import Buttons from './pages/Buttons/Buttons';
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 					<Route index path="/" element={<Dashboard />} />
 					<Route path="/form-view" element={<FormView />} />
 					<Route path="/typography" element={<Typography />} />
+					<Route path="/buttons" element={<Buttons />} />
 				</Route>
 			</Routes>
 		</Router>
