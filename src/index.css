@@ -13,8 +13,8 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: #6180e4;
+  --primary-foreground: #e8e8e8;
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
@@ -38,17 +38,19 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --sidebar-menu-icon: #ededed;
+  --linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
 }
 
 .dark {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
+  --card: #232323;
+  --card-foreground: #e8e8e8;
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
+  --primary: #6180e4;
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -72,7 +74,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
+  --sidebar-menu-icon: #282828;
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -126,9 +131,17 @@
 h1 {
   background: -webkit-linear-gradient(45deg,
       #5a81ea,
-      #d56676 15%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+      #d56676 15%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.sidemenu-background {
+  background: var(--linear-gradient);
+}
+
+.sidemenu-icon {
+  background: var(--sidebar-menu-icon);
 }

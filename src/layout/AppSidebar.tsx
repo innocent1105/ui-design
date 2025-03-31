@@ -1,4 +1,5 @@
-import { MenuIcon, DoorClosedIcon, Table, FormInputIcon, ToggleLeftIcon,  TypeIcon, LayoutDashboard } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, AppleIcon, PhoneIcon, Smartphone } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 import { NavMain } from '@/components/nav-main';
 import {
@@ -7,7 +8,6 @@ import {
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
-	SidebarMenuItem
 } from '@/components/ui/sidebar';
 
 // This is sample data.
@@ -56,32 +56,52 @@ const data = {
 	]
 };
 
-export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+	const [ selectedItem, setSelectedItem ] = useState<string | null>(null);
+
+	const handleItemClick = (url: string) => {
+		setSelectedItem(url);
+		window.location.href = url; // Navigate to the selected URL
+	};
+	useEffect(
+		() => {
+			setSelectedItem(window.location.pathname);
+		},
+		[ window.location.pathname ]
+	);
 	return (
-		<Sidebar collapsible="icon" >
+		<Sidebar collapsible="icon" {...props}>
 			<SidebarHeader className='py-3.5 mb-1'>
 				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton>
-							{!open ? (
-								<MenuIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
-							) : (
-								<DoorClosedIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
-							)}
-						</SidebarMenuButton>
-					</SidebarMenuItem>
+					 <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <Smartphone className="size-4" />
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">
+                  MOBISOFT INFOTECH
+                </span>
+              </div>
+            </SidebarMenuButton>
 				</SidebarMenu>
 			</SidebarHeader>
 			{data.navMain.map(
 				(item) =>
 					item?.items && item?.items.length > 0 ? (
-						<NavMain item={item} />
+						<NavMain item={item} selectedItem={selectedItem}/>
 					) : (
 						<SidebarGroup key={item.title}>
-							<SidebarMenuButton tooltip={item.title} onClick={() => window.location.href = item.url}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                </SidebarMenuButton>
+							<SidebarMenuButton
+								tooltip={item.title}
+								onClick={() => handleItemClick(item.url)}
+								className={selectedItem === item.url ? 'sidemenu-background !text-white' : 'sidemenu-icon'}
+							>
+								{item.icon && <item.icon />}
+								<span>{item.title}</span>
+							</SidebarMenuButton>
 						</SidebarGroup>
 					)
 			)}
