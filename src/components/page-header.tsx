@@ -29,7 +29,7 @@ export function PageHeader({ items, heading }: PageHeaderProps) {
           ))}
         </nav>
       </div>
-      <h1 className="text-3xl font-semibold tracking-tight heading !font-bold leading-10">
+      <h1 className="text-3xl font-semibold tracking-tight heading !font-bold leading-14">
         {heading}
       </h1>
     </>

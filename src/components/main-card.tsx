@@ -5,15 +5,15 @@ interface FormCardProps {
 	children: React.ReactNode;
 }
 
-const FormCard: React.FC<FormCardProps> = ({ title, children }) => {
+const MainCard: React.FC<FormCardProps> = ({ title, children }) => {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle className="text-lg font-medium">{title}</CardTitle>
+				<CardTitle className="text-lg font-medium leading-2">{title}</CardTitle>
 			</CardHeader>
 			<CardContent>{children}</CardContent>
 		</Card>
 	);
 };
 
-export default FormCard;
+export default MainCard;

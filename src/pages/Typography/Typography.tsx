@@ -1,3 +1,4 @@
+import MainCard from '@/components/main-card';
 import { PageHeader } from '@/components/page-header';
 
 export default function Typography() {
@@ -9,8 +10,7 @@ export default function Typography() {
 					heading="Typography"
 				/>
 				<div className="grid gap-4 ">
-					<section className="mb-5 rounded-lg border bg-card p-6">
-						<h2 className="mb-4 text-lg font-semibold">Body Copy</h2>
+					<MainCard title="Body Copy">
 						<p className="mb-4 text-card-foreground">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
 							Aenean massa.
@@ -31,11 +31,9 @@ export default function Typography() {
 							Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus
 							nunc.
 						</p>
-					</section>
+					</MainCard>
 
-					<section className="mb-5 rounded-lg border bg-card p-6">
-						<h2 className="mb-6 text-lg font-semibold">Headings</h2>
-
+					<MainCard title="Headings">
 						<div className="space-y-6">
 							<div>
 								<h1 className="text-4xl font-bold">Headline 1</h1>
@@ -53,11 +51,9 @@ export default function Typography() {
 								<h4 className="text-xl font-semibold">Headline 4</h4>
 							</div>
 						</div>
-					</section>
+					</MainCard>
 
-					<section className="rounded-lg border bg-card p-6">
-						<h2 className="mb-6 text-lg font-semibold">Subtitle</h2>
-
+					<MainCard title="Subtitle">
 						<div className="space-y-4">
 							<div>
 								<h5 className="text-base font-medium">Subtitle 1</h5>
@@ -71,7 +67,7 @@ export default function Typography() {
 								<p className="text-xs font-medium">Subtitle 3</p>
 							</div>
 						</div>
-					</section>
+					</MainCard>
 				</div>
 			</main>
 		</div>

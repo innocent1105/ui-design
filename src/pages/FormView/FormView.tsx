@@ -1,6 +1,6 @@
 'use client';
 import BasicForm from '@/components/basic-form';
-import FormCard from '@/components/form-card';
+import MainCard from '@/components/main-card';
 import { HorizontalForm } from '@/components/horizontal-form';
 import { ListView } from '@/components/list-view';
 import { ListViewWithSwitch } from '@/components/list-view-with-switch';
@@ -16,23 +16,23 @@ export default function FormView() {
 					heading="Form View"
 				/>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-					<FormCard title="Basic Form">
+					<MainCard title="Basic Form">
 						<BasicForm />
-					</FormCard>
-					<FormCard title="Validation">
+					</MainCard>
+					<MainCard title="Validation">
 						<ValidationForm />
-					</FormCard>
+					</MainCard>
 				</div>
-				<FormCard title="Horizontal Form">
+				<MainCard title="Horizontal Form">
 					<HorizontalForm />
-				</FormCard>
+				</MainCard>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-					<FormCard title="List View">
+					<MainCard title="List View">
 						<ListView />
-					</FormCard>
-					<FormCard title="List View with Switch">
+					</MainCard>
+					<MainCard title="List View with Switch">
 						<ListViewWithSwitch />
-					</FormCard>
+					</MainCard>
 				</div>
 			</main>
 		</div>
