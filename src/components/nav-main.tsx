@@ -29,9 +29,11 @@ interface NavItem {
 }
 
 export function NavMain({
-  item
+  item,
+  selectedItem
 }: {
-  item: NavItem
+  item: NavItem,
+  selectedItem: string | null
 }) {
   return (
     <SidebarGroup>
@@ -44,7 +46,7 @@ export function NavMain({
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
+                <SidebarMenuButton tooltip={item.title}  className={selectedItem === item.url ? 'sidemenu-background !text-white' : 'sidemenu-icon'}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                   <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />

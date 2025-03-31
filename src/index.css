@@ -38,6 +38,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --sidebar-menu-icon: #ededed;
+  --linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
 }
 
 .dark {
@@ -72,6 +74,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
+  --sidebar-menu-icon: #282828;
 }
 
 
@@ -132,4 +136,12 @@ h1 {
   background-clip: text !important;
   color: transparent !important;
   -webkit-text-fill-color: transparent !important;
+}
+
+.sidemenu-background {
+  background: var(--linear-gradient) !important;
+}
+
+.sidemenu-icon {
+  background: var(--sidebar-menu-icon) !important;
 }

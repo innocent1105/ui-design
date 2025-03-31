@@ -1,4 +1,5 @@
 import { MenuIcon, DoorClosedIcon, Table, FormInputIcon, ToggleLeftIcon,  TypeIcon, LayoutDashboard } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 import { NavMain } from '@/components/nav-main';
 import {
@@ -57,17 +58,27 @@ const data = {
 };
 
 export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
+	const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+	const handleItemClick = (url: string) => {
+		setSelectedItem(url);
+		window.location.href = url; // Navigate to the selected URL
+	};
+	useEffect(() => {
+		setSelectedItem(window.location.pathname);
+	}, [window.location.pathname]);
+
 	return (
 		<Sidebar collapsible="icon" >
 			<SidebarHeader className='py-3.5 mb-1'>
-				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton>
-							{!open ? (
-								<MenuIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
-							) : (
-								<DoorClosedIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
-							)}
+				<SidebarMenu >
+					<SidebarMenuItem >
+						<SidebarMenuButton className='!sidemenu-icon'>
+								{!open ? (
+									<MenuIcon className="w-5 h-5" onClick={() => setOpen(!open)}  />
+								) : (
+									<DoorClosedIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
+								)}
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
@@ -75,13 +86,17 @@ export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: b
 			{data.navMain.map(
 				(item) =>
 					item?.items && item?.items.length > 0 ? (
-						<NavMain item={item} />
+						<NavMain item={item} selectedItem={selectedItem}/>
 					) : (
 						<SidebarGroup key={item.title}>
-							<SidebarMenuButton tooltip={item.title} onClick={() => window.location.href = item.url}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                </SidebarMenuButton>
+							<SidebarMenuButton
+								tooltip={item.title}
+								onClick={() => handleItemClick(item.url)}
+								className={selectedItem === item.url ? 'sidemenu-background !text-white' : 'sidemenu-icon'}
+							>
+								{item.icon && <item.icon />}
+								<span>{item.title}</span>
+							</SidebarMenuButton>
 						</SidebarGroup>
 					)
 			)}
