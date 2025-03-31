@@ -50,7 +50,7 @@ const data = {
 		},
 		{
 			title: 'Typography',
-			url: '#',
+			url: '/typography',
 			icon: TypeIcon
 		}
 	]
