@@ -11,7 +11,7 @@ export default function Buttons() {
 					heading="Buttons"
 				/>
 
-				<div className="grid gap-4 ">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					{/* Regular Buttons */}
 					<MainCard title="Buttons">
 						<div className="flex flex-wrap gap-3">
