@@ -131,17 +131,17 @@
 h1 {
   background: -webkit-linear-gradient(45deg,
       #5a81ea,
-      #d56676 15%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+      #d56676 15%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .sidemenu-background {
-  background: var(--linear-gradient) !important;
+  background: var(--linear-gradient);
 }
 
 .sidemenu-icon {
-  background: var(--sidebar-menu-icon) !important;
+  background: var(--sidebar-menu-icon);
 }
