@@ -1,4 +1,4 @@
-import { MenuIcon, DoorClosedIcon, Table, FormInputIcon, ToggleLeftIcon,  TypeIcon, LayoutDashboard } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, AppleIcon, PhoneIcon, Smartphone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { NavMain } from '@/components/nav-main';
@@ -8,7 +8,6 @@ import {
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
-	SidebarMenuItem
 } from '@/components/ui/sidebar';
 
 // This is sample data.
@@ -57,30 +56,36 @@ const data = {
 	]
 };
 
-export function AppSidebar({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
-	const [selectedItem, setSelectedItem] = useState<string | null>(null);
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+	const [ selectedItem, setSelectedItem ] = useState<string | null>(null);
 
 	const handleItemClick = (url: string) => {
 		setSelectedItem(url);
 		window.location.href = url; // Navigate to the selected URL
 	};
-	useEffect(() => {
-		setSelectedItem(window.location.pathname);
-	}, [window.location.pathname]);
-
+	useEffect(
+		() => {
+			setSelectedItem(window.location.pathname);
+		},
+		[ window.location.pathname ]
+	);
 	return (
-		<Sidebar collapsible="icon" >
+		<Sidebar collapsible="icon" {...props}>
 			<SidebarHeader className='py-3.5 mb-1'>
-				<SidebarMenu >
-					<SidebarMenuItem >
-						<SidebarMenuButton className='!sidemenu-icon'>
-								{!open ? (
-									<MenuIcon className="w-5 h-5" onClick={() => setOpen(!open)}  />
-								) : (
-									<DoorClosedIcon className="w-5 h-5" onClick={() => setOpen(!open)} />
-								)}
-						</SidebarMenuButton>
-					</SidebarMenuItem>
+				<SidebarMenu>
+					 <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <Smartphone className="size-4" />
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">
+                  MOBISOFT INFOTECH
+                </span>
+              </div>
+            </SidebarMenuButton>
 				</SidebarMenu>
 			</SidebarHeader>
 			{data.navMain.map(

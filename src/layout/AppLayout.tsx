@@ -1,14 +1,12 @@
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/layout/AppSidebar';
 import { Outlet } from 'react-router-dom';
 import AppHeader from './AppHeader';
-import { AppSidebar } from '@/layout/AppSidebar';
-import { useState } from 'react';
 
 const AppLayout: React.FC = () => {
-	const [ open, setOpen ] = useState(false);
 	return (
-		<SidebarProvider open={open}>
-			<AppSidebar open={open} setOpen={setOpen} />
+		<SidebarProvider>
+			<AppSidebar />
 			<SidebarInset>
 				<AppHeader />
 				<div className="flex-1 p-4">
