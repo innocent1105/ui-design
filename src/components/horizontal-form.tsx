@@ -69,7 +69,7 @@ export function HorizontalForm() {
             value={form.password}
             onChange={handleChange}
             required
-            autoComplete="off"
+            autoComplete="new-password"
           />
         </div>
       </div>
