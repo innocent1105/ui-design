@@ -23,6 +23,7 @@ const AppHeader: React.FC = () => {
 			<div className="flex grow flex-col items-center justify-end lg:flex-row lg:px-6">
 				<Button
 					variant="ghost"
+					variantClassName="light"
 					size="icon"
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 				>
