@@ -1,10 +1,9 @@
-import { PageHeader } from '@/components/page-header';
 import { DataTable } from '@/components/data-table';
 import { useState } from 'react';
 import { employees } from './data';
 import { PageBreadcrumb } from '@/components/page-breadcrumb';
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 5;
 
 const Tables = () => {
 	const [ currentPage, setCurrentPage ] = useState(1);

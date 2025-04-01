@@ -25,23 +25,23 @@ interface DataTableProps {
 export function DataTable({ data, currentPage, totalPages, onPageChange }: DataTableProps) {
 	return (
 		<div className="space-y-4">
-			<div className="w-full !overflow-auto">
+			<div className="w-full">
 				<Table>
-					<TableHeader>
+					<TableHeader className="table-row-background">
 						<TableRow>
-							<TableHead>Name</TableHead>
+							<TableHead className="rounded-l-md  !border-none pl-4">Name</TableHead>
 							<TableHead>Position</TableHead>
 							<TableHead>Office</TableHead>
 							<TableHead>Age</TableHead>
 							<TableHead>Vehicle</TableHead>
 							<TableHead>Status</TableHead>
-							<TableHead>Action</TableHead>
+							<TableHead className="rounded-r-md !border-none pr-1">Action</TableHead>
 						</TableRow>
 					</TableHeader>
-					<TableBody>
+					<TableBody className="!px-3">
 						{data.map((employee) => (
-							<TableRow key={employee.id}>
-								<TableCell>{employee.name}</TableCell>
+							<TableRow key={employee.id} className="!border-none">
+								<TableCell className="pl-4">{employee.name}</TableCell>
 								<TableCell>{employee.position}</TableCell>
 								<TableCell>{employee.office}</TableCell>
 								<TableCell>{employee.age}</TableCell>

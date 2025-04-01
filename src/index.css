@@ -142,3 +142,7 @@
 .sidemenu-icon {
   background: var(--sidebar-menu-icon);
 }
+
+.table-row-background {
+  background: var(--card);
+}
