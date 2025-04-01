@@ -31,9 +31,17 @@ const formSchema = z.object({
 });
 
 const radioOptions = [
-	{ id: 'option1', value: 'option1', label: 'Option 1' },
-	{ id: 'option2', value: 'option2', label: 'Option 2' },
-	{ id: 'option3', value: 'option3', label: 'Option 3', disabled: true }
+	{
+		id: 'option1',
+		value: 'option1',
+		label: "Option one is this and that—be sure to include why it's great"
+	},
+	{
+		id: 'option2',
+		value: 'option2',
+		label: 'Option two can be something else and selecting it will deselect option one'
+	},
+	{ id: 'option3', value: 'option3', label: 'Option three is disabled', disabled: true }
 ];
 
 export function HorizontalForm() {
@@ -114,7 +122,7 @@ export function HorizontalForm() {
 													id={option.id}
 													disabled={option.disabled}
 												/>
-												<Label htmlFor={option.id} className="text-sm">
+												<Label htmlFor={option.id} className="mb-1 text-sm">
 													{option.label}
 												</Label>
 											</div>
@@ -155,7 +163,9 @@ export function HorizontalForm() {
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-12">
 					<div className="col-span-2" />
 					<div className="col-span-10">
-						<Button type="submit">Sign In</Button>
+						<Button type="submit" className="mt-4">
+							Sign In
+						</Button>
 					</div>
 				</div>
 			</form>
