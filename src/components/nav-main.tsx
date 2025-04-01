@@ -41,7 +41,11 @@ export function NavMain({ item, selectedItem }: { item: NavItem; selectedItem: s
 							<SidebarMenuButton
 								tooltip={item.title}
 								className={
-									selectedItem === item.url ? 'sidemenu-background !text-white' : open ? 'sidemenu-icon-expanded' : 'sidemenu-icon'
+									selectedItem === item.url
+										? 'sidemenu-background !text-white'
+										: open
+											? 'sidemenu-icon-expanded'
+											: 'sidemenu-icon'
 								}
 							>
 								{item.icon && <item.icon />}

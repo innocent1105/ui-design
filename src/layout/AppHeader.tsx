@@ -11,7 +11,7 @@ const AppHeader: React.FC = () => {
 			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 				<SidebarTrigger className="-ml-1" />
 				<Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
-				<div className="w-full sm:w-auto flex items-center justify-center gap-2">
+				<div className="flex w-full items-center justify-center gap-2 sm:w-auto">
 					<div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
 						<Smartphone className="size-4" />
 					</div>
@@ -21,7 +21,11 @@ const AppHeader: React.FC = () => {
 				</div>
 			</div>
 			<div className="flex grow flex-col items-center justify-end lg:flex-row lg:px-6">
-				<Button variant="ghost" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+				<Button
+					variant="ghost"
+					size="icon"
+					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+				>
 					{theme === 'dark' ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
 				</Button>
 			</div>

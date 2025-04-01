@@ -98,16 +98,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						{item?.items && item?.items.length > 0 ? (
 							<NavMain item={item} selectedItem={selectedItem} />
 						) : (
-					<SidebarGroup key={item.title}>
-						<SidebarMenuButton
-							tooltip={item.title}
-							onClick={() => handleItemClick(item.url)}
-							className={
-								selectedItem === item.url ? 'sidemenu-background !text-white' : !open?'sidemenu-icon':'sidemenu-icon-expanded'
-							}
-						>
-							{item.icon && <item.icon />}
-							<span>{item.title}</span>
+							<SidebarGroup key={item.title}>
+								<SidebarMenuButton
+									tooltip={item.title}
+									onClick={() => handleItemClick(item.url)}
+									className={
+										selectedItem === item.url
+											? 'sidemenu-background !text-white'
+											: !open
+												? 'sidemenu-icon'
+												: 'sidemenu-icon-expanded'
+									}
+								>
+									{item.icon && <item.icon />}
+									<span>{item.title}</span>
 								</SidebarMenuButton>
 							</SidebarGroup>
 						)}
