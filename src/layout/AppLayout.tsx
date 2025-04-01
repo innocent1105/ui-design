@@ -5,7 +5,7 @@ import AppHeader from './AppHeader';
 
 const AppLayout: React.FC = () => {
 	return (
-		<SidebarProvider>
+		<SidebarProvider defaultOpen={false}>
 			<AppSidebar />
 			<SidebarInset>
 				<AppHeader />

@@ -14,7 +14,8 @@ import {
 	SidebarGroup,
 	SidebarHeader,
 	SidebarMenu,
-	SidebarMenuButton
+	SidebarMenuButton,
+	useSidebar
 } from '@/components/ui/sidebar';
 
 // This is sample data.
@@ -65,7 +66,8 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
-
+	const { open } = useSidebar();
+	console.log(open);
 	const handleItemClick = (url: string) => {
 		setSelectedItem(url);
 		window.location.href = url; // Navigate to the selected URL
@@ -74,7 +76,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 		setSelectedItem(window.location.pathname);
 	}, [window.location.pathname]);
 	return (
-		<Sidebar collapsible="icon" {...props}>
+		<Sidebar collapsible="icon" {...props} data-slot="sidebar" data-state="expanded">
 			<SidebarHeader className="mb-1 py-3.5">
 				<SidebarMenu>
 					<SidebarMenuButton
@@ -101,7 +103,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 							tooltip={item.title}
 							onClick={() => handleItemClick(item.url)}
 							className={
-								selectedItem === item.url ? 'sidemenu-background !text-white' : 'sidemenu-icon'
+								selectedItem === item.url ? 'sidemenu-background !text-white' : !open?'sidemenu-icon':'sidemenu-icon-expanded'
 							}
 						>
 							{item.icon && <item.icon />}
