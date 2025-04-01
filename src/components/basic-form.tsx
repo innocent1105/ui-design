@@ -1,80 +1,92 @@
-'use client';
-
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import RequiredAsterisk from '@/components/required-asterisk';
+import { z } from 'zod';
+import RequiredAsterisk from './required-asterisk';
+
+const formSchema = z.object({
+	email: z.string().email(),
+	password: z.string().min(8),
+	callJohn: z.boolean()
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const BasicForm: React.FC = () => {
-	const [ form, setForm ] = useState({
-		email: '',
-		password: '',
-		callJohn: false
+	const form = useForm<FormValues>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			email: '',
+			password: '',
+			callJohn: false
+		}
 	});
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-		const { name, type, value } = event.target;
-		const checked = (event.target as HTMLInputElement).checked;
-		setForm((prevForm) => ({
-			...prevForm,
-			[name]: type === 'checkbox' ? checked : value
-		}));
-	};
 
-	const handleSubmit = (event: React.FormEvent) => {
-		event.preventDefault();
-		console.log(form);
-	};
+	function onSubmit(data: FormValues) {
+		console.log(data);
+		// Handle form submission
+	}
 
 	return (
-		<form onSubmit={handleSubmit} className="space-y-4">
-			<div className="space-y-2">
-				<Label htmlFor="email" className="text-sm font-medium">
-					Email Address <RequiredAsterisk />
-				</Label>
-				<Input
-					id="email"
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+				<FormField
+					control={form.control}
 					name="email"
-					placeholder="Enter Email"
-					value={form.email}
-					onChange={handleChange}
-					required
-					autoComplete="off"
+					render={({ field }: { field: any }) => (
+						<FormItem className="space-y-2">
+							<FormLabel className="text-sm font-medium">
+								Email Address <RequiredAsterisk />
+							</FormLabel>
+							<FormControl>
+								<Input placeholder="Enter Email" {...field} autoComplete="off" />
+							</FormControl>
+							<FormDescription className="text-xs text-muted-foreground">
+								We'll never share your email with anyone else.
+							</FormDescription>
+						</FormItem>
+					)}
 				/>
-				<p className="text-xs text-muted-foreground">We'll never share your email with anyone else.</p>
-			</div>
-			<div className="space-y-2">
-				<Label htmlFor="password" className="text-sm font-medium">
-					Password <RequiredAsterisk />
-				</Label>
-				<Input
-					id="password"
+
+				<FormField
+					control={form.control}
 					name="password"
-					type="password"
-					placeholder="Enter Password"
-					value={form.password}
-					onChange={handleChange}
-					required
-					autoComplete="new-password"
+					render={({ field }: { field: any }) => (
+						<FormItem className="space-y-2">
+							<FormLabel className="text-sm font-medium">
+								Password <RequiredAsterisk />
+							</FormLabel>
+							<FormControl>
+								<Input
+									type="password"
+									placeholder="Enter Password"
+									{...field}
+									autoComplete="new-password"
+								/>
+							</FormControl>
+						</FormItem>
+					)}
 				/>
-			</div>
-			<div className="flex items-center space-x-2">
-				<Checkbox
-					id="callJohn"
+
+				<FormField
+					control={form.control}
 					name="callJohn"
-					checked={form.callJohn}
-					onCheckedChange={(checked) =>
-						handleChange({ target: { name: 'callJohn', type: 'checkbox', checked } } as React.ChangeEvent<
-							HTMLInputElement
-						>)}
+					render={({ field }: { field: any }) => (
+						<FormItem className="flex items-center space-x-2">
+							<FormControl>
+								<Checkbox checked={field.value} onCheckedChange={field.onChange} />
+							</FormControl>
+							<FormLabel className="text-sm font-medium">Call John for dinner</FormLabel>
+						</FormItem>
+					)}
 				/>
-				<Label htmlFor="callJohn" className="text-sm font-medium">
-					Call John for dinner
-				</Label>
-			</div>
-			<Button type="submit">Submit</Button>
-		</form>
+
+				<Button type="submit">Submit</Button>
+			</form>
+		</Form>
 	);
 };
 
