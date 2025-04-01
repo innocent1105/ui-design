@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, AppleIcon, PhoneIcon, Smartphone } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, Smartphone } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { NavMain } from '@/components/nav-main';
