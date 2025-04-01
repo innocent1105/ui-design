@@ -90,10 +90,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 					</SidebarMenuButton>
 				</SidebarMenu>
 			</SidebarHeader>
-			{data.navMain.map((item) =>
-				item?.items && item?.items.length > 0 ? (
-					<NavMain item={item} selectedItem={selectedItem} />
-				) : (
+			{data.navMain.map((item) => {
+				return (
+					<div key={item.title}>
+						{item?.items && item?.items.length > 0 ? (
+							<NavMain item={item} selectedItem={selectedItem} />
+						) : (
 					<SidebarGroup key={item.title}>
 						<SidebarMenuButton
 							tooltip={item.title}
@@ -104,10 +106,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						>
 							{item.icon && <item.icon />}
 							<span>{item.title}</span>
-						</SidebarMenuButton>
-					</SidebarGroup>
-				)
-			)}
+								</SidebarMenuButton>
+							</SidebarGroup>
+						)}
+					</div>
+				);
+			})}
 		</Sidebar>
 	);
 }
