@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { z } from 'zod';
 import RequiredAsterisk from './required-asterisk';
 
@@ -90,9 +90,19 @@ const BasicForm: React.FC = () => {
 					render={({ field }) => (
 						<FormItem className="flex items-center space-x-2">
 							<FormControl>
-								<Checkbox checked={field.value} onCheckedChange={field.onChange} />
+								<RadioGroup
+									onValueChange={field.onChange}
+									defaultValue={field.value ? 'yes' : 'no'}
+									className="flex items-center space-x-2"
+								>
+									<div className="flex items-center space-x-2">
+										<RadioGroupItem value="yes" id="yes" />
+										<FormLabel htmlFor="yes" className="text-sm font-medium">
+											Call John for dinner
+										</FormLabel>
+									</div>
+								</RadioGroup>
 							</FormControl>
-							<FormLabel className="text-sm font-medium">Call John for dinner</FormLabel>
 						</FormItem>
 					)}
 				/>
