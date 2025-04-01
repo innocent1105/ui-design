@@ -3,7 +3,13 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue
+} from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { CalendarIcon } from 'lucide-react';
@@ -13,7 +19,14 @@ import RequiredAsterisk from '@/components/required-asterisk';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage
+} from '@/components/ui/form';
 
 const formSchema = z.object({
 	firstName: z.string().min(1, 'First name is required'),
@@ -152,7 +165,7 @@ export function ValidationForm() {
 										<Button
 											variant={'outline'}
 											className={cn(
-												'w-full justify-start text-left font-normal !bg-transparent',
+												'w-full justify-start !bg-transparent text-left font-normal',
 												!field.value && 'text-muted-foreground'
 											)}
 										>

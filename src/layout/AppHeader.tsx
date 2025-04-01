@@ -7,19 +7,23 @@ import { MoonIcon, Smartphone, SunIcon } from 'lucide-react';
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
 	return (
-		<header className="sticky top-0 flex w-full z-99999 border-b-0 bg-background py-3">
-			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6 ">
+		<header className="bg-background sticky top-0 z-99999 flex w-full border-b-0 py-3">
+			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 				<SidebarTrigger className="-ml-1" />
 				<Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
-				<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground ">
+				<div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
 					<Smartphone className="size-4" />
 				</div>
 				<div className="grid flex-1 text-left text-sm leading-tight">
 					<span className="truncate font-semibold">MOBISOFT INFOTECH</span>
 				</div>
 			</div>
-			<div className="flex flex-col items-center justify-end grow lg:flex-row lg:px-6">
-				<Button variant="ghost" size="icon" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+			<div className="flex grow flex-col items-center justify-end lg:flex-row lg:px-6">
+				<Button
+					variant="ghost"
+					size="icon"
+					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+				>
 					{theme === 'dark' ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
 				</Button>
 			</div>

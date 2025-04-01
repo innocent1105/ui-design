@@ -1,6 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -9,7 +17,10 @@ import RequiredAsterisk from './required-asterisk';
 
 const formSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
-	password: z.string().min(1, 'Password is required').min(8, 'Password must be at least 8 characters'),
+	password: z
+		.string()
+		.min(1, 'Password is required')
+		.min(8, 'Password must be at least 8 characters'),
 	callJohn: z.boolean()
 });
 
@@ -44,7 +55,7 @@ const BasicForm: React.FC = () => {
 							<FormControl>
 								<Input placeholder="Enter Email" {...field} autoComplete="off" />
 							</FormControl>
-							<FormDescription className="text-xs text-muted-foreground">
+							<FormDescription className="text-muted-foreground text-xs">
 								We'll never share your email with anyone else.
 							</FormDescription>
 							<FormMessage />

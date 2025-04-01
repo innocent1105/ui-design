@@ -2,7 +2,14 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -15,7 +22,10 @@ type FormValues = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
-	password: z.string().min(1, 'Password is required').min(8, 'Password must be at least 8 characters'),
+	password: z
+		.string()
+		.min(1, 'Password is required')
+		.min(8, 'Password must be at least 8 characters'),
 	radioOption: z.string().min(1, 'Please select an option'),
 	checkMe: z.boolean()
 });
@@ -49,7 +59,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="email"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
+						<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
 							<FormLabel className="col-span-2 text-sm font-medium">
 								Email Address <RequiredAsterisk />
 							</FormLabel>
@@ -67,7 +77,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="password"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
+						<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
 							<FormLabel className="col-span-2 text-sm font-medium">
 								Password <RequiredAsterisk />
 							</FormLabel>
@@ -90,7 +100,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="radioOption"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
+						<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
 							<FormLabel className="col-span-2 text-sm font-medium">
 								Radio Buttons <RequiredAsterisk />
 							</FormLabel>
@@ -121,7 +131,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="checkMe"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+						<FormItem className="grid grid-cols-1 items-center gap-4 md:grid-cols-12">
 							<FormLabel className="col-span-2 text-sm font-medium">Checkbox</FormLabel>
 							<div className="col-span-10">
 								<div className="flex items-center space-x-2">
@@ -142,7 +152,7 @@ export function HorizontalForm() {
 					)}
 				/>
 
-				<div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-12">
 					<div className="col-span-2" />
 					<div className="col-span-10">
 						<Button type="submit">Sign In</Button>
