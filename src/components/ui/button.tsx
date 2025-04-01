@@ -3,6 +3,45 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+export const COMMON_VARIANTS = [
+	'primary',
+	'secondary',
+	'success',
+	'danger',
+	'warning',
+	'info',
+	'light',
+	'dark'
+] as const;
+
+const BASE_OUTLINE_STYLE = 'border bg-transparent';
+
+const outlineVariants = {
+	primary: `${BASE_OUTLINE_STYLE} border-primary text-primary hover:bg-primary/10`,
+	secondary: `${BASE_OUTLINE_STYLE} border-secondary text-secondary hover:bg-secondary/10`,
+	success: `${BASE_OUTLINE_STYLE} border-green-600 text-green-500 hover:bg-green-600/10`,
+	danger: `${BASE_OUTLINE_STYLE} border-red-600 text-red-500 hover:bg-red-600/10`,
+	warning: `${BASE_OUTLINE_STYLE} border-yellow-600 text-yellow-500 hover:bg-yellow-600/10`,
+	info: `${BASE_OUTLINE_STYLE} border-sky-600 text-sky-500 hover:bg-sky-500/10`,
+	light: `${BASE_OUTLINE_STYLE} border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300`,
+	dark: `${BASE_OUTLINE_STYLE} border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400`
+} as const;
+
+// Common opacity values for ghost variants
+const GHOST_BG_OPACITY = '10';
+const GHOST_HOVER_OPACITY = '20';
+
+const ghostVariants = {
+	primary: `bg-primary/${GHOST_BG_OPACITY} text-primary hover:bg-primary/${GHOST_HOVER_OPACITY}`,
+	secondary: `bg-secondary/${GHOST_BG_OPACITY} text-secondary hover:bg-secondary/${GHOST_HOVER_OPACITY} dark:text-zinc-400`,
+	success: `bg-green-600/${GHOST_BG_OPACITY} text-green-400 hover:bg-green-600/${GHOST_HOVER_OPACITY}`,
+	danger: `bg-red-600/${GHOST_BG_OPACITY} text-red-400 hover:bg-red-600/${GHOST_HOVER_OPACITY}`,
+	warning: `bg-yellow-400/${GHOST_BG_OPACITY} text-yellow-400 hover:bg-yellow-500/${GHOST_HOVER_OPACITY}`,
+	info: `bg-sky-500/${GHOST_BG_OPACITY} text-sky-400 hover:bg-sky-500/${GHOST_HOVER_OPACITY}`,
+	light: `bg-zinc-200/${GHOST_BG_OPACITY} text-zinc-700 hover:bg-zinc-200/${GHOST_HOVER_OPACITY} dark:text-zinc-300`,
+	dark: `bg-zinc-950/${GHOST_BG_OPACITY} text-zinc-900 hover:bg-zinc-700/${GHOST_HOVER_OPACITY} dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/${GHOST_HOVER_OPACITY}`
+} as const;
+
 const buttonVariants = cva(
 	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
 	{
@@ -36,87 +75,20 @@ const buttonVariants = cva(
 			}
 		},
 		compoundVariants: [
-			{
+			// Common styles for outline variants
+			...COMMON_VARIANTS.map(variantClassName => ({
 				variant: 'outline',
-				variantClassName: 'primary',
-				className: 'border bg-transparent border-primary text-primary hover:bg-primary/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'secondary',
-				className: 'border bg-transparent border-secondary text-secondary hover:bg-secondary/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'success',
-				className: 'border bg-transparent border-green-600 text-green-500 hover:bg-green-600/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'danger',
-				className: 'border bg-transparent border-red-600 text-red-500 hover:bg-red-600/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'warning',
-				className: 'border bg-transparent border-yellow-600 text-yellow-500 hover:bg-yellow-600/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'info',
-				className: 'border bg-transparent border-sky-600 text-sky-500 hover:bg-sky-500/10'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'light',
-				className: 'border bg-transparent border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300'
-			},
-			{
-				variant: 'outline',
-				variantClassName: 'dark',
-				className: 'border bg-transparent border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400'
-			},
-			{
+				variantClassName,
+				className: outlineVariants[variantClassName]
+			})),
+
+			// Common styles for ghost variants
+			...COMMON_VARIANTS.map(variantClassName => ({
 				variant: 'ghost',
-				variantClassName: 'primary',
-				className: 'bg-primary/10 text-primary hover:bg-primary/20'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'secondary',
-				className: 'bg-secondary/10 text-secondary hover:bg-secondary/20 dark:text-zinc-400'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'success',
-				className: 'bg-green-600/10 text-green-400 hover:bg-green-600/20'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'danger',
-				className: 'bg-red-600/10 text-red-400 hover:bg-red-600/20'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'warning',
-				className: 'bg-yellow-400/10 text-yellow-400 hover:bg-yellow-500/20'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'info',
-				className: 'bg-sky-500/10 text-sky-400 hover:bg-sky-500/20'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'light',
-				className: 'bg-zinc-200/10 text-zinc-700 hover:bg-zinc-200/20  dark:text-zinc-300'
-			},
-			{
-				variant: 'ghost',
-				variantClassName: 'dark',
-				className: 'bg-zinc-950/10 text-zinc-900 hover:bg-zinc-700/20 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/20'
-			}
-		],
+				variantClassName,
+				className: ghostVariants[variantClassName]
+			})),
+		] as any,
 		defaultVariants: {
 			variant: 'default',
 			size: 'default',
