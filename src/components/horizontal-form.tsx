@@ -49,7 +49,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="email"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
 							<FormLabel className="col-span-2 text-sm font-medium">
 								Email Address <RequiredAsterisk />
 							</FormLabel>
@@ -67,7 +67,7 @@ export function HorizontalForm() {
 					control={form.control}
 					name="password"
 					render={({ field }) => (
-						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
 							<FormLabel className="col-span-2 text-sm font-medium">
 								Password <RequiredAsterisk />
 							</FormLabel>
