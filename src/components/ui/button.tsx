@@ -14,34 +14,6 @@ export const COMMON_VARIANTS = [
 	'dark'
 ] as const;
 
-const BASE_OUTLINE_STYLE = 'border bg-transparent';
-
-const outlineVariants = {
-	primary: `${BASE_OUTLINE_STYLE} border-primary text-primary hover:bg-primary/10`,
-	secondary: `${BASE_OUTLINE_STYLE} border-secondary text-secondary hover:bg-secondary/10`,
-	success: `${BASE_OUTLINE_STYLE} border-green-600 text-green-500 hover:bg-green-600/10`,
-	danger: `${BASE_OUTLINE_STYLE} border-red-600 text-red-500 hover:bg-red-600/10`,
-	warning: `${BASE_OUTLINE_STYLE} border-yellow-600 text-yellow-500 hover:bg-yellow-600/10`,
-	info: `${BASE_OUTLINE_STYLE} border-sky-600 text-sky-500 hover:bg-sky-500/10`,
-	light: `${BASE_OUTLINE_STYLE} border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300`,
-	dark: `${BASE_OUTLINE_STYLE} border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400`
-} as const;
-
-// Common opacity values for ghost variants
-const GHOST_BG_OPACITY = '20';
-const GHOST_HOVER_OPACITY = '30';
-
-const ghostVariants = {
-	primary: `bg-primary/${GHOST_BG_OPACITY} text-primary hover:bg-primary/${GHOST_HOVER_OPACITY}`,
-	secondary: `bg-secondary/${GHOST_BG_OPACITY} text-secondary hover:bg-secondary/${GHOST_HOVER_OPACITY} dark:text-zinc-400`,
-	success: `bg-green-600/${GHOST_BG_OPACITY} text-green-400 hover:bg-green-600/${GHOST_HOVER_OPACITY}`,
-	danger: `bg-red-600/${GHOST_BG_OPACITY} text-red-400 hover:bg-red-600/${GHOST_HOVER_OPACITY}`,
-	warning: `bg-yellow-400/${GHOST_BG_OPACITY} text-yellow-400 hover:bg-yellow-500/${GHOST_HOVER_OPACITY}`,
-	info: `bg-sky-500/${GHOST_BG_OPACITY} text-sky-400 hover:bg-sky-500/${GHOST_HOVER_OPACITY}`,
-	light: `bg-zinc-200/${GHOST_BG_OPACITY} text-zinc-700 hover:bg-zinc-200/${GHOST_HOVER_OPACITY} dark:text-zinc-300`,
-	dark: `bg-zinc-950/${GHOST_BG_OPACITY} text-zinc-900 hover:bg-zinc-700/${GHOST_HOVER_OPACITY} dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/${GHOST_HOVER_OPACITY}`
-} as const;
-
 const buttonVariants = cva(
 	"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
 	{
@@ -79,14 +51,32 @@ const buttonVariants = cva(
 			...COMMON_VARIANTS.map(variantClassName => ({
 				variant: 'outline',
 				variantClassName,
-				className: outlineVariants[variantClassName]
+				className: {
+					primary: 'border bg-transparent border-primary text-primary hover:bg-primary/10',
+					secondary: 'border bg-transparent border-secondary text-secondary hover:bg-secondary/10',
+					success: 'border bg-transparent border-green-600 text-green-500 hover:bg-green-600/10',
+					danger: 'border bg-transparent border-red-600 text-red-500 hover:bg-red-600/10',
+					warning: 'border bg-transparent border-yellow-600 text-yellow-500 hover:bg-yellow-600/10',
+					info: 'border bg-transparent border-sky-600 text-sky-500 hover:bg-sky-500/10',
+					light: 'border bg-transparent border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300',
+					dark: 'border bg-transparent border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400'
+				}[variantClassName]
 			})),
 
 			// Common styles for ghost variants
 			...COMMON_VARIANTS.map(variantClassName => ({
 				variant: 'ghost',
 				variantClassName,
-				className: ghostVariants[variantClassName]
+				className: {
+					primary: 'bg-primary/10 text-primary hover:bg-primary/20',
+					secondary: 'bg-secondary/10 text-secondary hover:bg-secondary/20 dark:text-zinc-400',
+					success: 'bg-green-600/10 text-green-400 hover:bg-green-600/20',
+					danger: 'bg-red-600/10 text-red-400 hover:bg-red-600/20',
+					warning: 'bg-yellow-400/10 text-yellow-400 hover:bg-yellow-500/20',
+					info: 'bg-sky-500/10 text-sky-400 hover:bg-sky-500/20',
+					light: 'bg-zinc-200/10 text-zinc-700 hover:bg-zinc-200/20 dark:text-zinc-300',
+					dark: 'bg-zinc-950/10 text-zinc-900 hover:bg-zinc-700/20 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/20'
+				}[variantClassName]
 			})),
 		] as any,
 		defaultVariants: {
