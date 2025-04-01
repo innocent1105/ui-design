@@ -8,11 +8,14 @@ export default function Buttons() {
 		<div className="flex min-h-screen">
 			<main className="flex-1 space-y-4 p-1">
 				<PageHeader
-					items={[ { label: 'Home', href: '/' }, { label: 'Buttons', href: '/buttons' } ]}
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Buttons', href: '/buttons' }
+					]}
 					heading="Buttons"
 				/>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 					{/* Regular Buttons */}
 					<MainCard title="Buttons">
 						<div className="flex flex-wrap gap-3">
@@ -143,7 +146,11 @@ export default function Buttons() {
 							>
 								Warning
 							</Button>
-							<Button variant="default" variantClassName="info" leftIcon={<Folder className="h-4 w-4" />}>
+							<Button
+								variant="default"
+								variantClassName="info"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Info
 							</Button>
 							<Button
@@ -153,7 +160,11 @@ export default function Buttons() {
 							>
 								Light
 							</Button>
-							<Button variant="default" variantClassName="dark" leftIcon={<Folder className="h-4 w-4" />}>
+							<Button
+								variant="default"
+								variantClassName="dark"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Dark
 							</Button>
 						</div>

@@ -21,7 +21,7 @@ const buttonVariants = cva(
 				warning: 'bg-yellow-500 text-black hover:bg-yellow-600',
 				info: 'bg-sky-500 text-white hover:bg-sky-600',
 				light: 'bg-zinc-200 text-black hover:bg-zinc-300',
-				dark: 'bg-zinc-800 text-white hover:bg-zinc-700',
+				dark: 'bg-zinc-800 text-white hover:bg-zinc-700'
 			},
 			size: {
 				default: 'h-9 px-4 py-2 has-[>svg]:px-3',
@@ -120,13 +120,25 @@ const buttonVariants = cva(
 	}
 );
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		VariantProps<typeof buttonVariants> {
 	asChild?: boolean;
 	leftIcon?: React.ReactNode;
 	rightIcon?: React.ReactNode;
 }
 
-function Button({ className, variant, variantClassName, size, asChild = false, leftIcon, rightIcon, children, ...props }: ButtonProps) {
+function Button({
+	className,
+	variant,
+	variantClassName,
+	size,
+	asChild = false,
+	leftIcon,
+	rightIcon,
+	children,
+	...props
+}: ButtonProps) {
 	const Comp = asChild ? Slot : 'button';
 
 	return (
