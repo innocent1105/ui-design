@@ -9,7 +9,7 @@ const MainCard: React.FC<FormCardProps> = ({ title, children }) => {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle className="text-lg font-medium leading-2">{title}</CardTitle>
+				<CardTitle className="text-lg leading-2 font-medium">{title}</CardTitle>
 			</CardHeader>
 			<CardContent>{children}</CardContent>
 		</Card>
