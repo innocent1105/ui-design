@@ -79,42 +79,42 @@ const buttonVariants = cva(
 			{
 				variant: 'ghost',
 				variantClassName: 'primary',
-				className: 'bg-primary/20 text-primary hover:bg-primary/30'
+				className: 'bg-primary/10 text-primary hover:bg-primary/20'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'secondary',
-				className: 'bg-secondary/20 text-secondary hover:bg-secondary/30'
+				className: 'bg-secondary/10 text-secondary hover:bg-secondary/20 dark:text-zinc-400'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'success',
-				className: 'bg-green-600/20 text-green-400 hover:bg-green-600/30'
+				className: 'bg-green-600/10 text-green-400 hover:bg-green-600/20'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'danger',
-				className: 'bg-red-600/20 text-red-400 hover:bg-red-600/30'
+				className: 'bg-red-600/10 text-red-400 hover:bg-red-600/20'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'warning',
-				className: 'bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30'
+				className: 'bg-yellow-400/10 text-yellow-400 hover:bg-yellow-500/20'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'info',
-				className: 'bg-sky-500/20 text-sky-400 hover:bg-sky-500/30'
+				className: 'bg-sky-500/10 text-sky-400 hover:bg-sky-500/20'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'light',
-				className: 'bg-zinc-200/20 text-zinc-700 hover:bg-zinc-200/30  dark:text-zinc-300'
+				className: 'bg-zinc-200/10 text-zinc-700 hover:bg-zinc-200/20  dark:text-zinc-300'
 			},
 			{
 				variant: 'ghost',
 				variantClassName: 'dark',
-				className: 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
+				className: 'bg-zinc-950/10 text-zinc-900 hover:bg-zinc-700/20 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/20'
 			}
 		],
 		defaultVariants: {
