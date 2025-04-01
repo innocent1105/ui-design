@@ -5,7 +5,7 @@ const Dashboard = () => {
 	return (
 		<div className="flex min-h-screen">
 			<main className="flex-1 space-y-4 p-1">
-				<PageHeader items={[ { label: 'Home', href: '/' }, { label: 'Dashboard', href: '/dashboard' } ]} />
+				<PageHeader items={[ { label: 'Home', href: '/' }, { label: 'Dashboard', href: '/' } ]} />
 				<h1 className="heading text-4xl leading-14 !font-bold  tracking-tight">Hello Everyone!</h1>
 				{/* Dashboard Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
