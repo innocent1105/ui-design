@@ -37,7 +37,7 @@ const BasicForm: React.FC = () => {
 					control={form.control}
 					name="email"
 					render={({ field }: { field: any }) => (
-						<FormItem className="space-y-2">
+						<FormItem>
 							<FormLabel className="text-sm font-medium">
 								Email Address <RequiredAsterisk />
 							</FormLabel>
@@ -55,7 +55,7 @@ const BasicForm: React.FC = () => {
 					control={form.control}
 					name="password"
 					render={({ field }: { field: any }) => (
-						<FormItem className="space-y-2">
+						<FormItem>
 							<FormLabel className="text-sm font-medium">
 								Password <RequiredAsterisk />
 							</FormLabel>

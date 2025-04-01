@@ -1,113 +1,148 @@
-"use client"
+'use client';
 
-import type React from "react"
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import RequiredAsterisk from './required-asterisk';
+import { z } from 'zod';
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import RequiredAsterisk from '@/components/required-asterisk'
+type FormValues = z.infer<typeof formSchema>;
+
+const formSchema = z.object({
+	email: z.string().email(),
+	password: z.string().min(8),
+	radioOption: z.string(),
+	checkMe: z.boolean()
+});
 
 const radioOptions = [
-  { value: 'option1', id: 'option1', label: 'Option one is this and that—be sure to include why it\'s great' },
-  { value: 'option2', id: 'option2', label: 'Option two can be something else and selecting it will deselect option one' },
-  { value: 'option3', id: 'option3', label: 'Option three is disabled', disabled: true },
-]
+	{ id: 'option1', value: 'option1', label: 'Option 1' },
+	{ id: 'option2', value: 'option2', label: 'Option 2' },
+	{ id: 'option3', value: 'option3', label: 'Option 3', disabled: true }
+];
 
 export function HorizontalForm() {
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    radioOption: "option1",
-    checkMe: false,
-  })
+	const form = useForm<FormValues>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			email: '',
+			password: '',
+			radioOption: 'option1',
+			checkMe: false
+		}
+	});
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, type, value, checked } = event.target
+	function onSubmit(data: FormValues) {
+		console.log(data);
+		// Handle form submission
+	}
 
-    setForm((prevForm) => ({
-      ...prevForm,
-      [name]: type === 'checkbox' ? checked : value,
-    }))
-  }
+	return (
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+				<FormField
+					control={form.control}
+					name="email"
+					render={({ field }) => (
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+							<FormLabel className="col-span-2 text-sm font-medium">
+								Email Address <RequiredAsterisk />
+							</FormLabel>
+							<div className="col-span-10">
+								<FormControl>
+									<Input placeholder="Enter Email" {...field} autoComplete="off" />
+								</FormControl>
+							</div>
+						</FormItem>
+					)}
+				/>
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    console.log(form)
-  }
+				<FormField
+					control={form.control}
+					name="password"
+					render={({ field }) => (
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+							<FormLabel className="col-span-2 text-sm font-medium">
+								Password <RequiredAsterisk />
+							</FormLabel>
+							<div className="col-span-10">
+								<FormControl>
+									<Input
+										type="password"
+										placeholder="Enter Password"
+										{...field}
+										autoComplete="new-password"
+									/>
+								</FormControl>
+							</div>
+						</FormItem>
+					)}
+				/>
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
-        <Label htmlFor="horizontalEmail" className="col-span-2 text-sm font-medium">
-          Email Address <RequiredAsterisk />
-        </Label>
-        <div className="col-span-10">
-          <Input
-            id="horizontalEmail"
-            name="email"
-            placeholder="Enter Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            autoComplete="off"
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
-        <Label htmlFor="horizontalPassword" className="col-span-2 text-sm font-medium">
-          Password <RequiredAsterisk />
-        </Label>
-        <div className="col-span-10">
-          <Input
-            id="horizontalPassword"
-            name="password"
-            type="password"
-            placeholder="Enter Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-            autoComplete="new-password"
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
-        <div className="col-span-2 text-sm font-medium">Radio Buttons</div>
-        <div className="col-span-10 space-y-2">
-          <RadioGroup value={form.radioOption} onValueChange={(value) => setForm((prev) => ({ ...prev, radioOption: value }))} >
-            {radioOptions.map((option) => (
-              <div key={option.id} className="flex items-center space-x-2">
-                <RadioGroupItem value={option.value} id={option.id} disabled={option.disabled} />
-                <Label htmlFor={option.id} className="text-sm">
-                  {option.label}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
-        <div className="col-span-2 text-sm font-medium">Checkbox</div>
-        <div className="col-span-10">
-          <div className="flex items-center space-x-2">
-            <Checkbox id="checkMeOut" name="checkMe" checked={form.checkMe} onCheckedChange={(checked) => setForm((prev) => ({ ...prev, checkMe: checked as boolean }))} />
-            <Label htmlFor="checkMeOut" className="text-sm">
-              Check me out
-            </Label>
-          </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-        <div className="col-span-2"></div>
-        <div className="col-span-10">
-          <Button type="submit" >
-            Sign In
-          </Button>
-        </div>
-      </div>
-    </form>
-  )
+				<FormField
+					control={form.control}
+					name="radioOption"
+					render={({ field }) => (
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
+							<FormLabel className="col-span-2 text-sm font-medium">Radio Buttons</FormLabel>
+							<div className="col-span-10 space-y-2">
+								<FormControl>
+									<RadioGroup onValueChange={field.onChange} defaultValue={field.value}>
+										{radioOptions.map((option) => (
+											<div key={option.id} className="flex items-center space-x-2">
+												<RadioGroupItem
+													value={option.value}
+													id={option.id}
+													disabled={option.disabled}
+												/>
+												<Label htmlFor={option.id} className="text-sm">
+													{option.label}
+												</Label>
+											</div>
+										))}
+									</RadioGroup>
+								</FormControl>
+							</div>
+						</FormItem>
+					)}
+				/>
+
+				<FormField
+					control={form.control}
+					name="checkMe"
+					render={({ field }) => (
+						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-center gap-4">
+							<FormLabel className="col-span-2 text-sm font-medium">Checkbox</FormLabel>
+							<div className="col-span-10">
+								<div className="flex items-center space-x-2">
+									<FormControl>
+										<Checkbox
+											checked={field.value}
+											onCheckedChange={field.onChange}
+											id="checkMeOut"
+										/>
+									</FormControl>
+									<Label htmlFor="checkMeOut" className="text-sm">
+										Check me out
+									</Label>
+								</div>
+							</div>
+						</FormItem>
+					)}
+				/>
+
+				<div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+					<div className="col-span-2" />
+					<div className="col-span-10">
+						<Button type="submit">Sign In</Button>
+					</div>
+				</div>
+			</form>
+		</Form>
+	);
 }
-
