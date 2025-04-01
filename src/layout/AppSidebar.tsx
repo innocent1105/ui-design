@@ -32,18 +32,6 @@ const data = {
 			url: '#',
 			icon: Table,
 			items: [
-				{
-					title: 'Genesis',
-					url: '#'
-				},
-				{
-					title: 'Explorer',
-					url: '#'
-				},
-				{
-					title: 'Quantum',
-					url: '#'
-				}
 			]
 		},
 		{
