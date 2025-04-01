@@ -29,7 +29,7 @@ const data = {
 		},
 		{
 			title: 'Tables',
-			url: '#',
+			url: '/tables',
 			icon: Table,
 			items: [
 			]
