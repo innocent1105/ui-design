@@ -22,6 +22,7 @@ const AppHeader: React.FC = () => {
 				<Button
 					variant="ghost"
 					size="icon"
+					variantClassName="light"
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 				>
 					{theme === 'dark' ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}

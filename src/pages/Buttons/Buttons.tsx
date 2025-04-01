@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/page-header';
 import MainCard from '@/components/main-card';
+import { Folder } from 'lucide-react';
 
 export default function Buttons() {
 	return (
@@ -15,44 +16,58 @@ export default function Buttons() {
 					{/* Regular Buttons */}
 					<MainCard title="Buttons">
 						<div className="flex flex-wrap gap-3">
-							<Button className="bg-blue-600 hover:bg-blue-700">Primary</Button>
-							<Button variant="secondary" className="bg-zinc-700 hover:bg-zinc-600">
+							<Button variant="default" variantClassName="primary">
+								Primary
+							</Button>
+							<Button variant="default" variantClassName="secondary">
 								Secondary
 							</Button>
-							<Button className="bg-green-600 hover:bg-green-700">Success</Button>
-							<Button className="bg-red-600 hover:bg-red-700">Danger</Button>
-							<Button className="bg-yellow-500 text-black hover:bg-yellow-600">Warning</Button>
-							<Button className="bg-sky-500 hover:bg-sky-600">Info</Button>
-							<Button className="bg-zinc-200 text-black hover:bg-zinc-300">Light</Button>
-							<Button className="bg-zinc-800 hover:bg-zinc-700">Dark</Button>
+							<Button variant="default" variantClassName="success">
+								Success
+							</Button>
+							<Button variant="default" variantClassName="danger">
+								Danger
+							</Button>
+							<Button variant="default" variantClassName="warning">
+								Warning
+							</Button>
+							<Button variant="default" variantClassName="info">
+								Info
+							</Button>
+							<Button variant="default" variantClassName="light">
+								Light
+							</Button>
+							<Button variant="default" variantClassName="dark">
+								Dark
+							</Button>
 						</div>
 					</MainCard>
 
 					{/* Outline Buttons */}
 					<MainCard title="Buttons with Outline">
 						<div className="flex flex-wrap gap-3">
-							<Button variant="outline" className="border-blue-600 text-blue-500 hover:bg-blue-950">
+							<Button variant="outline" variantClassName="primary">
 								Primary
 							</Button>
-							<Button variant="outline" className="border-zinc-600 text-zinc-400 hover:bg-zinc-800">
+							<Button variant="outline" variantClassName="secondary">
 								Secondary
 							</Button>
-							<Button variant="outline" className="border-green-600 text-green-500 hover:bg-green-950">
+							<Button variant="outline" variantClassName="success">
 								Success
 							</Button>
-							<Button variant="outline" className="border-red-600 text-red-500 hover:bg-red-950">
+							<Button variant="outline" variantClassName="danger">
 								Danger
 							</Button>
-							<Button variant="outline" className="border-yellow-500 text-yellow-500 hover:bg-yellow-950">
+							<Button variant="outline" variantClassName="warning">
 								Warning
 							</Button>
-							<Button variant="outline" className="border-sky-500 text-sky-500 hover:bg-sky-950">
+							<Button variant="outline" variantClassName="info">
 								Info
 							</Button>
-							<Button variant="outline" className="border-zinc-200 text-zinc-200 hover:bg-zinc-800">
+							<Button variant="outline" variantClassName="light">
 								Light
 							</Button>
-							<Button variant="outline" className="border-zinc-700 text-zinc-400 hover:bg-zinc-800">
+							<Button variant="outline" variantClassName="dark">
 								Dark
 							</Button>
 						</div>
@@ -61,50 +76,84 @@ export default function Buttons() {
 					{/* Background Buttons */}
 					<MainCard title="Button with Background">
 						<div className="flex flex-wrap gap-3">
-							<Button className="bg-blue-600/20 text-blue-400 hover:bg-blue-600/30">Primary</Button>
-							<Button className="bg-zinc-700/50 text-zinc-300 hover:bg-zinc-700/60">Secondary</Button>
-							<Button className="bg-green-600/20 text-green-400 hover:bg-green-600/30">Success</Button>
-							<Button className="bg-red-600/20 text-red-400 hover:bg-red-600/30">Danger</Button>
-							<Button className="bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30">Warning</Button>
-							<Button className="bg-sky-500/20 text-sky-400 hover:bg-sky-500/30">Info</Button>
-							<Button className="bg-zinc-200/20 text-zinc-300 hover:bg-zinc-200/30">Light</Button>
-							<Button className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700">Dark</Button>
+							<div className="flex flex-wrap gap-3">
+								<Button variant="ghost" variantClassName="primary">
+									Primary
+								</Button>
+								<Button variant="ghost" variantClassName="secondary">
+									Secondary
+								</Button>
+								<Button variant="ghost" variantClassName="success">
+									Success
+								</Button>
+								<Button variant="ghost" variantClassName="danger">
+									Danger
+								</Button>
+								<Button variant="ghost" variantClassName="warning">
+									Warning
+								</Button>
+								<Button variant="ghost" variantClassName="info">
+									Info
+								</Button>
+								<Button variant="ghost" variantClassName="light">
+									Light
+								</Button>
+								<Button variant="ghost" variantClassName="dark">
+									Dark
+								</Button>
+							</div>
 						</div>
 					</MainCard>
 
 					{/* Icon Buttons */}
 					<MainCard title="Button with Icons">
-						<div className="flex flex-wrap gap-3">
-							<Button className="bg-blue-600 hover:bg-blue-700">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+						<div className="flex flex-wrap items-center gap-4">
+							<Button
+								variant="default"
+								variantClassName="primary"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Primary
 							</Button>
-							<Button variant="secondary" className="bg-zinc-700 hover:bg-zinc-600">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+							<Button
+								variant="default"
+								variantClassName="secondary"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Secondary
 							</Button>
-							<Button className="bg-green-600 hover:bg-green-700">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+							<Button
+								variant="default"
+								variantClassName="success"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Success
 							</Button>
-							<Button className="bg-red-600 hover:bg-red-700">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+							<Button
+								variant="default"
+								variantClassName="danger"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Danger
 							</Button>
-							<Button className="bg-yellow-500 text-black hover:bg-yellow-600">
-								<div className="mr-2 h-4 w-4 rounded bg-black/20" />
+							<Button
+								variant="default"
+								variantClassName="warning"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Warning
 							</Button>
-							<Button className="bg-sky-500 hover:bg-sky-600">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+							<Button variant="default" variantClassName="info" leftIcon={<Folder className="h-4 w-4" />}>
 								Info
 							</Button>
-							<Button className="bg-zinc-200 text-black hover:bg-zinc-300">
-								<div className="mr-2 h-4 w-4 rounded bg-black/20" />
+							<Button
+								variant="default"
+								variantClassName="light"
+								leftIcon={<Folder className="h-4 w-4" />}
+							>
 								Light
 							</Button>
-							<Button className="bg-zinc-800 hover:bg-zinc-700">
-								<div className="mr-2 h-4 w-4 rounded bg-white/20" />
+							<Button variant="default" variantClassName="dark" leftIcon={<Folder className="h-4 w-4" />}>
 								Dark
 							</Button>
 						</div>
