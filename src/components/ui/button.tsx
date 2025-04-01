@@ -9,8 +9,13 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
-				outline: '!bg-transparent',
-				ghost: ''
+				destructive:
+					'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+				outline:
+					'border bg-transparent shadow-xs ',
+				secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+				ghost: '',
+				link: 'text-primary underline-offset-4 hover:underline'
 			},
 			variantClassName: {
 				// Default variants
@@ -34,42 +39,42 @@ const buttonVariants = cva(
 			{
 				variant: 'outline',
 				variantClassName: 'primary',
-				className: 'border border-primary text-primary hover:bg-primary/10'
+				className: 'border bg-transparent border-primary text-primary hover:bg-primary/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'secondary',
-				className: 'border border-secondary text-secondary hover:bg-secondary/10'
+				className: 'border bg-transparent border-secondary text-secondary hover:bg-secondary/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'success',
-				className: 'border border-green-600 text-green-500 hover:bg-green-950'
+				className: 'border bg-transparent border-green-600 text-green-500 hover:bg-green-600/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'danger',
-				className: 'border border-red-600 text-red-500 hover:bg-red-950'
+				className: 'border bg-transparent border-red-600 text-red-500 hover:bg-red-600/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'warning',
-				className: 'border border-yellow-500 text-yellow-500 hover:bg-yellow-950'
+				className: 'border bg-transparent border-yellow-600 text-yellow-500 hover:bg-yellow-600/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'info',
-				className: 'border border-sky-500 text-sky-500 hover:bg-sky-950'
+				className: 'border bg-transparent border-sky-600 text-sky-500 hover:bg-sky-500/10'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'light',
-				className: 'border border-zinc-200 text-zinc-700 hover:bg-zinc-800 dark:text-zinc-300'
+				className: 'border bg-transparent border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300'
 			},
 			{
 				variant: 'outline',
 				variantClassName: 'dark',
-				className: 'border border-zinc-700 text-zinc-800 hover:bg-zinc-800 dark:text-zinc-400'
+				className: 'border bg-transparent border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400'
 			},
 			{
 				variant: 'ghost',
@@ -115,7 +120,6 @@ const buttonVariants = cva(
 		defaultVariants: {
 			variant: 'default',
 			size: 'default',
-			variantClassName: 'primary'
 		}
 	}
 );
