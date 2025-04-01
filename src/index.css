@@ -128,7 +128,7 @@
 }
 
 
-h1 {
+.heading {
   background: -webkit-linear-gradient(45deg,
       #5a81ea,
       #d56676 15%);
