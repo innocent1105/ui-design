@@ -12,7 +12,10 @@ export default function FormView() {
 		<div className="flex min-h-screen">
 			<main className="flex-1 space-y-4 p-1">
 				<PageHeader
-					items={[ { label: 'Home', href: '/' }, { label: 'Form View', href: '/form-view' } ]}
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Form View', href: '/form-view' }
+					]}
 					heading="Form View"
 				/>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
