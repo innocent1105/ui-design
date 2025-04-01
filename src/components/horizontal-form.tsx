@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -14,9 +14,9 @@ import { z } from 'zod';
 type FormValues = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
-	email: z.string().email(),
-	password: z.string().min(8),
-	radioOption: z.string(),
+	email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
+	password: z.string().min(1, 'Password is required').min(8, 'Password must be at least 8 characters'),
+	radioOption: z.string().min(1, 'Please select an option'),
 	checkMe: z.boolean()
 });
 
@@ -57,6 +57,7 @@ export function HorizontalForm() {
 								<FormControl>
 									<Input placeholder="Enter Email" {...field} autoComplete="off" />
 								</FormControl>
+								<FormMessage />
 							</div>
 						</FormItem>
 					)}
@@ -79,6 +80,7 @@ export function HorizontalForm() {
 										autoComplete="new-password"
 									/>
 								</FormControl>
+								<FormMessage />
 							</div>
 						</FormItem>
 					)}
@@ -89,7 +91,9 @@ export function HorizontalForm() {
 					name="radioOption"
 					render={({ field }) => (
 						<FormItem className="grid grid-cols-1 md:grid-cols-12 items-start gap-4">
-							<FormLabel className="col-span-2 text-sm font-medium">Radio Buttons</FormLabel>
+							<FormLabel className="col-span-2 text-sm font-medium">
+								Radio Buttons <RequiredAsterisk />
+							</FormLabel>
 							<div className="col-span-10 space-y-2">
 								<FormControl>
 									<RadioGroup onValueChange={field.onChange} defaultValue={field.value}>
@@ -107,6 +111,7 @@ export function HorizontalForm() {
 										))}
 									</RadioGroup>
 								</FormControl>
+								<FormMessage />
 							</div>
 						</FormItem>
 					)}
@@ -131,6 +136,7 @@ export function HorizontalForm() {
 										Check me out
 									</Label>
 								</div>
+								<FormMessage />
 							</div>
 						</FormItem>
 					)}

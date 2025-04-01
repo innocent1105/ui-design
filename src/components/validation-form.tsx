@@ -13,7 +13,7 @@ import RequiredAsterisk from '@/components/required-asterisk';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 const formSchema = z.object({
 	firstName: z.string().min(1, 'First name is required'),
@@ -43,6 +43,7 @@ export function ValidationForm() {
 			city: '',
 			state: '',
 			zip: '',
+			date: undefined,
 			callJohn: false
 		}
 	});
@@ -67,6 +68,7 @@ export function ValidationForm() {
 								<FormControl>
 									<Input {...field} placeholder="Enter First Name" />
 								</FormControl>
+								<FormMessage />
 							</FormItem>
 						)}
 					/>
@@ -81,6 +83,7 @@ export function ValidationForm() {
 								<FormControl>
 									<Input {...field} placeholder="Enter Last Name" />
 								</FormControl>
+								<FormMessage />
 							</FormItem>
 						)}
 					/>
@@ -106,6 +109,7 @@ export function ValidationForm() {
 										))}
 									</SelectContent>
 								</Select>
+								<FormMessage />
 							</FormItem>
 						)}
 					/>
@@ -118,6 +122,7 @@ export function ValidationForm() {
 								<FormControl>
 									<Input placeholder="Enter" {...field} />
 								</FormControl>
+								<FormMessage />
 							</FormItem>
 						)}
 					/>
@@ -130,6 +135,7 @@ export function ValidationForm() {
 								<FormControl>
 									<Input placeholder="Enter" {...field} />
 								</FormControl>
+								<FormMessage />
 							</FormItem>
 						)}
 					/>
@@ -164,6 +170,7 @@ export function ValidationForm() {
 									/>
 								</PopoverContent>
 							</Popover>
+							<FormMessage />
 						</FormItem>
 					)}
 				/>

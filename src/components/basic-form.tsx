@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -8,8 +8,8 @@ import { z } from 'zod';
 import RequiredAsterisk from './required-asterisk';
 
 const formSchema = z.object({
-	email: z.string().email(),
-	password: z.string().min(8),
+	email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
+	password: z.string().min(1, 'Password is required').min(8, 'Password must be at least 8 characters'),
 	callJohn: z.boolean()
 });
 
@@ -36,7 +36,7 @@ const BasicForm: React.FC = () => {
 				<FormField
 					control={form.control}
 					name="email"
-					render={({ field }: { field: any }) => (
+					render={({ field }) => (
 						<FormItem>
 							<FormLabel className="text-sm font-medium">
 								Email Address <RequiredAsterisk />
@@ -47,6 +47,7 @@ const BasicForm: React.FC = () => {
 							<FormDescription className="text-xs text-muted-foreground">
 								We'll never share your email with anyone else.
 							</FormDescription>
+							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -54,7 +55,7 @@ const BasicForm: React.FC = () => {
 				<FormField
 					control={form.control}
 					name="password"
-					render={({ field }: { field: any }) => (
+					render={({ field }) => (
 						<FormItem>
 							<FormLabel className="text-sm font-medium">
 								Password <RequiredAsterisk />
@@ -67,6 +68,7 @@ const BasicForm: React.FC = () => {
 									autoComplete="new-password"
 								/>
 							</FormControl>
+							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -74,7 +76,7 @@ const BasicForm: React.FC = () => {
 				<FormField
 					control={form.control}
 					name="callJohn"
-					render={({ field }: { field: any }) => (
+					render={({ field }) => (
 						<FormItem className="flex items-center space-x-2">
 							<FormControl>
 								<Checkbox checked={field.value} onCheckedChange={field.onChange} />
