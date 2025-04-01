@@ -7,7 +7,7 @@ interface BreadcrumbItem {
 
 interface PageHeaderProps {
 	items: BreadcrumbItem[];
-	heading: string;
+	heading?: string;
 }
 
 export function PageHeader({ items, heading }: PageHeaderProps) {
@@ -29,7 +29,7 @@ export function PageHeader({ items, heading }: PageHeaderProps) {
 					))}
 				</nav>
 			</div>
-			<h1 className="heading text-3xl leading-14 !font-bold font-semibold tracking-tight">
+			<h1 className="heading text-4xl  leading-14 !font-bold  tracking-tight">
 				{heading}
 			</h1>
 		</>
