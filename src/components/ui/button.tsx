@@ -28,8 +28,8 @@ const outlineVariants = {
 } as const;
 
 // Common opacity values for ghost variants
-const GHOST_BG_OPACITY = '10';
-const GHOST_HOVER_OPACITY = '20';
+const GHOST_BG_OPACITY = '20';
+const GHOST_HOVER_OPACITY = '30';
 
 const ghostVariants = {
 	primary: `bg-primary/${GHOST_BG_OPACITY} text-primary hover:bg-primary/${GHOST_HOVER_OPACITY}`,
