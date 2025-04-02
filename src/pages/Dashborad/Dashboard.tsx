@@ -6,7 +6,10 @@ const Dashboard = () => {
 		<div className="flex min-h-screen">
 			<main className="flex-1 space-y-4 p-1">
 				<PageHeader
-					items={[ { label: 'Home', href: '/' }, { label: 'Dashboard', href: '/' } ]}
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Dashboard', href: '/' }
+					]}
 					heading="Hello Everyone!"
 				/>
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">

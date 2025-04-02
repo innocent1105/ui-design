@@ -1,4 +1,11 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow
+} from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -12,14 +19,20 @@ interface DataTableProps {
 	setEmployeesData: (data: Employee[]) => void;
 }
 
-export function DataTable({ data, currentPage, totalPages, onPageChange, setEmployeesData }: DataTableProps) {
+export function DataTable({
+	data,
+	currentPage,
+	totalPages,
+	onPageChange,
+	setEmployeesData
+}: DataTableProps) {
 	return (
 		<div className="space-y-4">
 			<div className="w-full">
 				<Table>
 					<TableHeader className="table-row-background">
 						<TableRow>
-							<TableHead className="rounded-l-md  !border-none pl-4">Name</TableHead>
+							<TableHead className="rounded-l-md !border-none pl-4">Name</TableHead>
 							<TableHead>Position</TableHead>
 							<TableHead>Office</TableHead>
 							<TableHead>Age</TableHead>
@@ -53,11 +66,13 @@ export function DataTable({ data, currentPage, totalPages, onPageChange, setEmpl
 										}}
 									>
 										<SelectTrigger
-											className={`w-[140px] ${employee.status === EmployeeStatus.Assigned
-												? 'bg-blue-500/20 text-blue-500'
-												: employee.status === EmployeeStatus.NotAssigned
-													? 'bg-red-500/20 text-red-500'
-													: 'bg-blue-500/20 text-blue-500'}`}
+											className={`w-[140px] ${
+												employee.status === EmployeeStatus.Assigned
+													? 'bg-blue-500/20 text-blue-500'
+													: employee.status === EmployeeStatus.NotAssigned
+														? 'bg-red-500/20 text-red-500'
+														: 'bg-blue-500/20 text-blue-500'
+											}`}
 										>
 											<SelectValue placeholder="Select status" />
 										</SelectTrigger>
@@ -86,7 +101,7 @@ export function DataTable({ data, currentPage, totalPages, onPageChange, setEmpl
 			</div>
 
 			<div className="flex items-center justify-end space-x-2">
-				<div className="text-sm text-muted-foreground">
+				<div className="text-muted-foreground text-sm">
 					{currentPage} - {totalPages} of {totalPages}
 				</div>
 				<Button
@@ -94,17 +109,15 @@ export function DataTable({ data, currentPage, totalPages, onPageChange, setEmpl
 					size="icon"
 					onClick={() => onPageChange(currentPage - 1)}
 					disabled={currentPage === 1}
-				>
-					<ChevronLeft className="h-4 w-4" />
-				</Button>
+					leftIcon={<ChevronLeft className="h-4 w-4" />}
+				/>
 				<Button
 					variant="outline"
 					size="icon"
 					onClick={() => onPageChange(currentPage + 1)}
 					disabled={currentPage === totalPages}
-				>
-					<ChevronRight className="h-4 w-4" />
-				</Button>
+					leftIcon={<ChevronRight className="h-4 w-4" />}
+				/>
 			</div>
 		</div>
 	);

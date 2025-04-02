@@ -31,7 +31,7 @@ export const employees: Employee[] = [
 			code: 'SP2053'
 		},
 		status: EmployeeStatus.Assigned
-	},      
+	},
 	{
 		id: '23784629',
 		name: 'Xavier Graden',
@@ -210,5 +210,3 @@ export const statusOptions = [
 	{ value: EmployeeStatus.NotAssigned, label: 'Not Assigned', color: 'text-red-500' },
 	{ value: EmployeeStatus.DriverAssigned, label: 'Driver Assigned', color: 'text-blue-500' }
 ] as const;
-
-
