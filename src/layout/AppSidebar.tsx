@@ -31,8 +31,7 @@ const data = {
 			title: 'Tables',
 			url: '/tables',
 			icon: Table,
-			items: [
-			]
+			items: []
 		},
 		{
 			title: 'Form View',

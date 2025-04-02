@@ -22,8 +22,7 @@ const buttonVariants = cva(
 				default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
 				destructive:
 					'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
-				outline:
-					'border bg-transparent shadow-xs ',
+				outline: 'border bg-transparent shadow-xs ',
 				secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
 				ghost: '',
 				link: 'text-primary underline-offset-4 hover:underline'
@@ -48,7 +47,7 @@ const buttonVariants = cva(
 		},
 		compoundVariants: [
 			// Common styles for outline variants
-			...COMMON_VARIANTS.map(variantClassName => ({
+			...COMMON_VARIANTS.map((variantClassName) => ({
 				variant: 'outline',
 				variantClassName,
 				className: {
@@ -58,13 +57,14 @@ const buttonVariants = cva(
 					danger: 'border bg-transparent border-red-600 text-red-500 hover:bg-red-600/10',
 					warning: 'border bg-transparent border-yellow-600 text-yellow-500 hover:bg-yellow-600/10',
 					info: 'border bg-transparent border-sky-600 text-sky-500 hover:bg-sky-500/10',
-					light: 'border bg-transparent border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300',
+					light:
+						'border bg-transparent border-zinc-200 text-zinc-700 hover:bg-zinc-200/10 dark:text-zinc-300',
 					dark: 'border bg-transparent border-zinc-700 text-zinc-800 hover:bg-zinc-600/10 dark:text-zinc-400'
 				}[variantClassName]
 			})),
 
 			// Common styles for ghost variants
-			...COMMON_VARIANTS.map(variantClassName => ({
+			...COMMON_VARIANTS.map((variantClassName) => ({
 				variant: 'ghost',
 				variantClassName,
 				className: {
@@ -77,11 +77,11 @@ const buttonVariants = cva(
 					light: 'bg-zinc-200/10 text-zinc-700 hover:bg-zinc-200/20 dark:text-zinc-300',
 					dark: 'bg-zinc-950/10 text-zinc-900 hover:bg-zinc-700/20 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/20'
 				}[variantClassName]
-			})),
+			}))
 		] as any,
 		defaultVariants: {
 			variant: 'default',
-			size: 'default',
+			size: 'default'
 		}
 	}
 );
