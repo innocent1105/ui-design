@@ -1,4 +1,11 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow
+} from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -53,7 +60,9 @@ export function DataTable({
 								</TableCell>
 								<TableCell>
 									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
-									<h6 className="text-muted-foreground mt-[4px]">Jasck - {employee.vehicle.code}</h6>
+									<h6 className="text-muted-foreground mt-[4px]">
+										Jasck - {employee.vehicle.code}
+									</h6>
 								</TableCell>
 								<TableCell>
 									<Select
@@ -70,12 +79,13 @@ export function DataTable({
 										}}
 									>
 										<SelectTrigger
-											className={`w-[140px] !border-none ${employee.status ===
-											EmployeeStatus.Assigned
-												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-												: employee.status === EmployeeStatus.NotAssigned
-													? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-													: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
+											className={`w-[140px] !border-none ${
+												employee.status === EmployeeStatus.Assigned
+													? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+													: employee.status === EmployeeStatus.NotAssigned
+														? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+														: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+											}`}
 										>
 											<SelectValue placeholder="Select status" />
 										</SelectTrigger>

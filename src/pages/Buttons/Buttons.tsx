@@ -7,7 +7,10 @@ export default function Buttons() {
 	return (
 		<>
 			<PageHeader
-				items={[ { label: 'Home', href: '/' }, { label: 'Buttons', href: '/buttons' } ]}
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Buttons', href: '/buttons' }
+				]}
 				heading="Buttons"
 			/>
 
@@ -107,7 +110,11 @@ export default function Buttons() {
 				{/* Icon Buttons */}
 				<MainCard title="Button with Icons">
 					<div className="flex flex-wrap items-center gap-4">
-						<Button variant="default" variantClassName="primary" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="primary"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Primary
 						</Button>
 						<Button
@@ -117,22 +124,46 @@ export default function Buttons() {
 						>
 							Secondary
 						</Button>
-						<Button variant="default" variantClassName="success" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="success"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Success
 						</Button>
-						<Button variant="default" variantClassName="danger" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="danger"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Danger
 						</Button>
-						<Button variant="default" variantClassName="warning" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="warning"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Warning
 						</Button>
-						<Button variant="default" variantClassName="info" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="info"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Info
 						</Button>
-						<Button variant="default" variantClassName="light" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="light"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Light
 						</Button>
-						<Button variant="default" variantClassName="dark" leftIcon={<Folder className="h-4 w-4" />}>
+						<Button
+							variant="default"
+							variantClassName="dark"
+							leftIcon={<Folder className="h-4 w-4" />}
+						>
 							Dark
 						</Button>
 					</div>
