@@ -30,8 +30,9 @@ export function CustomDateRangePicker({ date, onDateChange, className }: DateRan
 						id="date"
 						variant={'outline'}
 						className={cn(
-							'!bg-card w-full justify-start text-left font-normal sm:w-[300px]',
-							!date && 'text-muted-foreground'
+							'!bg-card w-full justify-start text-left font-normal',
+							!date && 'text-muted-foreground',
+							className
 						)}
 					>
 						<CalendarIcon className="mr-2 h-4 w-4" />
