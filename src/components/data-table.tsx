@@ -80,7 +80,7 @@ export function DataTable({
 											}[]
 										}
 										placeholder="Select status"
-										className={`w-[140px] !border-none ${
+										className={`w-[150px] !border-none ${
 											employee.status === EmployeeStatus.Assigned
 												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
 												: employee.status === EmployeeStatus.NotAssigned
