@@ -108,20 +108,21 @@ export function ValidationForm() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel className="text-sm font-medium">City</FormLabel>
-								<Select onValueChange={field.onChange} value={field.value}>
-									<FormControl>
+								<FormControl>
+									<Select onValueChange={field.onChange} value={field.value}>
 										<SelectTrigger className="w-full">
 											<SelectValue placeholder="Choose" />
 										</SelectTrigger>
-									</FormControl>
-									<SelectContent>
-										{cities.map((city) => (
-											<SelectItem key={city.value} value={city.value}>
-												{city.label}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
+										<SelectContent>
+											{cities.map((city) => (
+												<SelectItem key={city.value} value={city.value}>
+													{city.label}
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
+								</FormControl>
+
 								<FormMessage />
 							</FormItem>
 						)}
