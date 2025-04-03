@@ -3,30 +3,13 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from '@/components/ui/select';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { CalendarIcon } from 'lucide-react';
-import { format } from 'date-fns';
-import { cn } from '@/lib/utils';
 import RequiredAsterisk from '@/components/required-asterisk';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import CustomSelect from './custom-controls/custom-select';
+import CustomDatePicker from './custom-controls/custom-date-picker';
 
 const formSchema = z.object({
 	firstName: z.string().min(1, 'First name is required'),
@@ -109,18 +92,13 @@ export function ValidationForm() {
 							<FormItem>
 								<FormLabel className="text-sm font-medium">City</FormLabel>
 								<FormControl>
-									<Select onValueChange={field.onChange} value={field.value}>
-										<SelectTrigger className="w-full">
-											<SelectValue placeholder="Choose" />
-										</SelectTrigger>
-										<SelectContent>
-											{cities.map((city) => (
-												<SelectItem key={city.value} value={city.value}>
-													{city.label}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
+									<CustomSelect
+										className="w-full"
+										defaultValue={field.value || ''}
+										onValueChange={field.onChange}
+										options={cities}
+										placeholder="Choose"
+									/>
 								</FormControl>
 
 								<FormMessage />
@@ -160,30 +138,9 @@ export function ValidationForm() {
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel className="text-sm font-medium">Birth Date</FormLabel>
-							<Popover>
-								<PopoverTrigger asChild>
-									<FormControl>
-										<Button
-											variant={'outline'}
-											className={cn(
-												'w-full justify-start !bg-transparent text-left font-normal',
-												!field.value && 'text-muted-foreground'
-											)}
-										>
-											<CalendarIcon className="mr-2 h-4 w-4" />
-											{field.value ? format(field.value, 'PPP') : 'Datepicker'}
-										</Button>
-									</FormControl>
-								</PopoverTrigger>
-								<PopoverContent className="w-auto p-0">
-									<Calendar
-										mode="single"
-										selected={field.value}
-										onSelect={field.onChange}
-										initialFocus
-									/>
-								</PopoverContent>
-							</Popover>
+							<FormControl>
+								<CustomDatePicker value={field.value as Date} onChange={field.onChange} />
+							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}

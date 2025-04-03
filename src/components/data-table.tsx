@@ -1,15 +1,8 @@
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow
-} from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Employee, EmployeeStatus, statusOptions } from '@/constants/TableConstants';
+import CustomSelect from './custom-controls/custom-select';
 
 interface DataTableProps {
 	data: Employee[];
@@ -60,47 +53,33 @@ export function DataTable({
 								</TableCell>
 								<TableCell>
 									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
-									<h6 className="text-muted-foreground mt-[4px]">
-										Jasck - {employee.vehicle.code}
-									</h6>
+									<h6 className="text-muted-foreground mt-[4px]">Jasck - {employee.vehicle.code}</h6>
 								</TableCell>
 								<TableCell>
-									<Select
+									<CustomSelect
 										defaultValue={employee.status}
 										onValueChange={(value) => {
 											setEmployeesData(
-												employeesData.map((emp) => {
-													if (emp.id === employee.id) {
-														return { ...emp, status: value as EmployeeStatus };
-													}
-													return emp;
-												})
+												employeesData.map(
+													(emp) =>
+														emp.id === employee.id
+															? { ...emp, status: value as EmployeeStatus }
+															: emp
+												)
 											);
 										}}
-									>
-										<SelectTrigger
-											className={`w-[140px] !border-none ${
-												employee.status === EmployeeStatus.Assigned
-													? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-													: employee.status === EmployeeStatus.NotAssigned
-														? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-														: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-											}`}
-										>
-											<SelectValue placeholder="Select status" />
-										</SelectTrigger>
-										<SelectContent>
-											{statusOptions.map((option) => (
-												<SelectItem
-													key={option.value}
-													value={option.value}
-													className={option.color}
-												>
-													{option.label}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
+										options={
+											(statusOptions as unknown) as {
+												[key: string]: string;
+											}[]
+										}
+										placeholder="Select status"
+										className={`w-[140px] !border-none ${employee.status === EmployeeStatus.Assigned
+											? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+											: employee.status === EmployeeStatus.NotAssigned
+												? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+												: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
+									/>
 								</TableCell>
 								<TableCell>
 									<Button variant="outline" size="sm" variantClassName={'primary'}>
