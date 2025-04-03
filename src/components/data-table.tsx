@@ -1,11 +1,4 @@
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow
-} from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
@@ -17,6 +10,7 @@ interface DataTableProps {
 	totalPages: number;
 	onPageChange: (page: number) => void;
 	setEmployeesData: (data: Employee[]) => void;
+	employeesData: Employee[];
 }
 
 export function DataTable({
@@ -24,7 +18,8 @@ export function DataTable({
 	currentPage,
 	totalPages,
 	onPageChange,
-	setEmployeesData
+	setEmployeesData,
+	employeesData
 }: DataTableProps) {
 	return (
 		<div className="space-y-4">
@@ -58,16 +53,14 @@ export function DataTable({
 								</TableCell>
 								<TableCell>
 									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
-									<h6 className="text-muted-foreground mt-[4px]">
-										Jasck - {employee.vehicle.code}
-									</h6>
+									<h6 className="text-muted-foreground mt-[4px]">Jasck - {employee.vehicle.code}</h6>
 								</TableCell>
 								<TableCell>
 									<Select
 										defaultValue={employee.status}
 										onValueChange={(value) => {
 											setEmployeesData(
-												data.map((emp) => {
+												employeesData.map((emp) => {
 													if (emp.id === employee.id) {
 														return { ...emp, status: value as EmployeeStatus };
 													}
@@ -77,13 +70,12 @@ export function DataTable({
 										}}
 									>
 										<SelectTrigger
-											className={`w-[140px] !border-none ${
-												employee.status === EmployeeStatus.Assigned
-													? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-													: employee.status === EmployeeStatus.NotAssigned
-														? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-														: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-											}`}
+											className={`w-[140px] !border-none ${employee.status ===
+											EmployeeStatus.Assigned
+												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+												: employee.status === EmployeeStatus.NotAssigned
+													? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+													: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
 										>
 											<SelectValue placeholder="Select status" />
 										</SelectTrigger>
