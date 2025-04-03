@@ -17,6 +17,7 @@ export interface Employee {
 		code: string;
 	};
 	status: ValueOf<typeof EmployeeStatus>;
+	level: string;
 }
 
 export const employees: Employee[] = [
@@ -30,7 +31,8 @@ export const employees: Employee[] = [
 			type: 'Gold08 (SUV)',
 			code: 'SP2053'
 		},
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 1'
 	},
 	{
 		id: '23784629',
@@ -39,7 +41,8 @@ export const employees: Employee[] = [
 		office: 'London',
 		age: 34,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP5853' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 1'
 	},
 	{
 		id: '97453992',
@@ -48,7 +51,8 @@ export const employees: Employee[] = [
 		office: 'San Francisco',
 		age: 42,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2053' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 2'
 	},
 	{
 		id: '23728375',
@@ -57,7 +61,8 @@ export const employees: Employee[] = [
 		office: 'London',
 		age: 37,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2053' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 2'
 	},
 	{
 		id: '25348894',
@@ -66,7 +71,8 @@ export const employees: Employee[] = [
 		office: 'New York',
 		age: 26,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2053' },
-		status: EmployeeStatus.DriverAssigned
+		status: EmployeeStatus.DriverAssigned,
+		level: 'Level 2'
 	},
 	{
 		id: '34781749',
@@ -75,7 +81,8 @@ export const employees: Employee[] = [
 		office: 'New York',
 		age: 41,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2053' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 2'
 	},
 	{
 		id: '45673891',
@@ -84,7 +91,8 @@ export const employees: Employee[] = [
 		office: 'Singapore',
 		age: 29,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP4567' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 3'
 	},
 	{
 		id: '56789012',
@@ -93,7 +101,8 @@ export const employees: Employee[] = [
 		office: 'Berlin',
 		age: 36,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP7890' },
-		status: EmployeeStatus.DriverAssigned
+		status: EmployeeStatus.DriverAssigned,
+		level: 'Level 3'
 	},
 	{
 		id: '67890123',
@@ -102,7 +111,8 @@ export const employees: Employee[] = [
 		office: 'Paris',
 		age: 31,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP3456' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 3'
 	},
 	{
 		id: '78901234',
@@ -111,7 +121,8 @@ export const employees: Employee[] = [
 		office: 'Sydney',
 		age: 39,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP8901' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 4'
 	},
 	{
 		id: '89012345',
@@ -120,7 +131,8 @@ export const employees: Employee[] = [
 		office: 'Toronto',
 		age: 34,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2345' },
-		status: EmployeeStatus.DriverAssigned
+		status: EmployeeStatus.DriverAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '90123456',
@@ -129,7 +141,8 @@ export const employees: Employee[] = [
 		office: 'Seoul',
 		age: 43,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP6789' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 4'
 	},
 	{
 		id: '12345678',
@@ -138,7 +151,8 @@ export const employees: Employee[] = [
 		office: 'Madrid',
 		age: 28,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP1234' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '23456789',
@@ -147,7 +161,8 @@ export const employees: Employee[] = [
 		office: 'Amsterdam',
 		age: 35,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP9012' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 4'
 	},
 	{
 		id: '34567890',
@@ -156,7 +171,8 @@ export const employees: Employee[] = [
 		office: 'Barcelona',
 		age: 32,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP5678' },
-		status: EmployeeStatus.DriverAssigned
+		status: EmployeeStatus.DriverAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '45678901',
@@ -165,7 +181,8 @@ export const employees: Employee[] = [
 		office: 'Dublin',
 		age: 27,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP3457' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '56789123',
@@ -174,7 +191,8 @@ export const employees: Employee[] = [
 		office: 'Melbourne',
 		age: 38,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP7891' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 4'
 	},
 	{
 		id: '67891234',
@@ -183,7 +201,8 @@ export const employees: Employee[] = [
 		office: 'Hong Kong',
 		age: 30,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP4321' },
-		status: EmployeeStatus.DriverAssigned
+		status: EmployeeStatus.DriverAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '78912345',
@@ -192,7 +211,8 @@ export const employees: Employee[] = [
 		office: 'São Paulo',
 		age: 36,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP8765' },
-		status: EmployeeStatus.NotAssigned
+		status: EmployeeStatus.NotAssigned,
+		level: 'Level 4'
 	},
 	{
 		id: '89123456',
@@ -201,7 +221,8 @@ export const employees: Employee[] = [
 		office: 'Tokyo',
 		age: 33,
 		vehicle: { type: 'Gold08 (SUV)', code: 'SP2468' },
-		status: EmployeeStatus.Assigned
+		status: EmployeeStatus.Assigned,
+		level: 'Level 4'
 	}
 ];
 

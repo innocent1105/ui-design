@@ -15,7 +15,7 @@ export function PageHeader({ items, heading }: PageHeaderProps) {
 		<>
 			<PageBreadcrumb items={items} />
 			{heading && (
-				<h1 className="heading text-4xl leading-14 !font-bold tracking-tight">{heading}</h1>
+				<h2 className="heading text-3xl leading-14 !font-bold tracking-tight">{heading}</h2>
 			)}
 		</>
 	);

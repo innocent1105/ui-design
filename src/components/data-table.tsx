@@ -44,12 +44,23 @@ export function DataTable({
 					<TableBody className="!px-3">
 						{data.map((employee) => (
 							<TableRow key={employee.id} className="!border-none">
-								<TableCell className="pl-4">{employee.name}</TableCell>
-								<TableCell>{employee.position}</TableCell>
-								<TableCell>{employee.office}</TableCell>
-								<TableCell>{employee.age}</TableCell>
+								<TableCell className="pl-4">
+									<h6 className="text-sm font-medium">{employee.name}</h6>
+									<h6 className="text-muted-foreground mt-[4px]">{employee.id}</h6>
+								</TableCell>
 								<TableCell>
-									{employee.vehicle.type} ({employee.vehicle.code})
+									<h6 className="text-sm font-medium">{employee.position}</h6>
+									<h6 className="text-muted-foreground mt-[4px]">{employee.level}</h6>
+								</TableCell>
+								<TableCell>{employee.office}</TableCell>
+								<TableCell>
+									<h6 className="text-sm font-medium">{employee.age}</h6>
+								</TableCell>
+								<TableCell>
+									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
+									<h6 className="text-muted-foreground mt-[4px]">
+										Jasck - {employee.vehicle.code}
+									</h6>
 								</TableCell>
 								<TableCell>
 									<Select
