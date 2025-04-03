@@ -17,11 +17,11 @@ export function PageHeader({ items, heading, children }: PageHeaderProps) {
 			<PageBreadcrumb items={items} />
 			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<div className="flex items-center gap-2">
-					<h2 className="heading text-2xl sm:text-3xl leading-tight sm:leading-14 !font-bold tracking-tight">
+					<h2 className="heading text-2xl leading-tight !font-bold tracking-tight sm:text-3xl sm:leading-14">
 						{heading}
 					</h2>
 				</div>
-				<div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+				<div className="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center">
 					{children}
 				</div>
 			</div>

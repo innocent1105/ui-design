@@ -1,4 +1,10 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue
+} from '@/components/ui/select';
 
 interface SelectProps {
 	defaultValue: string;
@@ -7,7 +13,13 @@ interface SelectProps {
 	placeholder: string;
 	className?: string;
 }
-const CustomSelect = ({ defaultValue, onValueChange, options, placeholder, className }: SelectProps) => {
+const CustomSelect = ({
+	defaultValue,
+	onValueChange,
+	options,
+	placeholder,
+	className
+}: SelectProps) => {
 	return (
 		<Select
 			defaultValue={defaultValue}

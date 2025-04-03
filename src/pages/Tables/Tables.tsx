@@ -5,7 +5,8 @@ import { PlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import CustomSearch from '@/components/custom-controls/custom-search';
-
+import { DateRange } from 'react-day-picker';
+import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
 const ITEMS_PER_PAGE = 5;
 
 const Tables = () => {
@@ -15,6 +16,7 @@ const Tables = () => {
 	const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 	const [paginatedData, setPaginatedData] = useState<Employee[]>([]);
 	const [search, setSearch] = useState('');
+	const [dateRange, setDateRange] = useState<DateRange>();
 
 	useEffect(() => {
 		setPaginatedData(employeesData.slice(startIndex, startIndex + ITEMS_PER_PAGE));
@@ -46,13 +48,28 @@ const Tables = () => {
 				heading="Tables"
 			>
 				<div className="space-y-4">
-					<div className="flex items-center justify-between gap-4">
-						<CustomSearch value={search} onChange={setSearch} className="w-[300px]" placeholder="Search name here" />
+					<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+						<CustomSearch
+							value={search}
+							onChange={setSearch}
+							className="w-full sm:w-[300px]"
+							placeholder="Search name here"
+						/>
 
-						<div className="flex items-center gap-4">
-							{/* <DatePickerWithRange className="bg-background/50" > */}
-
-							<Button variant="default" variantClassName="primary" leftIcon={<PlusIcon />}>
+						<div className="flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center">
+							<CustomDateRangePicker
+								date={dateRange}
+								onDateChange={setDateRange}
+								className="w-full"
+							/>
+						</div>
+						<div>
+							<Button
+								variant="default"
+								variantClassName="primary"
+								leftIcon={<PlusIcon />}
+								className="w-full sm:w-auto"
+							>
 								CTA Button
 							</Button>
 						</div>
