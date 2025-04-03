@@ -11,7 +11,10 @@ export default function FormView() {
 	return (
 		<>
 			<PageHeader
-				items={[ { label: 'Home', href: '/' }, { label: 'Form View', href: '/form-view' } ]}
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Form View', href: '/form-view' }
+				]}
 				heading="Form View"
 			/>
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
