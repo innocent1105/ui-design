@@ -48,11 +48,11 @@ const Tables = () => {
 				heading="Tables"
 			>
 				<div className="space-y-4">
-					<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+					<div className="flex flex-col items-start justify-between gap-4 sm:flex-row md:items-center">
 						<CustomSearch
 							value={search}
 							onChange={setSearch}
-							className="w-full sm:w-[300px]"
+							className="w-full  sm:w-[230px]"
 							placeholder="Search name here"
 						/>
 
@@ -60,7 +60,7 @@ const Tables = () => {
 							<CustomDateRangePicker
 								date={dateRange}
 								onDateChange={setDateRange}
-								className="w-full sm:w-[300px]"
+								className="w-full  sm:w-[230px]"
 							/>
 						</div>
 						<div>
