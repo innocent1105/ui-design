@@ -1,10 +1,10 @@
 import { DataTable } from '@/components/data-table';
 import { PageHeader } from '@/components/page-header';
-import { Input } from '@/components/ui/input';
 import { Employee, employees } from '@/constants/TableConstants';
-import { PlusIcon, Search } from 'lucide-react';
+import { PlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import CustomSearch from '@/components/custom-controls/custom-search';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -47,10 +47,7 @@ const Tables = () => {
 			>
 				<div className="space-y-4">
 					<div className="flex items-center justify-between gap-4">
-						<div className="w-[300px] relative max-w-xs flex-1 border-none rounded-md !bg-input-background">
-							<Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform " />
-							<Input placeholder="Search name here" className=" border-none pl-9" value={search} onChange={(e) => setSearch(e.target.value)} />
-						</div>
+						<CustomSearch value={search} onChange={setSearch} className="w-[300px]" placeholder="Search name here" />
 
 						<div className="flex items-center gap-4">
 							{/* <DatePickerWithRange className="bg-background/50" > */}
