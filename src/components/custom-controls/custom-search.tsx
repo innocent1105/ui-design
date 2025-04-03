@@ -1,0 +1,25 @@
+import { Search } from 'lucide-react';
+import { Input } from '../ui/input';
+import { cn } from '@/lib/utils';
+
+interface CustomSearchProps {
+	value: string;
+	onChange: (value: string) => void;
+	placeholder: string;
+	className?: string;
+}
+const CustomSearch = ({ value, onChange, placeholder, className }: CustomSearchProps) => {
+	return (
+		<div className={cn('relative max-w-xs flex-1 border-none rounded-md !bg-input-background', className)}>
+			<Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform " />
+			<Input
+				placeholder={placeholder}
+				className=" border-none pl-9"
+				value={value}
+				onChange={(e) => onChange(e.target.value)}
+			/>
+		</div>
+	);
+};
+
+export default CustomSearch;
