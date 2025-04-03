@@ -7,16 +7,20 @@ interface BreadcrumbItem {
 
 interface PageHeaderProps {
 	items: BreadcrumbItem[];
-	heading?: string;
+	heading: string;
+	children?: React.ReactNode;
 }
 
-export function PageHeader({ items, heading }: PageHeaderProps) {
+export function PageHeader({ items, heading, children }: PageHeaderProps) {
 	return (
 		<>
 			<PageBreadcrumb items={items} />
-			{heading && (
-				<h2 className="heading text-3xl leading-14 !font-bold tracking-tight">{heading}</h2>
-			)}
+				<div className="flex items-center justify-between">
+					<div className="flex items-center gap-2">
+						<h2 className="heading text-3xl leading-14 !font-bold tracking-tight">{heading}</h2>
+					</div>
+					<div className="flex items-center gap-2">{children}</div>
+				</div>
 		</>
 	);
 }

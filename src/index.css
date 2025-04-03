@@ -128,7 +128,7 @@
 .heading {
   background: -webkit-linear-gradient(45deg,
       #5a81ea,
-      #d56676 15%);
+      #d56676);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
