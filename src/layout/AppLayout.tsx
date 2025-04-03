@@ -9,7 +9,7 @@ const AppLayout: React.FC = () => {
 			<AppSidebar />
 			<SidebarInset>
 				<AppHeader />
-				<div className="flex-1 p-4">
+				<div className="flex-1 p-4 px-5 space-y-4">
 					<Outlet />
 				</div>
 			</SidebarInset>

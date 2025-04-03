@@ -20,25 +20,23 @@ const Tables = () => {
 	);
 
 	return (
-		<div className="flex">
-			<main className="flex-1 space-y-4 p-1">
-				<PageHeader
-					items={[ { label: 'Home', href: '/' }, { label: 'Tables', href: '/tables' } ]}
-					heading="Tables"
-				/>
+		<>
+			<PageHeader
+				items={[ { label: 'Home', href: '/' }, { label: 'Tables', href: '/tables' } ]}
+				heading="Tables"
+			/>
 
-				<div>
-					<DataTable
-						employeesData={employeesData}
-						data={(paginatedData as unknown) as Employee[]}
-						currentPage={currentPage}
-						totalPages={totalPages}
-						onPageChange={setCurrentPage}
-						setEmployeesData={setEmployeesData}
-					/>
-				</div>
-			</main>
-		</div>
+			<div>
+				<DataTable
+					employeesData={employeesData}
+					data={(paginatedData as unknown) as Employee[]}
+					currentPage={currentPage}
+					totalPages={totalPages}
+					onPageChange={setCurrentPage}
+					setEmployeesData={setEmployeesData}
+				/>
+			</div>
+		</>
 	);
 };
 
