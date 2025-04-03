@@ -31,7 +31,7 @@ export function DataTable({
 			<div className="w-full">
 				<Table>
 					<TableHeader className="table-row-background">
-						<TableRow>
+						<TableRow className="!border-none">
 							<TableHead className="rounded-l-md !border-none pl-4">Name</TableHead>
 							<TableHead>Position</TableHead>
 							<TableHead>Office</TableHead>
@@ -66,12 +66,12 @@ export function DataTable({
 										}}
 									>
 										<SelectTrigger
-											className={`w-[140px] ${
+											className={`w-[140px] !border-none ${
 												employee.status === EmployeeStatus.Assigned
-													? 'bg-blue-500/20 text-blue-500'
+													? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
 													: employee.status === EmployeeStatus.NotAssigned
-														? 'bg-red-500/20 text-red-500'
-														: 'bg-blue-500/20 text-blue-500'
+														? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+														: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
 											}`}
 										>
 											<SelectValue placeholder="Select status" />
