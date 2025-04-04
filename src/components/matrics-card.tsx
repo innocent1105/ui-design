@@ -39,16 +39,19 @@ const MatricsCard = () => {
 	return (
 		<>
 			{statsData.map((item) => (
-				<MainCard key={item.title} >
+				<MainCard key={item.title}>
 					<div className="flex items-start justify-between space-y-2">
 						<div>
-							<p className="text-sm font-medium text-muted-foreground mb-2">{item.title}</p>
-							<p className="text-2xl font-bold mb-2">{item.value}</p>
-							<p className="text-sm text-muted-foreground">
-								<span className= { `${Number(item.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>{item.change}%</span> from last month
+							<p className="text-muted-foreground mb-2 text-sm font-medium">{item.title}</p>
+							<p className="mb-2 text-2xl font-bold">{item.value}</p>
+							<p className="text-muted-foreground text-sm">
+								<span className={`${Number(item.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
+									{item.change}%
+								</span>{' '}
+								from last month
 							</p>
 						</div>
-						<Button variant="default" size="icon" variantClassName={"primary"}>
+						<Button variant="default" size="icon" variantClassName={'primary'}>
 							<item.icon className="h-6 w-6" />
 						</Button>
 					</div>

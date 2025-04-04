@@ -2,12 +2,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PageHeader } from '@/components/page-header';
 import MatricsCard from '@/components/matrics-card';
+import { BarChartComponent } from '@/components/bar-chart';
 
 const Dashboard = () => {
 	return (
 		<>
 			<PageHeader
-				items={[ { label: 'Home', href: '/' }, { label: 'Dashboard', href: '/' } ]}
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Dashboard', href: '/' }
+				]}
 				heading="Hello Everyone!"
 			/>
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -16,17 +20,12 @@ const Dashboard = () => {
 
 			{/* Overview and Recent Sales */}
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-				<Card className="col-span-1 lg:col-span-4">
-					<CardHeader>
-						<CardTitle>Overview</CardTitle>
-					</CardHeader>
-					<CardContent className="pl-2">{/* Add your chart component here */}</CardContent>
-				</Card>
+				<BarChartComponent />
 
 				<Card className="col-span-1 lg:col-span-3">
 					<CardHeader>
 						<CardTitle>Recent Sales</CardTitle>
-						<p className="text-sm text-muted-foreground">You made 265 sales this month.</p>
+						<p className="text-muted-foreground text-sm">You made 265 sales this month.</p>
 					</CardHeader>
 					<CardContent>
 						<div className="space-y-8">
@@ -50,7 +49,7 @@ const Dashboard = () => {
 										</Avatar>
 										<div>
 											<p className="text-sm font-medium">{sale.name}</p>
-											<p className="text-sm text-muted-foreground">{sale.email}</p>
+											<p className="text-muted-foreground text-sm">{sale.email}</p>
 										</div>
 									</div>
 									<p className="text-sm font-medium">{sale.amount}</p>
@@ -62,6 +61,6 @@ const Dashboard = () => {
 			</div>
 		</>
 	);
-}
+};
 
 export default Dashboard;

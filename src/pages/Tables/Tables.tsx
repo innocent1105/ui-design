@@ -52,7 +52,7 @@ const Tables = () => {
 						<CustomSearch
 							value={search}
 							onChange={setSearch}
-							className="w-full  sm:w-[230px]"
+							className="w-full sm:w-[230px]"
 							placeholder="Search name here"
 						/>
 
@@ -60,7 +60,7 @@ const Tables = () => {
 							<CustomDateRangePicker
 								date={dateRange}
 								onDateChange={setDateRange}
-								className="w-full  sm:w-[230px]"
+								className="w-full sm:w-[230px]"
 							/>
 						</div>
 						<div>
