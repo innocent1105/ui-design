@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { Label, Pie, PieChart } from 'recharts';
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import {
+	ChartConfig,
+	ChartContainer,
+	ChartTooltip,
+	ChartTooltipContent
+} from '@/components/ui/chart';
 import MainCard from './main-card';
 
 const chartData = [
@@ -13,7 +18,7 @@ const chartData = [
 	{ browser: 'Other', visitors: 190, fill: 'hsl(var(--chart-4))' }
 ];
 
-const chartConfig = (chartData
+const chartConfig = chartData
 	.map((item) => ({
 		label: item.browser,
 		color: item.fill
@@ -24,7 +29,7 @@ const chartConfig = (chartData
 			[curr.label]: curr.color
 		}),
 		{} as Record<string, string>
-	) as unknown) as ChartConfig;
+	) as unknown as ChartConfig;
 
 export function PieChartComponent() {
 	const totalVisitors = React.useMemo(() => {
@@ -36,7 +41,13 @@ export function PieChartComponent() {
 			<ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
 				<PieChart>
 					<ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-					<Pie data={chartData} dataKey="visitors" nameKey="browser" innerRadius={70} strokeWidth={5}>
+					<Pie
+						data={chartData}
+						dataKey="visitors"
+						nameKey="browser"
+						innerRadius={70}
+						strokeWidth={5}
+					>
 						<Label
 							content={({ viewBox }) => {
 								if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
@@ -74,8 +85,8 @@ export function PieChartComponent() {
 				{chartData.map((item) => (
 					<div key={item.browser} className="flex items-center gap-2">
 						<div className="h-3 w-3 rounded-full" style={{ backgroundColor: item.fill }} />
-						<span className="text-sm text-muted-foreground">
-							{item.browser} ({(item.visitors / totalVisitors * 100).toFixed(1)}%)
+						<span className="text-muted-foreground text-sm">
+							{item.browser} ({((item.visitors / totalVisitors) * 100).toFixed(1)}%)
 						</span>
 					</div>
 				))}

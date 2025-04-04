@@ -60,7 +60,7 @@ const Tables = () => {
 							<CustomDateRangePicker
 								date={dateRange}
 								onDateChange={setDateRange}
-								className="w-full sm:w-[230px]"
+								className="w-full !border-none sm:w-[230px]"
 							/>
 						</div>
 						<div>

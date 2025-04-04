@@ -29,11 +29,17 @@ const chartConfig = {
 
 export function BarChartComponent() {
 	return (
-		<MainCard className="col-span-1 lg:col-span-4 " title="Gross Monthly Revenue">
-			<ChartContainer config={chartConfig} className=" max-h-[300px] w-full mt-2">
-				<BarChart accessibilityLayer data={chartData} >
+		<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+			<ChartContainer config={chartConfig} className="mt-2 max-h-[300px] w-full">
+				<BarChart accessibilityLayer data={chartData}>
 					<CartesianGrid vertical={false} />
-					<YAxis orientation="right" pointsAtX={0} tickLine={false} tickFormatter={(value) => `$${value.toLocaleString()}`} axisLine={false} />
+					<YAxis
+						orientation="right"
+						pointsAtX={0}
+						tickLine={false}
+						tickFormatter={(value) => `$${value.toLocaleString()}`}
+						axisLine={false}
+					/>
 					<XAxis
 						dataKey="month"
 						tickLine={false}

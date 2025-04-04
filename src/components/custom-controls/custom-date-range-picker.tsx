@@ -9,7 +9,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useState, useEffect } from 'react';
 import CustomSelect from './custom-select';
-import { Input } from "@/components/ui/input";
+import { Input } from '@/components/ui/input';
 
 interface DateRangePickerProps {
 	date?: DateRange;
@@ -22,7 +22,9 @@ export function CustomDateRangePicker({ date, onDateChange, className }: DateRan
 	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
 	const [open, setOpen] = useState(false);
 	const [currentMonth, setCurrentMonth] = useState<Date>(dateRange?.from || new Date());
-	const [fromDate, setFromDate] = useState(dateRange?.from ? format(dateRange.from, 'yyyy-MM-dd') : '');
+	const [fromDate, setFromDate] = useState(
+		dateRange?.from ? format(dateRange.from, 'yyyy-MM-dd') : ''
+	);
 	const [toDate, setToDate] = useState(dateRange?.to ? format(dateRange.to, 'yyyy-MM-dd') : '');
 
 	// Generate years array (e.g., current year ± 10 years)
@@ -98,7 +100,7 @@ export function CustomDateRangePicker({ date, onDateChange, className }: DateRan
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent className="w-auto p-0" align="start">
-					<div className="hidden sm:flex items-center justify-between border-b p-3 gap-2">
+					<div className="hidden items-center justify-between gap-2 border-b p-3 sm:flex">
 						<div className="flex items-center gap-2">
 							<Input
 								type="date"
@@ -149,12 +151,8 @@ export function CustomDateRangePicker({ date, onDateChange, className }: DateRan
 						}}
 						numberOfMonths={2}
 					/>
-					<div className="flex items-center justify-end gap-2 p-3 border-t">
-						<Button
-							variant="outline"
-							size="sm"
-							onClick={handleCancelClick}
-						>
+					<div className="flex items-center justify-end gap-2 border-t p-3">
+						<Button variant="outline" size="sm" onClick={handleCancelClick}>
 							Cancel
 						</Button>
 						<Button
