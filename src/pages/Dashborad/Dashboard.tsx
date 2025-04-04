@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PageHeader } from '@/components/page-header';
 import MatricsCard from '@/components/matrics-card';
 import { BarChartComponent } from '@/components/bar-chart';
+import { PieChartComponent } from '@/components/pie-chart';
 
 const Dashboard = () => {
 	return (
@@ -18,46 +19,9 @@ const Dashboard = () => {
 				<MatricsCard />
 			</div>
 
-			{/* Overview and Recent Sales */}
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
 				<BarChartComponent />
-
-				<Card className="col-span-1 lg:col-span-3">
-					<CardHeader>
-						<CardTitle>Recent Sales</CardTitle>
-						<p className="text-muted-foreground text-sm">You made 265 sales this month.</p>
-					</CardHeader>
-					<CardContent>
-						<div className="space-y-8">
-							{[
-								{
-									name: 'Olivia Martin',
-									email: 'olivia.martin@email.com',
-									amount: '+$1,999.00'
-								},
-								{
-									name: 'Jackson Lee',
-									email: 'jackson.lee@email.com',
-									amount: '+$39.00'
-								}
-								// Add more sales data...
-							].map((sale) => (
-								<div key={sale.email} className="flex items-center justify-between">
-									<div className="flex items-center space-x-4">
-										<Avatar>
-											<AvatarFallback>{sale.name[0]}</AvatarFallback>
-										</Avatar>
-										<div>
-											<p className="text-sm font-medium">{sale.name}</p>
-											<p className="text-muted-foreground text-sm">{sale.email}</p>
-										</div>
-									</div>
-									<p className="text-sm font-medium">{sale.amount}</p>
-								</div>
-							))}
-						</div>
-					</CardContent>
-				</Card>
+				<PieChartComponent />
 			</div>
 		</>
 	);

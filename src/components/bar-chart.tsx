@@ -24,14 +24,14 @@ const chartConfig = {
 	desktop: {
 		label: 'Desktop',
 		color: 'var(--color-primary)'
-	},
+	}
 } satisfies ChartConfig;
 
 export function BarChartComponent() {
 	return (
 		<MainCard className="col-span-1 lg:col-span-4">
 			<ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-				<BarChart accessibilityLayer data={chartData} >
+				<BarChart accessibilityLayer data={chartData}>
 					<CartesianGrid vertical={false} />
 					<XAxis
 						dataKey="month"
