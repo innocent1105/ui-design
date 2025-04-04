@@ -37,7 +37,7 @@ export function PieChartComponent() {
 	}, []);
 
 	return (
-		<MainCard className="col-span-1 lg:col-span-3" title="Visitors">
+		<>
 			<ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
 				<PieChart>
 					<ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
@@ -91,6 +91,6 @@ export function PieChartComponent() {
 					</div>
 				))}
 			</div>
-		</MainCard>
+		</>
 	);
 }
