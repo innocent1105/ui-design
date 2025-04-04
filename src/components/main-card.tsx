@@ -1,16 +1,19 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface MainCardProps {
-	title: string;
+	title?: string;
 	children: React.ReactNode;
+	className?: string;
 }
 
-const MainCard: React.FC<MainCardProps> = ({ title, children }) => {
+const MainCard: React.FC<MainCardProps> = ({ title, children, className }) => {
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle className="text-lg leading-2 font-medium">{title}</CardTitle>
-			</CardHeader>
+		<Card className={className}>
+			{title && (
+				<CardHeader>
+					<CardTitle className="text-lg leading-2 font-medium">{title}</CardTitle>
+				</CardHeader>
+			)}
 			<CardContent>{children}</CardContent>
 		</Card>
 	);
