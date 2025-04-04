@@ -1,23 +1,23 @@
 'use client';
 
-import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 import MainCard from './main-card';
 
 const chartData = [
-	{ month: 'January', desktop: 186 },
-	{ month: 'February', desktop: 305 },
-	{ month: 'March', desktop: 237 },
-	{ month: 'April', desktop: 73 },
-	{ month: 'May', desktop: 209 },
-	{ month: 'June', desktop: 94 },
-	{ month: 'July', desktop: 114 },
-	{ month: 'August', desktop: 314 },
-	{ month: 'September', desktop: 80 },
-	{ month: 'October', desktop: 204 },
-	{ month: 'November', desktop: 114 },
-	{ month: 'December', desktop: 214 }
+	{ month: 'January', desktop: 1800 },
+	{ month: 'February', desktop: 3050 },
+	{ month: 'March', desktop: 2370 },
+	{ month: 'April', desktop: 730 },
+	{ month: 'May', desktop: 2090 },
+	{ month: 'June', desktop: 940 },
+	{ month: 'July', desktop: 1140 },
+	{ month: 'August', desktop: 3140 },
+	{ month: 'September', desktop: 800 },
+	{ month: 'October', desktop: 2040 },
+	{ month: 'November', desktop: 1140 },
+	{ month: 'December', desktop: 2140 }
 ];
 
 const chartConfig = {
@@ -29,15 +29,16 @@ const chartConfig = {
 
 export function BarChartComponent() {
 	return (
-		<MainCard className="col-span-1 lg:col-span-4">
-			<ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-				<BarChart accessibilityLayer data={chartData}>
+		<MainCard className="col-span-1 lg:col-span-4 " title="Gross Monthly Revenue">
+			<ChartContainer config={chartConfig} className="min-h-[200px] w-full mt-2">
+				<BarChart accessibilityLayer data={chartData} >
 					<CartesianGrid vertical={false} />
+					<YAxis orientation="right" pointsAtX={0} tickLine={false} tickFormatter={(value) => `$${value.toLocaleString()}`} axisLine={false} />
 					<XAxis
+					width={1}
 						dataKey="month"
 						tickLine={false}
 						tickMargin={10}
-						width={5}
 						axisLine={false}
 						tickFormatter={(value) => value.slice(0, 3)}
 					/>
