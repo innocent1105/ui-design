@@ -8,30 +8,40 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useState } from 'react';
 
-interface DateRangePickerProps extends React.HTMLAttributes<HTMLDivElement> {
-	date?: DateRange | undefined;
+interface DateRangePickerProps {
+	date?: DateRange;
 	onDateChange?: (date: DateRange | undefined) => void;
+	className?: string;
 }
 
 export function CustomDateRangePicker({ date, onDateChange, className }: DateRangePickerProps) {
-	const [dateRange, setDateRange] = React.useState<DateRange | undefined>(date);
+	const [dateRange, setDateRange] = useState<DateRange | undefined>(date);
+	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
+	const [open, setOpen] = useState(false);
 
-	const handleDateChange = (range: DateRange | undefined) => {
-		setDateRange(range);
-		onDateChange?.(range);
+	const handleOkClick = () => {
+		setDateRange(tempDateRange);
+		onDateChange?.(tempDateRange);
+		setOpen(false);
+	};
+
+	const handleCancelClick = () => {
+		setTempDateRange(dateRange);
+		setOpen(false);
 	};
 
 	return (
 		<div className={cn('grid gap-2', className)}>
-			<Popover>
+			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
 					<Button
 						id="date"
 						variant={'outline'}
 						className={cn(
 							'!bg-card w-full justify-start text-left font-normal',
-							!date && 'text-muted-foreground',
+							!dateRange && 'text-muted-foreground',
 							className
 						)}
 					>
@@ -53,11 +63,28 @@ export function CustomDateRangePicker({ date, onDateChange, className }: DateRan
 					<Calendar
 						initialFocus
 						mode="range"
-						defaultMonth={dateRange?.from}
-						selected={dateRange}
-						onSelect={handleDateChange}
+						defaultMonth={tempDateRange?.from}
+						selected={tempDateRange}
+						onSelect={setTempDateRange}
 						numberOfMonths={2}
+						
+						
 					/>
+					<div className="flex items-center justify-end gap-2 p-3 border-t">
+						<Button
+							variant="outline"
+							size="sm"
+							onClick={handleCancelClick}
+						>
+							Cancel
+						</Button>
+						<Button
+							size="sm"
+							onClick={handleOkClick}
+						>
+							OK
+						</Button>
+					</div>
 				</PopoverContent>
 			</Popover>
 		</div>
