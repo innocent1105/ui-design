@@ -95,8 +95,7 @@ export const areaChartData = [
 export const pieChartData = [
 	{ browser: 'Chrome', visitors: 275, fill: 'hsl(var(--chart-1))' },
 	{ browser: 'safari', visitors: 200, fill: 'hsl(var(--chart-2))' },
-	{ browser: 'Safari', visitors: 287, fill: 'hsl(var(--chart-3))' },
-	{ browser: 'Edge', visitors: 173, fill: 'hsl(var(--chart-4))' },
+	{ browser: 'Edge', visitors: 173, fill: 'hsl(var(--chart-3))' },
 	{ browser: 'Other', visitors: 190, fill: 'hsl(var(--chart-4))' }
 ];
 

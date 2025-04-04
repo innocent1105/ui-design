@@ -14,7 +14,7 @@ const chartConfig = {
 export function BarChartComponent() {
 	return (
 		<ChartContainer config={chartConfig} className="mt-2 max-h-[300px] w-full">
-			<BarChart accessibilityLayer data={barChartData}>
+			<BarChart accessibilityLayer data={barChartData} barSize={20}>
 				<CartesianGrid vertical={false} />
 				<YAxis
 					orientation="right"
