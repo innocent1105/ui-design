@@ -17,6 +17,7 @@ export default function FormView() {
 				]}
 				heading="Form View"
 			/>
+
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
 				<MainCard title="Basic Form">
 					<BasicForm />
@@ -25,9 +26,11 @@ export default function FormView() {
 					<ValidationForm />
 				</MainCard>
 			</div>
+
 			<MainCard title="Horizontal Form">
 				<HorizontalForm />
 			</MainCard>
+
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
 				<MainCard title="List View">
 					<ListView />

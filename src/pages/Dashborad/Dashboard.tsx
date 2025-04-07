@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { PageHeader } from '@/components/page-header';
 import MatricsCard from '@/components/matrics-card';
 import { BarChartComponent } from '@/components/bar-chart';
 import { PieChartComponent } from '@/components/pie-chart';
+import MainCard from '@/components/main-card';
+import { AreaChartComponent } from '@/components/area-chart';
 
 const Dashboard = () => {
 	return (
@@ -20,9 +20,18 @@ const Dashboard = () => {
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-				<BarChartComponent />
-				<PieChartComponent />
+				<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+					<BarChartComponent />
+				</MainCard>
+
+				<MainCard className="col-span-1 lg:col-span-3" title="Visitors">
+					<PieChartComponent />
+				</MainCard>
 			</div>
+
+			<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+				<AreaChartComponent />
+			</MainCard>
 		</>
 	);
 };
