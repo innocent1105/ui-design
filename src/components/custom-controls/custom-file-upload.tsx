@@ -14,7 +14,6 @@ interface CustomFileUploadProps {
 
 const CustomFileUpload = ({
   onChange,
-  value,
   accept = '.pdf,.jpg,.jpeg,.png',
   maxSize = 5 * 1024 * 1024, // 5MB default
   className
