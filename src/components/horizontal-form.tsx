@@ -18,7 +18,7 @@ import { Label } from '@/components/ui/label';
 import RequiredAsterisk from './required-asterisk';
 import { z } from 'zod';
 import React from 'react';
-import { FileIcon, TrashIcon, UploadIcon } from 'lucide-react';
+import CustomFileUpload from './custom-controls/custom-file-upload';
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -170,68 +170,23 @@ export function HorizontalForm() {
 				<FormField
 					control={form.control}
 					name="identityProof"
-					render={({ field: { onChange, value, ...field } }) => {
-						return (
-							<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
-								<FormLabel className="col-span-2 text-sm font-medium">
-									Identity Proof <RequiredAsterisk />
-								</FormLabel>
-								<div className="col-span-10">
-									<FormControl>
-										{!file ? (
-											<div className="border-muted-foreground/25 hover:border-muted-foreground/50 group relative flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors">
-												<input
-													ref={fileInputRef}
-													type="file"
-													className="absolute inset-0 z-50 h-full w-full cursor-pointer opacity-0"
-													accept=".pdf,.jpg,.jpeg,.png"
-													onChange={(e) => handleFileChange(e.target.files)}
-													name={field.name}
-													onBlur={field.onBlur}
-													disabled={field.disabled}
-												/>
-												<div className="flex items-center justify-between gap-4">
-													<UploadIcon className="text-muted-foreground h-5 w-5" />
-													<div className="text-muted-foreground">
-														<span className="font-medium">Drag and drop PDF file to upload</span>
-													</div>
-													<Button type="button" variant="outline" onClick={handleUploadClick}>
-														Upload
-													</Button>
-												</div>
-												<p className="text-muted-foreground mt-2 text-xs">
-													Max size 5MB: JPEG, PNG
-												</p>
-											</div>
-										) : (
-											<div className="bg-muted/50 flex items-center justify-between rounded-lg border p-4">
-												<div className="flex items-center gap-4">
-													<div className="bg-background flex h-10 w-10 items-center justify-center rounded-lg">
-														<FileIcon className="text-muted-foreground h-5 w-5" />
-													</div>
-													<div>
-														<p className="text-sm font-medium">{file?.name}</p>
-														<p className="text-muted-foreground text-xs">
-															{file ? formatFileSize(file.size) : ''}
-														</p>
-													</div>
-												</div>
-												<Button
-													type="button"
-													variant="ghost"
-													size="icon"
-													className="text-muted-foreground hover:text-foreground"
-													onClick={handleRemove}
-													leftIcon={<TrashIcon className="h-4 w-4" />}
-												></Button>
-											</div>
-										)}
-									</FormControl>
-									<FormMessage />
-								</div>
-							</FormItem>
-						);
-					}}
+					render={({ field: { onChange, value, ...field } }) => (
+						<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
+							<FormLabel className="col-span-2 text-sm font-medium">
+								Identity Proof <RequiredAsterisk />
+							</FormLabel>
+							<div className="col-span-10">
+								<FormControl>
+									<CustomFileUpload
+										onChange={onChange}
+										value={value}
+										{...field}
+									/>
+								</FormControl>
+								<FormMessage />
+							</div>
+						</FormItem>
+					)}
 				/>
 
 				<FormField
