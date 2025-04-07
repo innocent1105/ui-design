@@ -53,18 +53,21 @@ const CustomFileUpload = ({
             accept={accept}
             onChange={(e) => handleFileChange(e.target.files)}
           />
-          <div className="flex items-center justify-between w-full">
-            <div className="flex h-10 w-10 items-center justify-center">
-              <UploadIcon className="h-5 w-5 text-muted-foreground" />
-            </div>
-            <div className="flex flex-col justify-start items-start flex-1 mx-4">
-              <span className="font-medium">Drag and drop file to upload</span>
-              <p className="text-muted-foreground text-xs mt-2">Max size {formatFileSize(maxSize)}: JPEG, PNG</p>
+          <div className="flex flex-col sm:justify-between sm:flex-row items-center gap-4 w-full">
+            <div className="flex items-center gap-4 w-full sm:w-auto">
+              <div className="flex h-10 w-10 items-center justify-center shrink-0">
+                <UploadIcon className="h-5 w-5 text-muted-foreground" />
+              </div>
+              <div className="flex flex-col justify-start items-start">
+                <span className="font-medium">Drag and drop file to upload</span>
+                <p className="text-muted-foreground text-xs mt-2">Max size {formatFileSize(maxSize)}: JPEG, PNG</p>
+              </div>
             </div>
             <Button
               type="button"
               variant="outline"
               onClick={handleUploadClick}
+              className="w-full sm:w-auto"
             >
               Upload
             </Button>
