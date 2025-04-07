@@ -17,6 +17,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import RequiredAsterisk from './required-asterisk';
 import { z } from 'zod';
+import React from 'react';
+import { FileIcon, TrashIcon, UploadIcon } from 'lucide-react';
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -27,7 +29,15 @@ const formSchema = z.object({
 		.min(1, 'Password is required')
 		.min(8, 'Password must be at least 8 characters'),
 	radioOption: z.string().min(1, 'Please select an option'),
-	checkMe: z.boolean()
+	checkMe: z.boolean(),
+	identityProof: z
+		.instanceof(FileList)
+		.refine((files) => files.length > 0, 'Identity proof is required')
+		.refine((files) => files[0]?.size <= 5 * 1024 * 1024, 'File size must be less than 5MB')
+		.refine(
+			(files) => ['application/pdf', 'image/jpeg', 'image/png'].includes(files[0]?.type),
+			'Only PDF, JPEG, and PNG files are allowed'
+		)
 });
 
 const radioOptions = [
@@ -54,11 +64,33 @@ export function HorizontalForm() {
 			checkMe: false
 		}
 	});
+	const [file, setFile] = React.useState<File | null>(null);
+	const fileInputRef = React.useRef<HTMLInputElement>(null);
 
 	function onSubmit(data: FormValues) {
 		console.log(data);
 		// Handle form submission
 	}
+
+	const formatFileSize = (bytes: number) => {
+		if (bytes < 1024) return bytes + 'B';
+		if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'kb';
+		return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
+	};
+
+	const handleUploadClick = () => {
+		fileInputRef.current?.click();
+	};
+	const handleFileChange = (files: FileList | null) => {
+		const selectedFile = files?.[0] || null;
+		setFile(selectedFile);
+		form.setValue('identityProof', files as any);
+	};
+
+	const handleRemove = () => {
+		setFile(null);
+		form.setValue('identityProof', null as any);
+	};
 
 	return (
 		<Form {...form}>
@@ -133,6 +165,73 @@ export function HorizontalForm() {
 							</div>
 						</FormItem>
 					)}
+				/>
+
+				<FormField
+					control={form.control}
+					name="identityProof"
+					render={({ field: { onChange, value, ...field } }) => {
+						return (
+							<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
+								<FormLabel className="col-span-2 text-sm font-medium">
+									Identity Proof <RequiredAsterisk />
+								</FormLabel>
+								<div className="col-span-10">
+									<FormControl>
+										{!file ? (
+											<div className="border-muted-foreground/25 hover:border-muted-foreground/50 group relative flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors">
+												<input
+													ref={fileInputRef}
+													type="file"
+													className="absolute inset-0 z-50 h-full w-full cursor-pointer opacity-0"
+													accept=".pdf,.jpg,.jpeg,.png"
+													onChange={(e) => handleFileChange(e.target.files)}
+													name={field.name}
+													onBlur={field.onBlur}
+													disabled={field.disabled}
+												/>
+												<div className="flex items-center justify-between gap-4">
+													<UploadIcon className="text-muted-foreground h-5 w-5" />
+													<div className="text-muted-foreground">
+														<span className="font-medium">Drag and drop PDF file to upload</span>
+													</div>
+													<Button type="button" variant="outline" onClick={handleUploadClick}>
+														Upload
+													</Button>
+												</div>
+												<p className="text-muted-foreground mt-2 text-xs">
+													Max size 5MB: JPEG, PNG
+												</p>
+											</div>
+										) : (
+											<div className="bg-muted/50 flex items-center justify-between rounded-lg border p-4">
+												<div className="flex items-center gap-4">
+													<div className="bg-background flex h-10 w-10 items-center justify-center rounded-lg">
+														<FileIcon className="text-muted-foreground h-5 w-5" />
+													</div>
+													<div>
+														<p className="text-sm font-medium">{file?.name}</p>
+														<p className="text-muted-foreground text-xs">
+															{file ? formatFileSize(file.size) : ''}
+														</p>
+													</div>
+												</div>
+												<Button
+													type="button"
+													variant="ghost"
+													size="icon"
+													className="text-muted-foreground hover:text-foreground"
+													onClick={handleRemove}
+													leftIcon={<TrashIcon className="h-4 w-4" />}
+												></Button>
+											</div>
+										)}
+									</FormControl>
+									<FormMessage />
+								</div>
+							</FormItem>
+						);
+					}}
 				/>
 
 				<FormField

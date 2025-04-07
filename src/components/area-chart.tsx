@@ -11,8 +11,6 @@ import {
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { areaChartData } from '@/constants/ChartConstants';
 
-
-
 const chartConfig = {
 	visitors: {
 		label: 'Visitors'
@@ -52,9 +50,9 @@ export function AreaChartComponent() {
 
 	return (
 		<div className="space-y-4">
-			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-2">
+			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
 				{/* Legend */}
-				<div className="flex items-center gap-4 order-2 sm:order-1 justify-center sm:justify-start">
+				<div className="order-2 flex items-center justify-center gap-4 sm:order-1 sm:justify-start">
 					<div className="flex items-center gap-2">
 						<div
 							className="h-3 w-3 rounded-full"
@@ -72,13 +70,13 @@ export function AreaChartComponent() {
 				</div>
 
 				{/* Toggle Group */}
-				<div className="order-1 sm:order-2 w-full sm:w-auto">
+				<div className="order-1 w-full sm:order-2 sm:w-auto">
 					<ToggleGroup
 						type="single"
 						value={selectedView}
 						onValueChange={(value) => value && setSelectedView(value)}
 						variant="outline"
-						className="rounded-md border w-full sm:w-auto grid grid-cols-4 sm:flex"
+						className="grid w-full grid-cols-4 rounded-md border sm:flex sm:w-auto"
 					>
 						{timeRanges.map((range) => (
 							<ToggleGroupItem
