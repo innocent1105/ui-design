@@ -17,6 +17,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import RequiredAsterisk from './required-asterisk';
 import { z } from 'zod';
+import React from 'react';
+import CustomFileUpload from './custom-controls/custom-file-upload';
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -27,7 +29,15 @@ const formSchema = z.object({
 		.min(1, 'Password is required')
 		.min(8, 'Password must be at least 8 characters'),
 	radioOption: z.string().min(1, 'Please select an option'),
-	checkMe: z.boolean()
+	checkMe: z.boolean(),
+	identityProof: z
+		.instanceof(FileList)
+		.refine((files) => files.length > 0, 'Identity proof is required')
+		.refine((files) => files[0]?.size <= 5 * 1024 * 1024, 'File size must be less than 5MB')
+		.refine(
+			(files) => ['application/pdf', 'image/jpeg', 'image/png'].includes(files[0]?.type),
+			'Only PDF, JPEG, and PNG files are allowed'
+		)
 });
 
 const radioOptions = [
@@ -54,11 +64,33 @@ export function HorizontalForm() {
 			checkMe: false
 		}
 	});
+	const [file, setFile] = React.useState<File | null>(null);
+	const fileInputRef = React.useRef<HTMLInputElement>(null);
 
 	function onSubmit(data: FormValues) {
 		console.log(data);
 		// Handle form submission
 	}
+
+	const formatFileSize = (bytes: number) => {
+		if (bytes < 1024) return bytes + 'B';
+		if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'kb';
+		return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
+	};
+
+	const handleUploadClick = () => {
+		fileInputRef.current?.click();
+	};
+	const handleFileChange = (files: FileList | null) => {
+		const selectedFile = files?.[0] || null;
+		setFile(selectedFile);
+		form.setValue('identityProof', files as any);
+	};
+
+	const handleRemove = () => {
+		setFile(null);
+		form.setValue('identityProof', null as any);
+	};
 
 	return (
 		<Form {...form}>
@@ -128,6 +160,28 @@ export function HorizontalForm() {
 											</div>
 										))}
 									</RadioGroup>
+								</FormControl>
+								<FormMessage />
+							</div>
+						</FormItem>
+					)}
+				/>
+
+				<FormField
+					control={form.control}
+					name="identityProof"
+					render={({ field: { onChange, value, ...field } }) => (
+						<FormItem className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
+							<FormLabel className="col-span-2 text-sm font-medium">
+								Identity Proof <RequiredAsterisk />
+							</FormLabel>
+							<div className="col-span-10">
+								<FormControl>
+									<CustomFileUpload
+										onChange={onChange}
+										value={value}
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</div>
