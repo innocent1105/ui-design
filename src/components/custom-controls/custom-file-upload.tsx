@@ -59,7 +59,7 @@ const CustomFileUpload = ({
               <UploadIcon className="h-5 w-5 text-muted-foreground" />
             </div>
             <div className="flex flex-col justify-start items-start flex-1 mx-4">
-              <span className="font-medium">Drag and drop PDF file to upload</span>
+              <span className="font-medium">Drag and drop file to upload</span>
               <p className="text-muted-foreground text-xs mt-2">Max size {formatFileSize(maxSize)}: JPEG, PNG</p>
             </div>
             <Button
