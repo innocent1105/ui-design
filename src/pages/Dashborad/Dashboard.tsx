@@ -32,6 +32,20 @@ const Dashboard = () => {
 			<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
 				<AreaChartComponent />
 			</MainCard>
+
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">	
+				<MainCard className="col-span-1 lg:col-span-4" title="Total Revenue">
+					<></>
+				</MainCard>
+
+				<MainCard className="col-span-1 lg:col-span-4" title="Visitors">
+					<></>
+				</MainCard>
+
+				<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+					<></>
+				</MainCard>
+			</div>
 		</>
 	);
 };
