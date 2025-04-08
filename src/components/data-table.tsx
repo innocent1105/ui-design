@@ -11,6 +11,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
 import CustomSelect from './custom-controls/custom-select';
 import { IEmployee } from '@/types/IEmployee';
+import { format } from 'date-fns';
 
 interface IDataTableProps {
 	data: IEmployee[];
@@ -39,8 +40,7 @@ export function DataTable({
 							<TableHead>Position</TableHead>
 							<TableHead>Office</TableHead>
 							<TableHead>Age</TableHead>
-							<TableHead>DOJ</TableHead>
-							<TableHead>Vehicle</TableHead>
+							<TableHead>Date of Joining</TableHead>
 							<TableHead>Status</TableHead>
 							<TableHead className="rounded-r-md !border-none pr-1">Action</TableHead>
 						</TableRow>
@@ -61,13 +61,7 @@ export function DataTable({
 									<h6 className="text-sm font-medium">{employee.age}</h6>
 								</TableCell>
 								<TableCell>
-									<h6 className="text-sm font-medium">{employee.doj}</h6>
-								</TableCell>
-								<TableCell>
-									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
-									<h6 className="text-muted-foreground mt-[4px]">
-										Jasck - {employee.vehicle.code}
-									</h6>
+									<h6 className="text-sm font-medium">{format(employee.doj, 'dd MMM yyyy')}</h6>
 								</TableCell>
 								<TableCell>
 									<CustomSelect
@@ -79,11 +73,11 @@ export function DataTable({
 												)
 											);
 										}}
-										options={
-											statusOptions as unknown as {
-												[key: string]: string;
-											}[]
-										}
+										options={statusOptions.map((option) => ({
+											value: option.value,
+											label: option.label,
+											color: option.color
+										}))}
 										placeholder="Select status"
 										className={`w-[150px] !border-none ${
 											employee.status === EmployeeStatus.Assigned

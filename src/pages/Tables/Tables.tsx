@@ -9,7 +9,7 @@ import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-
 import { employees } from '@/constants/TableConstants';
 import { IEmployee } from '@/types/IEmployee';
 import { AddEmployee } from '@/components/add-employee';
-import CustomDialogWrapper from '@/components/custom-controls/custom-dialgo-wrapper';
+import CustomDialogWrapper from '@/components/custom-controls/custom-dialog-wrapper';
 
 const ITEMS_PER_PAGE = 5;
 

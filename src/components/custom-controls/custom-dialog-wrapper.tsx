@@ -7,7 +7,12 @@ interface ICustomDialogWrapperProps {
 	title: string;
 }
 
-const CustomDialogWrapper = ({ children, isOpen, onOpenChange, title }: ICustomDialogWrapperProps) => {
+const CustomDialogWrapper = ({
+	children,
+	isOpen,
+	onOpenChange,
+	title
+}: ICustomDialogWrapperProps) => {
 	return (
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>
 			<DialogContent>

@@ -8,6 +8,7 @@ import {
 	positionOptions,
 	statusOptions
 } from '@/constants/TableConstants';
+import CustomDatePicker from './custom-controls/custom-date-picker';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -55,11 +56,7 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 	function onFormSubmit(values: z.infer<typeof formSchema>) {
 		const data = {
 			...values,
-			id: Math.random().toString(36).substr(2, 9),
-			vehicle: {
-				type: 'Gold08 (SUV)',
-				code: `SP${Math.floor(1000 + Math.random() * 9000)}`
-			}
+			id: Math.random().toString(36).substr(2, 9)
 		};
 		onSubmit(data);
 		onOpenChange(false);
@@ -133,6 +130,23 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 									max={65}
 									{...field}
 									onChange={(e) => field.onChange(Number(e.target.value))}
+								/>
+							</FormControl>
+							<FormMessage className="col-span-3 col-start-2" />
+						</FormItem>
+					)}
+				/>
+
+				<FormField
+					control={form.control}
+					name="doj"
+					render={({ field }) => (
+						<FormItem className="grid grid-cols-4 items-center gap-4">
+							<FormLabel className="text-right">Date of Joining</FormLabel>
+							<FormControl className="col-span-3">
+								<CustomDatePicker
+									value={field.value as unknown as Date}
+									onChange={field.onChange}
 								/>
 							</FormControl>
 							<FormMessage className="col-span-3 col-start-2" />
