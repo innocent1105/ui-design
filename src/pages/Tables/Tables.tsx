@@ -39,6 +39,19 @@ const Tables = () => {
 		}
 	}, [search]);
 
+	useEffect(() => {
+		if (dateRange?.from && dateRange?.to) {
+			setCurrentPage(1);
+			const filteredData = employees.filter((employee) => {
+				const doj = new Date(employee.doj);
+				return doj >= dateRange.from! && doj <= dateRange.to!;
+			});
+			setEmployeesData(filteredData);
+		} else if (!dateRange?.from && !dateRange?.to) {
+			setEmployeesData(employees);
+		}
+	}, [dateRange]);
+
 	return (
 		<>
 			<PageHeader
@@ -53,7 +66,7 @@ const Tables = () => {
 						<CustomSearch
 							value={search}
 							onChange={setSearch}
-							className="w-full sm:w-[230px]"
+							className="w-full sm:w-[200px]"
 							placeholder="Search name here"
 						/>
 
@@ -61,7 +74,8 @@ const Tables = () => {
 							<CustomDateRangePicker
 								date={dateRange}
 								onDateChange={setDateRange}
-								className="w-full !border-none sm:w-[230px]"
+								className="w-full !border-none sm:w-[250px]"
+								placeholder="Filter by date"
 							/>
 						</div>
 						<div>
