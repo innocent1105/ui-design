@@ -8,16 +8,17 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Employee, EmployeeStatus, statusOptions } from '@/constants/TableConstants';
+import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
 import CustomSelect from './custom-controls/custom-select';
+import { IEmployee } from '@/types/IEmployee';
 
 interface IDataTableProps {
-	data: Employee[];
+	data: IEmployee[];
 	currentPage: number;
 	totalPages: number;
 	onPageChange: (page: number) => void;
-	setEmployeesData: (data: Employee[]) => void;
-	employeesData: Employee[];
+	setEmployeesData: (data: IEmployee[]) => void;
+	employeesData: IEmployee[];
 }
 
 export function DataTable({
