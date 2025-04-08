@@ -8,7 +8,7 @@ interface ICreditScoreChartProps {
 
 const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
 	const options: ApexOptions = {
-		colors: [ 'var(--primary)' ],
+		colors: ['var(--primary)'],
 		chart: {
 			fontFamily: 'Outfit, sans-serif',
 			type: 'radialBar',
@@ -38,7 +38,7 @@ const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
 						fontWeight: '600',
 						offsetY: -40,
 						color: 'var(--foreground)',
-						formatter: function(val) {
+						formatter: function (val) {
 							return val + '%';
 						}
 					}
@@ -47,18 +47,18 @@ const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
 		},
 		fill: {
 			type: 'solid',
-			colors: [ 'var(--primary)' ]
+			colors: ['var(--primary)']
 		},
 		stroke: {
 			lineCap: 'round'
 		},
-		labels: [ 'Progress' ]
+		labels: ['Progress']
 	};
 
 	return (
 		<div className="flex flex-col items-center justify-center p-4">
 			<div className="w-full">
-				<Chart options={options} series={[ score ]} type="radialBar" height={330} />
+				<Chart options={options} series={[score]} type="radialBar" height={330} />
 			</div>
 			<p className="mt-5 text-sm">Improve your score</p>
 			<p className="mt-2 text-sm">This score can grant you access to financial aid</p>

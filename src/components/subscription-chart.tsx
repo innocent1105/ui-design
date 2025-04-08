@@ -4,27 +4,27 @@ import { Progress } from './ui/progress';
 
 export function SubscriptionChart() {
 	return (
-		<div className="space-y-8 mt-5">
+		<div className="mt-5 space-y-8">
 			{subscriptionData.map((item) => (
 				<div key={item.code} className="flex items-center gap-6">
-					<div className="flex items-center gap-4 min-w-[200px]">
-						<div className="w-10 h-10 rounded-full overflow-hidden border border-border/50">
+					<div className="flex min-w-[200px] items-center gap-4">
+						<div className="border-border/50 h-10 w-10 overflow-hidden rounded-full border">
 							<img
 								src={`https://flagcdn.com/${item.code}.svg`}
 								alt={`${item.country} flag`}
-								className="w-full h-full object-cover"
+								className="h-full w-full object-cover"
 							/>
 						</div>
 						<div>
-							<div className="font-semibold text-foreground">{item.country}</div>
-							<div className="text-sm text-muted-foreground">
+							<div className="text-foreground font-semibold">{item.country}</div>
+							<div className="text-muted-foreground text-sm">
 								{item.customers.toLocaleString()} Customers
 							</div>
 						</div>
 					</div>
-					<div className="flex-1 flex items-center gap-4">
-						<Progress value={item.percentage} className="h-2 bg-primary/20" />
-						<span className="text-sm font-medium min-w-[45px]">{item.percentage}%</span>
+					<div className="flex flex-1 items-center gap-4">
+						<Progress value={item.percentage} className="bg-primary/20 h-2" />
+						<span className="min-w-[45px] text-sm font-medium">{item.percentage}%</span>
 					</div>
 				</div>
 			))}
