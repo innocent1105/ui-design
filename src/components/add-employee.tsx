@@ -75,7 +75,7 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 						<FormItem className="grid grid-cols-4 items-center gap-4">
 							<FormLabel className="text-right">Name</FormLabel>
 							<FormControl className="col-span-3">
-								<Input {...field} />
+								<Input {...field} placeholder="Enter name" />
 							</FormControl>
 							<FormMessage className="col-span-3 col-start-2" />
 						</FormItem>
@@ -178,7 +178,7 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 					)}
 				/>
 
-				<div className="flex justify-end gap-2">
+				<div className="mt-[10px] mb-[-20px] flex justify-end gap-2">
 					<Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
 						Cancel
 					</Button>

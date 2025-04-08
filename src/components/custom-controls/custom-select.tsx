@@ -25,7 +25,7 @@ const CustomSelect = ({
 }: ISelectProps) => {
 	return (
 		<Select value={value} defaultValue={defaultValue} onValueChange={onValueChange}>
-			<SelectTrigger className={className}>
+			<SelectTrigger className={`w-full ${className}`}>
 				<SelectValue placeholder={placeholder} />
 			</SelectTrigger>
 			<SelectContent>
