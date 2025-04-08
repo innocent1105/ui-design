@@ -116,8 +116,6 @@ export const barChartData = [
 	{ month: 'December', desktop: 2140 }
 ];
 
-
-
 interface StatCardProps {
 	title: string;
 	value: string;

@@ -3,7 +3,7 @@ import { Switch } from '@/components/ui/switch';
 import { Music, Rabbit, Cigarette, MessageSquare } from 'lucide-react';
 
 export function ListViewWithSwitch() {
-	const [ preferences, setPreferences ] = useState({
+	const [preferences, setPreferences] = useState({
 		music: true,
 		pets: true,
 		smoking: false,
@@ -47,7 +47,10 @@ export function ListViewWithSwitch() {
 						<MessageSquare className="text-muted-foreground h-5 w-5" />
 						<span>Conversations</span>
 					</div>
-					<Switch checked={preferences.conversations} onCheckedChange={() => handleToggle('conversations')} />
+					<Switch
+						checked={preferences.conversations}
+						onCheckedChange={() => handleToggle('conversations')}
+					/>
 				</div>
 			</div>
 		</div>

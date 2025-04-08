@@ -38,7 +38,6 @@ const formSchema = z.object({
 		)
 });
 
-
 export function HorizontalForm() {
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -54,7 +53,6 @@ export function HorizontalForm() {
 		console.log(data);
 		// Handle form submission
 	}
-
 
 	return (
 		<Form {...form}>
@@ -141,11 +139,7 @@ export function HorizontalForm() {
 							</FormLabel>
 							<div className="col-span-10">
 								<FormControl>
-									<CustomFileUpload
-										onChange={onChange}
-										value={value}
-										{...field}
-									/>
+									<CustomFileUpload onChange={onChange} value={value} {...field} />
 								</FormControl>
 								<FormMessage />
 							</div>
