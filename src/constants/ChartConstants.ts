@@ -117,7 +117,6 @@ export const barChartData = [
 	{ month: 'December', desktop: 2140 }
 ];
 
-
 export const statsData: IStatCard[] = [
 	{
 		title: 'Total Revenue',

@@ -1,12 +1,13 @@
 import { DataTable } from '@/components/data-table';
 import { PageHeader } from '@/components/page-header';
-import { Employee, employees } from '@/constants/TableConstants';
 import { PlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import CustomSearch from '@/components/custom-controls/custom-search';
 import { DateRange } from 'react-day-picker';
 import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
+import { employees } from '@/constants/TableConstants';
+import { IEmployee } from '@/types/IEmployee';
 const ITEMS_PER_PAGE = 5;
 
 const Tables = () => {
@@ -14,7 +15,7 @@ const Tables = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(Math.ceil(employees.length / ITEMS_PER_PAGE));
 	const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-	const [paginatedData, setPaginatedData] = useState<Employee[]>([]);
+	const [paginatedData, setPaginatedData] = useState<IEmployee[]>([]);
 	const [search, setSearch] = useState('');
 	const [dateRange, setDateRange] = useState<DateRange>();
 
@@ -80,7 +81,7 @@ const Tables = () => {
 			<div>
 				<DataTable
 					employeesData={employeesData}
-					data={paginatedData as unknown as Employee[]}
+					data={paginatedData as unknown as IEmployee[]}
 					currentPage={currentPage}
 					totalPages={totalPages}
 					onPageChange={setCurrentPage}

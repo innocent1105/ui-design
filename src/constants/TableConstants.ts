@@ -1,11 +1,10 @@
-import { IEmployee } from "@/types/IEmployee";
+import { IEmployee } from '@/types/IEmployee';
 
 export enum EmployeeStatus {
 	Assigned = 'Assigned',
 	NotAssigned = 'Not Assigned',
 	DriverAssigned = 'Driver Assigned'
 }
-
 
 export const employees: IEmployee[] = [
 	{

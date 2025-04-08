@@ -1,4 +1,4 @@
-import { EmployeeStatus } from "@/constants/TableConstants";
+import { EmployeeStatus } from '@/constants/TableConstants';
 
 type ValueOf<T> = T[keyof T];
 

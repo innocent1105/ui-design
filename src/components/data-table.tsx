@@ -1,4 +1,11 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow
+} from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
@@ -54,32 +61,33 @@ export function DataTable({
 								</TableCell>
 								<TableCell>
 									<h6 className="text-sm font-medium">{employee.vehicle.type} </h6>
-									<h6 className="text-muted-foreground mt-[4px]">Jasck - {employee.vehicle.code}</h6>
+									<h6 className="text-muted-foreground mt-[4px]">
+										Jasck - {employee.vehicle.code}
+									</h6>
 								</TableCell>
 								<TableCell>
 									<CustomSelect
 										defaultValue={employee.status}
 										onValueChange={(value) => {
 											setEmployeesData(
-												employeesData.map(
-													(emp) =>
-														emp.id === employee.id
-															? { ...emp, status: value as EmployeeStatus }
-															: emp
+												employeesData.map((emp) =>
+													emp.id === employee.id ? { ...emp, status: value as EmployeeStatus } : emp
 												)
 											);
 										}}
 										options={
-											(statusOptions as unknown) as {
+											statusOptions as unknown as {
 												[key: string]: string;
 											}[]
 										}
 										placeholder="Select status"
-										className={`w-[150px] !border-none ${employee.status === EmployeeStatus.Assigned
-											? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-											: employee.status === EmployeeStatus.NotAssigned
-												? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-												: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
+										className={`w-[150px] !border-none ${
+											employee.status === EmployeeStatus.Assigned
+												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+												: employee.status === EmployeeStatus.NotAssigned
+													? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+													: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+										}`}
 									/>
 								</TableCell>
 								<TableCell>
