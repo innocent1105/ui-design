@@ -237,3 +237,50 @@ export const statusOptions = [
 	{ value: EmployeeStatus.NotAssigned, label: 'Not Assigned', color: 'text-red-500' },
 	{ value: EmployeeStatus.DriverAssigned, label: 'Driver Assigned', color: 'text-blue-500' }
 ] as const;
+
+export const positionOptions = [
+	{ value: 'Accountant', label: 'Accountant' },
+	{ value: 'Chief Executive Officer', label: 'Chief Executive Officer' },
+	{ value: 'Software Engineer', label: 'Software Engineer' },
+	{ value: 'Data Analyst', label: 'Data Analyst' },
+	{ value: 'Product Manager', label: 'Product Manager' },
+	{ value: 'UX Designer', label: 'UX Designer' },
+	{ value: 'Senior Developer', label: 'Senior Developer' },
+	{ value: 'Marketing Manager', label: 'Marketing Manager' },
+	{ value: 'System Architect', label: 'System Architect' },
+	{ value: 'Quality Assurance', label: 'Quality Assurance' },
+	{ value: 'DevOps Engineer', label: 'DevOps Engineer' },
+	{ value: 'Business Analyst', label: 'Business Analyst' },
+	{ value: 'Frontend Developer', label: 'Frontend Developer' },
+	{ value: 'HR Manager', label: 'HR Manager' },
+	{ value: 'Mobile Developer', label: 'Mobile Developer' },
+	{ value: 'Project Manager', label: 'Project Manager' },
+	{ value: 'Cloud Engineer', label: 'Cloud Engineer' }
+];
+
+export const officeOptions = [
+	{ value: 'Tokyo', label: 'Tokyo' },
+	{ value: 'London', label: 'London' },
+	{ value: 'San Francisco', label: 'San Francisco' },
+	{ value: 'New York', label: 'New York' },
+	{ value: 'Singapore', label: 'Singapore' },
+	{ value: 'Berlin', label: 'Berlin' },
+	{ value: 'Paris', label: 'Paris' },
+	{ value: 'Sydney', label: 'Sydney' },
+	{ value: 'Toronto', label: 'Toronto' },
+	{ value: 'Seoul', label: 'Seoul' },
+	{ value: 'Madrid', label: 'Madrid' },
+	{ value: 'Amsterdam', label: 'Amsterdam' },
+	{ value: 'Barcelona', label: 'Barcelona' },
+	{ value: 'Dublin', label: 'Dublin' },
+	{ value: 'Melbourne', label: 'Melbourne' },
+	{ value: 'Hong Kong', label: 'Hong Kong' },
+	{ value: 'São Paulo', label: 'São Paulo' }
+];
+
+export const levelOptions = [
+	{ value: 'Level 1', label: 'Level 1' },
+	{ value: 'Level 2', label: 'Level 2' },
+	{ value: 'Level 3', label: 'Level 3' },
+	{ value: 'Level 4', label: 'Level 4' }
+];

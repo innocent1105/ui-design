@@ -8,6 +8,9 @@ import { DateRange } from 'react-day-picker';
 import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
 import { employees } from '@/constants/TableConstants';
 import { IEmployee } from '@/types/IEmployee';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { AddEmployee } from '@/components/add-employee';
+
 const ITEMS_PER_PAGE = 5;
 
 const Tables = () => {
@@ -18,6 +21,7 @@ const Tables = () => {
 	const [paginatedData, setPaginatedData] = useState<IEmployee[]>([]);
 	const [search, setSearch] = useState('');
 	const [dateRange, setDateRange] = useState<DateRange>();
+	const [isAddEmployeeDialogOpen, setIsAddEmployeeDialogOpen] = useState(false);
 
 	useEffect(() => {
 		setPaginatedData(employeesData.slice(startIndex, startIndex + ITEMS_PER_PAGE));
@@ -52,6 +56,11 @@ const Tables = () => {
 		}
 	}, [dateRange]);
 
+	const handleAddEmployee = (newEmployee: IEmployee) => {
+		setEmployeesData((prev) => [...prev, newEmployee]);
+		setCurrentPage(Math.ceil((employeesData.length + 1) / ITEMS_PER_PAGE));
+	};
+
 	return (
 		<>
 			<PageHeader
@@ -84,8 +93,9 @@ const Tables = () => {
 								variantClassName="primary"
 								leftIcon={<PlusIcon />}
 								className="w-full sm:w-auto"
+								onClick={() => setIsAddEmployeeDialogOpen(true)}
 							>
-								CTA Button
+								Add Employee
 							</Button>
 						</div>
 					</div>
@@ -102,6 +112,15 @@ const Tables = () => {
 					setEmployeesData={setEmployeesData}
 				/>
 			</div>
+
+			<Dialog open={isAddEmployeeDialogOpen} onOpenChange={setIsAddEmployeeDialogOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Add New Employee</DialogTitle>
+					</DialogHeader>
+					<AddEmployee onOpenChange={setIsAddEmployeeDialogOpen} onSubmit={handleAddEmployee} />
+				</DialogContent>
+			</Dialog>
 		</>
 	);
 };

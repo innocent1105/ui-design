@@ -7,14 +7,16 @@ import {
 } from '@/components/ui/select';
 
 interface ISelectProps {
-	defaultValue: string;
+	value?: string;
+	defaultValue?: string;
 	onValueChange: (value: string) => void;
-	options: { [key: string]: string }[];
+	options: { value: string; label: string; color?: string }[];
 	placeholder: string;
 	className?: string;
 }
 
 const CustomSelect = ({
+	value,
 	defaultValue,
 	onValueChange,
 	options,
@@ -22,12 +24,7 @@ const CustomSelect = ({
 	className
 }: ISelectProps) => {
 	return (
-		<Select
-			defaultValue={defaultValue}
-			onValueChange={(value) => {
-				onValueChange(value);
-			}}
-		>
+		<Select value={value} defaultValue={defaultValue} onValueChange={onValueChange}>
 			<SelectTrigger className={className}>
 				<SelectValue placeholder={placeholder} />
 			</SelectTrigger>
