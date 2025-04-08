@@ -1,5 +1,3 @@
-'use client';
-
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 import { useState } from 'react';
 import {
