@@ -1,26 +1,13 @@
+import { IEmployee } from "@/types/IEmployee";
+
 export enum EmployeeStatus {
 	Assigned = 'Assigned',
 	NotAssigned = 'Not Assigned',
 	DriverAssigned = 'Driver Assigned'
 }
 
-type ValueOf<T> = T[keyof T];
 
-export interface Employee {
-	id: string;
-	name: string;
-	position: string;
-	office: string;
-	age: number;
-	vehicle: {
-		type: string;
-		code: string;
-	};
-	status: ValueOf<typeof EmployeeStatus>;
-	level: string;
-}
-
-export const employees: Employee[] = [
+export const employees: IEmployee[] = [
 	{
 		id: '234239864',
 		name: 'Siegfried Kaiser',
