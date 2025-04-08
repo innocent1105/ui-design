@@ -8,8 +8,8 @@ import { DateRange } from 'react-day-picker';
 import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
 import { employees } from '@/constants/TableConstants';
 import { IEmployee } from '@/types/IEmployee';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AddEmployee } from '@/components/add-employee';
+import CustomDialogWrapper from '@/components/custom-controls/custom-dialgo-wrapper';
 
 const ITEMS_PER_PAGE = 5;
 
@@ -113,14 +113,13 @@ const Tables = () => {
 				/>
 			</div>
 
-			<Dialog open={isAddEmployeeDialogOpen} onOpenChange={setIsAddEmployeeDialogOpen}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Add New Employee</DialogTitle>
-					</DialogHeader>
-					<AddEmployee onOpenChange={setIsAddEmployeeDialogOpen} onSubmit={handleAddEmployee} />
-				</DialogContent>
-			</Dialog>
+			<CustomDialogWrapper
+				isOpen={isAddEmployeeDialogOpen}
+				onOpenChange={setIsAddEmployeeDialogOpen}
+				title="Add Employee"
+			>
+				<AddEmployee onOpenChange={setIsAddEmployeeDialogOpen} onSubmit={handleAddEmployee} />
+			</CustomDialogWrapper>
 		</>
 	);
 };
