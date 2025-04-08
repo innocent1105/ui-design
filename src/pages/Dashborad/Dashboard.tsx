@@ -4,6 +4,8 @@ import { BarChartComponent } from '@/components/bar-chart';
 import { PieChartComponent } from '@/components/pie-chart';
 import MainCard from '@/components/main-card';
 import { AreaChartComponent } from '@/components/area-chart';
+import { RevenueCard } from '@/components/revenue-card';
+import CreditScoreChart from '@/components/credit-score-chart';
 
 const Dashboard = () => {
 	return (
@@ -34,15 +36,15 @@ const Dashboard = () => {
 			</MainCard>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">	
+				<MainCard className="col-span-1 lg:col-span-4" title="Monthly Revenue">
+					<CreditScoreChart score={77} />
+				</MainCard>
+
 				<MainCard className="col-span-1 lg:col-span-4" title="Total Revenue">
-					<></>
+					<RevenueCard />
 				</MainCard>
 
-				<MainCard className="col-span-1 lg:col-span-4" title="Visitors">
-					<></>
-				</MainCard>
-
-				<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+				<MainCard className="col-span-1 lg:col-span-4" title="Exercise Minutes">
 					<></>
 				</MainCard>
 			</div>
