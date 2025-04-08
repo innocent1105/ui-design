@@ -14,4 +14,5 @@ export interface IEmployee {
 	};
 	status: ValueOf<typeof EmployeeStatus>;
 	level: string;
+	doj: string;
 }

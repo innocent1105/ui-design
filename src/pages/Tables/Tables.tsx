@@ -8,6 +8,9 @@ import { DateRange } from 'react-day-picker';
 import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
 import { employees } from '@/constants/TableConstants';
 import { IEmployee } from '@/types/IEmployee';
+import { AddEmployee } from '@/components/add-employee';
+import CustomDialogWrapper from '@/components/custom-controls/custom-dialog-wrapper';
+
 const ITEMS_PER_PAGE = 5;
 
 const Tables = () => {
@@ -18,6 +21,7 @@ const Tables = () => {
 	const [paginatedData, setPaginatedData] = useState<IEmployee[]>([]);
 	const [search, setSearch] = useState('');
 	const [dateRange, setDateRange] = useState<DateRange>();
+	const [isAddEmployeeDialogOpen, setIsAddEmployeeDialogOpen] = useState(false);
 
 	useEffect(() => {
 		setPaginatedData(employeesData.slice(startIndex, startIndex + ITEMS_PER_PAGE));
@@ -39,6 +43,24 @@ const Tables = () => {
 		}
 	}, [search]);
 
+	useEffect(() => {
+		if (dateRange?.from && dateRange?.to) {
+			setCurrentPage(1);
+			const filteredData = employees.filter((employee) => {
+				const doj = new Date(employee.doj);
+				return doj >= dateRange.from! && doj <= dateRange.to!;
+			});
+			setEmployeesData(filteredData);
+		} else if (!dateRange?.from && !dateRange?.to) {
+			setEmployeesData(employees);
+		}
+	}, [dateRange]);
+
+	const handleAddEmployee = (newEmployee: IEmployee) => {
+		setEmployeesData((prev) => [...prev, newEmployee]);
+		setCurrentPage(Math.ceil((employeesData.length + 1) / ITEMS_PER_PAGE));
+	};
+
 	return (
 		<>
 			<PageHeader
@@ -53,7 +75,7 @@ const Tables = () => {
 						<CustomSearch
 							value={search}
 							onChange={setSearch}
-							className="w-full sm:w-[230px]"
+							className="w-full sm:w-[200px]"
 							placeholder="Search name here"
 						/>
 
@@ -61,7 +83,8 @@ const Tables = () => {
 							<CustomDateRangePicker
 								date={dateRange}
 								onDateChange={setDateRange}
-								className="w-full !border-none sm:w-[230px]"
+								className="w-full !border-none sm:w-[250px]"
+								placeholder="Filter by date"
 							/>
 						</div>
 						<div>
@@ -70,8 +93,9 @@ const Tables = () => {
 								variantClassName="primary"
 								leftIcon={<PlusIcon />}
 								className="w-full sm:w-auto"
+								onClick={() => setIsAddEmployeeDialogOpen(true)}
 							>
-								CTA Button
+								Add Employee
 							</Button>
 						</div>
 					</div>
@@ -88,6 +112,14 @@ const Tables = () => {
 					setEmployeesData={setEmployeesData}
 				/>
 			</div>
+
+			<CustomDialogWrapper
+				isOpen={isAddEmployeeDialogOpen}
+				onOpenChange={setIsAddEmployeeDialogOpen}
+				title="Add Employee"
+			>
+				<AddEmployee onOpenChange={setIsAddEmployeeDialogOpen} onSubmit={handleAddEmployee} />
+			</CustomDialogWrapper>
 		</>
 	);
 };
