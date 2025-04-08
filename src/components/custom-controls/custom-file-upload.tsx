@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { FileIcon, UploadIcon, TrashIcon } from 'lucide-react';
 
-interface CustomFileUploadProps {
+interface ICustomFileUploadProps {
   onChange: (files: FileList | null) => void;
   value?: FileList | null;
   accept?: string;
@@ -15,7 +15,7 @@ const CustomFileUpload = ({
   accept = '.pdf,.jpg,.jpeg,.png',
   maxSize = 5 * 1024 * 1024, // 5MB default
   className
-}: CustomFileUploadProps) => {
+  }: ICustomFileUploadProps) => {
   const [file, setFile] = React.useState<File | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 

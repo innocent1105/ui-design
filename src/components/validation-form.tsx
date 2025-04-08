@@ -8,6 +8,7 @@ import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import CustomSelect from './custom-controls/custom-select';
 import CustomDatePicker from './custom-controls/custom-date-picker';
+import { cities } from '@/constants/FormConstants';
 
 const formSchema = z.object({
 	firstName: z.string().min(1, 'First name is required'),
@@ -20,13 +21,6 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
-
-const cities = [
-	{ value: 'new-york', label: 'New York' },
-	{ value: 'los-angeles', label: 'Los Angeles' },
-	{ value: 'chicago', label: 'Chicago' },
-	{ value: 'houston', label: 'Houston' }
-];
 
 export function ValidationForm() {
 	const form = useForm<FormValues>({

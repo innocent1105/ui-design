@@ -1,3 +1,5 @@
+import { Activity, DollarSign, LucideIcon, ShoppingCart, Users } from 'lucide-react';
+
 export const areaChartData = [
 	{ date: '2024-04-01', desktop: 222, mobile: 150 },
 	{ date: '2024-04-02', desktop: 97, mobile: 180 },
@@ -112,4 +114,40 @@ export const barChartData = [
 	{ month: 'October', desktop: 2040 },
 	{ month: 'November', desktop: 1140 },
 	{ month: 'December', desktop: 2140 }
+];
+
+
+
+interface StatCardProps {
+	title: string;
+	value: string;
+	change: string;
+	icon: LucideIcon;
+}
+
+export const statsData: StatCardProps[] = [
+	{
+		title: 'Total Revenue',
+		value: '$45,231.89',
+		change: '+20.1',
+		icon: DollarSign
+	},
+	{
+		title: 'Subscriptions',
+		value: '2350',
+		change: '+180.1',
+		icon: Users
+	},
+	{
+		title: 'Sales',
+		value: '12,234',
+		change: '-19',
+		icon: ShoppingCart
+	},
+	{
+		title: 'Active Now',
+		value: '573',
+		change: '+20',
+		icon: Activity
+	}
 ];

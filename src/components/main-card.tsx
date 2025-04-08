@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
-interface MainCardProps {
+interface IMainCardProps {
 	title?: string;
 	children: React.ReactNode;
 	className?: string;
 }
 
-const MainCard: React.FC<MainCardProps> = ({ title, children, className }) => {
+const MainCard: React.FC<IMainCardProps> = ({ title, children, className }) => {
 	return (
 		<Card className={className}>
 			{title && (

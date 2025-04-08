@@ -1,25 +1,14 @@
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-interface SelectProps {
+interface ISelectProps {
 	defaultValue: string;
 	onValueChange: (value: string) => void;
 	options: { [key: string]: string }[];
 	placeholder: string;
 	className?: string;
 }
-const CustomSelect = ({
-	defaultValue,
-	onValueChange,
-	options,
-	placeholder,
-	className
-}: SelectProps) => {
+
+const CustomSelect = ({ defaultValue, onValueChange, options, placeholder, className }: ISelectProps) => {
 	return (
 		<Select
 			defaultValue={defaultValue}

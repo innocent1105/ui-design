@@ -9,13 +9,13 @@ import { useState, useEffect } from 'react';
 import CustomSelect from './custom-select';
 import { Input } from '@/components/ui/input';
 
-interface DateRangePickerProps {
+interface IDateRangePickerProps {
 	date?: DateRange;
 	onDateChange?: (date: DateRange | undefined) => void;
 	className?: string;
 }
 
-export function CustomDateRangePicker({ date, onDateChange, className }: DateRangePickerProps) {
+export function CustomDateRangePicker({ date, onDateChange, className }: IDateRangePickerProps) {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(date);
 	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
 	const [open, setOpen] = useState(false);
