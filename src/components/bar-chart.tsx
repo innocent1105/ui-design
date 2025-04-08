@@ -1,5 +1,3 @@
-'use client';
-
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { ChartConfig, ChartContainer } from '@/components/ui/chart';
 import { barChartData } from '@/constants/ChartConstants';

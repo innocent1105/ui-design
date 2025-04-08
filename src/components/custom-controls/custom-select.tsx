@@ -6,20 +6,21 @@ import {
 	SelectValue
 } from '@/components/ui/select';
 
-interface SelectProps {
+interface ISelectProps {
 	defaultValue: string;
 	onValueChange: (value: string) => void;
 	options: { [key: string]: string }[];
 	placeholder: string;
 	className?: string;
 }
+
 const CustomSelect = ({
 	defaultValue,
 	onValueChange,
 	options,
 	placeholder,
 	className
-}: SelectProps) => {
+}: ISelectProps) => {
 	return (
 		<Select
 			defaultValue={defaultValue}

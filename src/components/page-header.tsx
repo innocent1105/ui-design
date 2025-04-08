@@ -1,17 +1,17 @@
 import { PageBreadcrumb } from './page-breadcrumb';
 
-interface BreadcrumbItem {
+interface IBreadcrumbItem {
 	label: string;
 	href?: string;
 }
 
-interface PageHeaderProps {
-	items: BreadcrumbItem[];
+interface IPageHeaderProps {
+	items: IBreadcrumbItem[];
 	heading: string;
 	children?: React.ReactNode;
 }
 
-export function PageHeader({ items, heading, children }: PageHeaderProps) {
+export function PageHeader({ items, heading, children }: IPageHeaderProps) {
 	return (
 		<>
 			<PageBreadcrumb items={items} />

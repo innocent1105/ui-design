@@ -11,7 +11,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Employee, EmployeeStatus, statusOptions } from '@/constants/TableConstants';
 import CustomSelect from './custom-controls/custom-select';
 
-interface DataTableProps {
+interface IDataTableProps {
 	data: Employee[];
 	currentPage: number;
 	totalPages: number;
@@ -27,7 +27,7 @@ export function DataTable({
 	onPageChange,
 	setEmployeesData,
 	employeesData
-}: DataTableProps) {
+}: IDataTableProps) {
 	return (
 		<div className="space-y-4">
 			<div className="w-full">

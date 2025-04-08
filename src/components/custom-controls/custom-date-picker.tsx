@@ -4,14 +4,14 @@ import { CalendarIcon } from 'lucide-react';
 import { Calendar } from '../ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 
-interface CustomDatePickerProps {
+interface ICustomDatePickerProps {
 	value: Date;
 	onChange: (date: Date | undefined) => void;
 	className?: string;
 }
 import { format } from 'date-fns';
 
-const CustomDatePicker = ({ value, onChange }: CustomDatePickerProps) => {
+const CustomDatePicker = ({ value, onChange }: ICustomDatePickerProps) => {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>

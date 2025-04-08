@@ -1,4 +1,3 @@
-'use client';
 import BasicForm from '@/components/basic-form';
 import MainCard from '@/components/main-card';
 import { HorizontalForm } from '@/components/horizontal-form';

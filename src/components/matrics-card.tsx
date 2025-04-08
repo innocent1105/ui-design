@@ -1,40 +1,7 @@
-import { Activity, DollarSign, LucideIcon, ShoppingCart, Users } from 'lucide-react';
+import { statsData } from '@/constants/ChartConstants';
 import MainCard from './main-card';
 import { Button } from './ui/button';
 
-interface StatCardProps {
-	title: string;
-	value: string;
-	change: string;
-	icon: LucideIcon;
-}
-
-const statsData: StatCardProps[] = [
-	{
-		title: 'Total Revenue',
-		value: '$45,231.89',
-		change: '+20.1',
-		icon: DollarSign
-	},
-	{
-		title: 'Subscriptions',
-		value: '2350',
-		change: '+180.1',
-		icon: Users
-	},
-	{
-		title: 'Sales',
-		value: '12,234',
-		change: '-19',
-		icon: ShoppingCart
-	},
-	{
-		title: 'Active Now',
-		value: '573',
-		change: '+20',
-		icon: Activity
-	}
-];
 const MatricsCard = () => {
 	return (
 		<>

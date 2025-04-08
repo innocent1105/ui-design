@@ -2,13 +2,13 @@ import { Search } from 'lucide-react';
 import { Input } from '../ui/input';
 import { cn } from '@/lib/utils';
 
-interface CustomSearchProps {
+interface ICustomSearchProps {
 	value: string;
 	onChange: (value: string) => void;
 	placeholder: string;
 	className?: string;
 }
-const CustomSearch = ({ value, onChange, placeholder, className }: CustomSearchProps) => {
+const CustomSearch = ({ value, onChange, placeholder, className }: ICustomSearchProps) => {
 	return (
 		<div
 			className={cn(
