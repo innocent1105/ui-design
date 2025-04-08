@@ -8,14 +8,14 @@ import {
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 
-interface PageBreadcrumbProps {
+interface IPageBreadcrumbProps {
 	items: {
 		label: string;
 		href?: string;
 	}[];
 }
 
-export function PageBreadcrumb({ items }: PageBreadcrumbProps) {
+export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
 	return (
 		<Breadcrumb className="mb-0 items-center">
 			<BreadcrumbList>

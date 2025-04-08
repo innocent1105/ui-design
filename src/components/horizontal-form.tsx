@@ -1,5 +1,3 @@
-'use client';
-
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -17,8 +15,8 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import RequiredAsterisk from './required-asterisk';
 import { z } from 'zod';
-import React from 'react';
 import CustomFileUpload from './custom-controls/custom-file-upload';
+import { radioOptions } from '@/constants/FormConstants';
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -40,20 +38,6 @@ const formSchema = z.object({
 		)
 });
 
-const radioOptions = [
-	{
-		id: 'option1',
-		value: 'option1',
-		label: "Option one is this and that—be sure to include why it's great"
-	},
-	{
-		id: 'option2',
-		value: 'option2',
-		label: 'Option two can be something else and selecting it will deselect option one'
-	},
-	{ id: 'option3', value: 'option3', label: 'Option three is disabled', disabled: true }
-];
-
 export function HorizontalForm() {
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -64,33 +48,11 @@ export function HorizontalForm() {
 			checkMe: false
 		}
 	});
-	const [file, setFile] = React.useState<File | null>(null);
-	const fileInputRef = React.useRef<HTMLInputElement>(null);
 
 	function onSubmit(data: FormValues) {
 		console.log(data);
 		// Handle form submission
 	}
-
-	const formatFileSize = (bytes: number) => {
-		if (bytes < 1024) return bytes + 'B';
-		if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'kb';
-		return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
-	};
-
-	const handleUploadClick = () => {
-		fileInputRef.current?.click();
-	};
-	const handleFileChange = (files: FileList | null) => {
-		const selectedFile = files?.[0] || null;
-		setFile(selectedFile);
-		form.setValue('identityProof', files as any);
-	};
-
-	const handleRemove = () => {
-		setFile(null);
-		form.setValue('identityProof', null as any);
-	};
 
 	return (
 		<Form {...form}>
@@ -177,11 +139,7 @@ export function HorizontalForm() {
 							</FormLabel>
 							<div className="col-span-10">
 								<FormControl>
-									<CustomFileUpload
-										onChange={onChange}
-										value={value}
-										{...field}
-									/>
+									<CustomFileUpload onChange={onChange} value={value} {...field} />
 								</FormControl>
 								<FormMessage />
 							</div>
