@@ -12,7 +12,7 @@ import {
 	useSidebar
 } from '@/components/ui/sidebar';
 
-interface NavItem {
+interface INavItem {
 	title: string;
 	url: string;
 	icon?: LucideIcon;
@@ -23,7 +23,7 @@ interface NavItem {
 	}[];
 }
 
-export function NavMain({ item, selectedItem }: { item: NavItem; selectedItem: string | null }) {
+export function NavMain({ item, selectedItem }: { item: INavItem; selectedItem: string | null }) {
 	const { open } = useSidebar();
 	return (
 		<SidebarGroup>
