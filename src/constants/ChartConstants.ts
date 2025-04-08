@@ -1,4 +1,5 @@
-import { Activity, DollarSign, LucideIcon, ShoppingCart, Users } from 'lucide-react';
+import { IStatCard } from '@/types/IStatsCard';
+import { Activity, DollarSign, ShoppingCart, Users } from 'lucide-react';
 
 export const areaChartData = [
 	{ date: '2024-04-01', desktop: 222, mobile: 150 },
@@ -116,14 +117,8 @@ export const barChartData = [
 	{ month: 'December', desktop: 2140 }
 ];
 
-interface StatCardProps {
-	title: string;
-	value: string;
-	change: string;
-	icon: LucideIcon;
-}
 
-export const statsData: StatCardProps[] = [
+export const statsData: IStatCard[] = [
 	{
 		title: 'Total Revenue',
 		value: '$45,231.89',
