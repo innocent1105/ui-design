@@ -74,7 +74,7 @@ export function AreaChartComponent() {
 						value={selectedView}
 						onValueChange={(value) => value && setSelectedView(value)}
 						variant="outline"
-						className="flex grid w-auto grid-cols-4 rounded-md border"
+						className="flex w-auto rounded-md border"
 					>
 						{timeRanges.map((range) => (
 							<ToggleGroupItem

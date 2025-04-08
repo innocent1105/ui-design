@@ -16,7 +16,12 @@ interface IDateRangePickerProps {
 	placeholder?: string;
 }
 
-export function CustomDateRangePicker({ date, onDateChange, className, placeholder }: IDateRangePickerProps) {
+export function CustomDateRangePicker({
+	date,
+	onDateChange,
+	className,
+	placeholder
+}: IDateRangePickerProps) {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(date);
 	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
 	const [open, setOpen] = useState(false);
@@ -111,10 +116,10 @@ export function CustomDateRangePicker({ date, onDateChange, className, placehold
 						{dateRange && (
 							<button
 								type="button"
-								className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 hover:bg-destructive/10"
+								className="hover:bg-destructive/10 absolute top-1/2 right-2 -translate-y-1/2 rounded-full p-1"
 								onClick={handleClearClick}
 							>
-								<X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
+								<X className="text-muted-foreground hover:text-destructive h-4 w-4" />
 							</button>
 						)}
 					</div>
