@@ -7,7 +7,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useState, useEffect } from 'react';
 import CustomSelect from './custom-select';
-import { Input } from '@/components/ui/input';
+import CustomDatePicker from './custom-date-picker';
 
 interface IDateRangePickerProps {
 	date?: DateRange;
@@ -64,16 +64,14 @@ export function CustomDateRangePicker({
 		onDateChange?.(undefined);
 	};
 
-	const handleManualDateChange = (start: string, end: string) => {
-		const from = parse(start, 'yyyy-MM-dd', new Date());
-		const to = parse(end, 'yyyy-MM-dd', new Date());
-
-		if (isValid(from) && isValid(to)) {
-			const newRange = { from, to };
+	const handleManualDateChange = (from: string, to: string) => {
+		const fromDateObj = new Date(from);
+		const toDateObj = new Date(to);
+		
+		if (isValid(fromDateObj) && isValid(toDateObj) && fromDateObj <= toDateObj) {
+			const newRange = { from: fromDateObj, to: toDateObj };
 			setTempDateRange(newRange);
-			if (from <= to) {
-				setCurrentMonth(from);
-			}
+			setCurrentMonth(fromDateObj);
 		}
 	};
 
@@ -125,32 +123,42 @@ export function CustomDateRangePicker({
 					</div>
 				</PopoverTrigger>
 				<PopoverContent className="w-auto p-0" align="start">
-					<div className="hidden items-center justify-between gap-2 border-b p-3 sm:flex">
+					<div className="flex items-center justify-between gap-2 border-b p-3">
 						<div className="flex items-center gap-2">
-							<Input
-								type="date"
-								value={fromDate}
-								onChange={(e) => {
-									const newFromDate = e.target.value;
-									setFromDate(newFromDate);
-									if (newFromDate && toDate) {
-										handleManualDateChange(newFromDate, toDate);
+							<CustomDatePicker
+								value={tempDateRange?.from || new Date()}
+								onChange={(date) => {
+									if (date) {
+										const newFromDate = format(date, 'yyyy-MM-dd');
+										setFromDate(newFromDate);
+										if (toDate) {
+											handleManualDateChange(newFromDate, toDate);
+										} else {
+											const newRange = { from: date, to: date };
+											setTempDateRange(newRange);
+											setCurrentMonth(date);
+										}
 									}
 								}}
-								className="w-[130px]"
+								className="w-[150px]"
 							/>
 							<span className="text-muted-foreground">to</span>
-							<Input
-								type="date"
-								value={toDate}
-								onChange={(e) => {
-									const newToDate = e.target.value;
-									setToDate(newToDate);
-									if (fromDate && newToDate) {
-										handleManualDateChange(fromDate, newToDate);
+							<CustomDatePicker
+								value={tempDateRange?.to || new Date()}
+								onChange={(date) => {
+									if (date) {
+										const newToDate = format(date, 'yyyy-MM-dd');
+										setToDate(newToDate);
+										if (fromDate) {
+											handleManualDateChange(fromDate, newToDate);
+										} else {
+											const newRange = { from: date, to: date };
+											setTempDateRange(newRange);
+											setCurrentMonth(date);
+										}
 									}
 								}}
-								className="w-[130px]"
+								className="w-[150px]"
 							/>
 						</div>
 						<CustomSelect
