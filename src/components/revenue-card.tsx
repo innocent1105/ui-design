@@ -1,9 +1,5 @@
-'use client';
-
 import { revenueChartData } from '@/constants/ChartConstants';
 import { LineChart, Line } from 'recharts';
-
-
 
 export function RevenueCard() {
 	return (
@@ -14,8 +10,8 @@ export function RevenueCard() {
 				</div>
 				<p className="text-muted-foreground text-sm">+20.1% from last month</p>
 			</div>
-			<div className="mt-10 h-[120px]">
-				<LineChart width={300} height={120} data={revenueChartData}>
+			<div className="mt-10 h-[120px] flex justify-center items-center">
+				<LineChart width={320} height={120} data={revenueChartData}>
 					<Line type="monotone" dataKey="pv" stroke="var(--primary)" strokeWidth={2} />
 				</LineChart>
 			</div>
