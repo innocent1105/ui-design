@@ -56,12 +56,12 @@ const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center p-4">
+		<div className="flex flex-col items-center justify-center">
 			<div className="w-full">
 				<Chart options={options} series={[score]} type="radialBar" height={330} />
 			</div>
-			<p className="mt-5 text-sm">Improve your score</p>
-			<p className="mt-2 text-sm">This score can grant you access to financial aid</p>
+			<p className="mt-5 text-sm">Monthly Target Progress</p>
+			<p className="mt-2 text-sm">You are on track to meet your monthly goals</p>
 		</div>
 	);
 };

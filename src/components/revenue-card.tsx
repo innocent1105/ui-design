@@ -10,7 +10,7 @@ export function RevenueCard() {
 				</div>
 				<p className="text-muted-foreground text-sm">+20.1% from last month</p>
 			</div>
-			<div className="mt-10 h-[120px] flex justify-center items-center">
+			<div className="mt-10 flex h-[120px] items-center justify-center">
 				<LineChart width={320} height={120} data={revenueChartData}>
 					<Line type="monotone" dataKey="pv" stroke="var(--primary)" strokeWidth={2} />
 				</LineChart>

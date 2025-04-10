@@ -166,7 +166,6 @@ export const subscriptionData: ISubscriptionData[] = [
 	}
 ];
 
-
 export const revenueChartData = [
 	{
 		name: 'Page A',
