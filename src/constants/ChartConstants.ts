@@ -96,10 +96,10 @@ export const areaChartData = [
 ];
 
 export const pieChartData = [
-	{ browser: 'Chrome', visitors: 275, fill: 'hsl(var(--chart-1))' },
-	{ browser: 'safari', visitors: 200, fill: 'hsl(var(--chart-2))' },
-	{ browser: 'Edge', visitors: 173, fill: 'hsl(var(--chart-3))' },
-	{ browser: 'Other', visitors: 190, fill: 'hsl(var(--chart-4))' }
+	{ browser: 'Chrome', visitors: 275, fill: 'var(--chart-1)' },
+	{ browser: 'safari', visitors: 200, fill: 'var(--chart-2)' },
+	{ browser: 'Edge', visitors: 173, fill: 'var(--chart-3)' },
+	{ browser: 'Other', visitors: 190, fill: 'var(--chart-4)' }
 ];
 
 export const barChartData = [
