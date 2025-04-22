@@ -36,9 +36,9 @@
   --sidebar-menu-icon: #ededed;
   --linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
   --chart-1: #2563eb;
-  --chart-2: #3b82f6;
-  --chart-3: #1d4ed8;
-  --chart-4: #60a5fa;
+  --chart-2: #60a8fb;
+  --chart-3: #3b86f7;
+  --chart-4: #90c7fe;
   --chart-5: #93c5fd;
 }
 
@@ -69,9 +69,9 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
   --sidebar-menu-icon: #282828;
   --chart-1: #2563eb;
-  --chart-2: #3b82f6;
-  --chart-3: #1d4ed8;
-  --chart-4: #60a5fa;
+  --chart-2: #60a8fb;
+  --chart-3: #3b86f7;
+  --chart-4: #90c7fe;
   --chart-5: #93c5fd;
 }
 
