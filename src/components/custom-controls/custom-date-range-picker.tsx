@@ -1,4 +1,4 @@
-import { format, parse, isValid } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import { Calendar as CalendarIcon, X } from 'lucide-react';
 import { DateRange } from 'react-day-picker';
 import { cn } from '@/lib/utils';
@@ -67,7 +67,7 @@ export function CustomDateRangePicker({
 	const handleManualDateChange = (from: string, to: string) => {
 		const fromDateObj = new Date(from);
 		const toDateObj = new Date(to);
-		
+
 		if (isValid(fromDateObj) && isValid(toDateObj) && fromDateObj <= toDateObj) {
 			const newRange = { from: fromDateObj, to: toDateObj };
 			setTempDateRange(newRange);

@@ -4,6 +4,9 @@ import { BarChartComponent } from '@/components/bar-chart';
 import { PieChartComponent } from '@/components/pie-chart';
 import MainCard from '@/components/main-card';
 import { AreaChartComponent } from '@/components/area-chart';
+import { RevenueCard } from '@/components/revenue-card';
+import CreditScoreChart from '@/components/credit-score-chart';
+import { SubscriptionChart } from '@/components/subscription-chart';
 
 const Dashboard = () => {
 	return (
@@ -19,6 +22,20 @@ const Dashboard = () => {
 				<MatricsCard />
 			</div>
 
+			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+				<MainCard className="col-span-1 lg:col-span-4" title="Monthly Target">
+					<CreditScoreChart score={77} />
+				</MainCard>
+
+				<MainCard className="col-span-1 lg:col-span-4" title="Total Revenue">
+					<RevenueCard />
+				</MainCard>
+
+				<MainCard className="col-span-1 lg:col-span-4" title="Subscription Overview">
+					<SubscriptionChart />
+				</MainCard>
+			</div>
+
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
 				<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
 					<BarChartComponent />
@@ -29,7 +46,7 @@ const Dashboard = () => {
 				</MainCard>
 			</div>
 
-			<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+			<MainCard className="col-span-1 lg:col-span-4" title="Overall Revenue">
 				<AreaChartComponent />
 			</MainCard>
 		</>
