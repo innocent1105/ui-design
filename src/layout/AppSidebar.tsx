@@ -54,7 +54,6 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
 	const { open } = useSidebar();
-	console.log(open);
 	const handleItemClick = (url: string) => {
 		setSelectedItem(url);
 		window.location.href = url; // Navigate to the selected URL

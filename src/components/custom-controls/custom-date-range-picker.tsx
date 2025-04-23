@@ -55,7 +55,6 @@ export function CustomDateRangePicker({
 	};
 
 	const handleClearClick = (e: React.MouseEvent) => {
-		console.log('handleClearClick');
 		e.stopPropagation();
 		setDateRange(undefined);
 		setTempDateRange(undefined);
