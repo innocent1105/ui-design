@@ -1,12 +1,12 @@
-import { PageHeader } from '@/components/page-header';
-import MetricsCard from '@/components/metrics-card';
-import { BarChartComponent } from '@/components/bar-chart-component';
-import { PieChartComponent } from '@/components/pie-chart-component';
-import MainCard from '@/components/main-card';
-import { AreaChartComponent } from '@/components/area-chart-component';
-import { RevenueCard } from '@/components/revenue-card';
-import CreditScoreChart from '@/components/credit-score-chart';
-import { SubscriptionChart } from '@/components/subscription-chart';
+import { PageHeader } from '@/components/navigation/page-header';
+import MetricsCard from '@/components/dashboard/metrics-card';
+import { BarChartComponent } from '@/components/dashboard/bar-chart-component';
+import { PieChartComponent } from '@/components/dashboard/pie-chart-component';
+import CardWrapper from '@/components/card-wrapper';
+import { AreaChartComponent } from '@/components/dashboard/area-chart-component';
+import { RevenueCard } from '@/components/dashboard/revenue-card';
+import { SubscriptionOverviewCard } from '@/components/dashboard/subscription-overview-card';
+import CreditScoreCard from '@/components/dashboard/credit-score-chart';
 
 const Dashboard = () => {
 	return (
@@ -23,32 +23,32 @@ const Dashboard = () => {
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-				<MainCard className="col-span-1 lg:col-span-4" title="Monthly Target">
-					<CreditScoreChart score={77} />
-				</MainCard>
+				<CardWrapper className="col-span-1 lg:col-span-4" title="Monthly Target">
+					<CreditScoreCard score={77} />
+				</CardWrapper>
 
-				<MainCard className="col-span-1 lg:col-span-4" title="Total Revenue">
+				<CardWrapper className="col-span-1 lg:col-span-4" title="Total Revenue">
 					<RevenueCard />
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard className="col-span-1 lg:col-span-4" title="Subscription Overview">
-					<SubscriptionChart />
-				</MainCard>
+				<CardWrapper className="col-span-1 lg:col-span-4" title="Subscription Overview">
+					<SubscriptionOverviewCard />
+				</CardWrapper>
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
-				<MainCard className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
+				<CardWrapper className="col-span-1 lg:col-span-4" title="Gross Monthly Revenue">
 					<BarChartComponent />
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard className="col-span-1 lg:col-span-3" title="Visitors">
+				<CardWrapper className="col-span-1 lg:col-span-3" title="Visitors">
 					<PieChartComponent />
-				</MainCard>
+				</CardWrapper>
 			</div>
 
-			<MainCard className="col-span-1 lg:col-span-4" title="Overall Revenue">
+			<CardWrapper className="col-span-1 lg:col-span-4" title="Overall Revenue">
 				<AreaChartComponent />
-			</MainCard>
+			</CardWrapper>
 		</>
 	);
 };

@@ -9,9 +9,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
-import CustomSelect from './custom-controls/custom-select';
 import { IEmployee } from '@/types/IEmployee';
 import { format } from 'date-fns';
+import CustomSelect from '../custom-controls/custom-select';
 
 interface IDataTableProps {
 	data: IEmployee[];

@@ -13,9 +13,9 @@ import {
 	FormLabel,
 	FormMessage
 } from '@/components/ui/form';
-import CustomSelect from './custom-controls/custom-select';
-import CustomDatePicker from './custom-controls/custom-date-picker';
 import { cities } from '@/constants/FormConstants';
+import CustomSelect from '../custom-controls/custom-select';
+import CustomDatePicker from '../custom-controls/custom-date-picker';
 
 const formSchema = z.object({
 	firstName: z.string().min(1, 'First name is required'),

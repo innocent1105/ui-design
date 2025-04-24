@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { PageHeader } from '@/components/page-header';
-import MainCard from '@/components/main-card';
+import { PageHeader } from '@/components/navigation/page-header';
+import CardWrapper from '@/components/card-wrapper';
 import { Folder } from 'lucide-react';
 
 export default function Buttons() {
@@ -15,7 +15,7 @@ export default function Buttons() {
 			/>
 
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<MainCard title="Buttons">
+				<CardWrapper title="Buttons">
 					<div className="flex flex-wrap gap-3">
 						<Button variant="default" variantClassName="primary">
 							Primary
@@ -42,9 +42,9 @@ export default function Buttons() {
 							Dark
 						</Button>
 					</div>
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard title="Buttons with Outline">
+				<CardWrapper title="Buttons with Outline">
 					<div className="flex flex-wrap gap-3">
 						<Button variant="outline" variantClassName="primary">
 							Primary
@@ -71,9 +71,9 @@ export default function Buttons() {
 							Dark
 						</Button>
 					</div>
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard title="Button with Background">
+				<CardWrapper title="Button with Background">
 					<div className="flex flex-wrap gap-3">
 						<div className="flex flex-wrap gap-3">
 							<Button variant="ghost" variantClassName="primary">
@@ -102,9 +102,9 @@ export default function Buttons() {
 							</Button>
 						</div>
 					</div>
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard title="Button with Icons">
+				<CardWrapper title="Button with Icons">
 					<div className="flex flex-wrap items-center gap-4">
 						<Button
 							variant="default"
@@ -163,7 +163,7 @@ export default function Buttons() {
 							Dark
 						</Button>
 					</div>
-				</MainCard>
+				</CardWrapper>
 			</div>
 		</>
 	);

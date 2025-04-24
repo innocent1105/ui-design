@@ -8,7 +8,6 @@ import {
 	positionOptions,
 	statusOptions
 } from '@/constants/TableConstants';
-import CustomDatePicker from './custom-controls/custom-date-picker';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -20,6 +19,7 @@ import {
 	FormLabel,
 	FormMessage
 } from '@/components/ui/form';
+import CustomDatePicker from '../custom-controls/custom-date-picker';
 
 interface IAddEmployeeProps {
 	onOpenChange: (open: boolean) => void;

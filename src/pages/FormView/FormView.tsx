@@ -1,10 +1,10 @@
-import BasicForm from '@/components/basic-form';
-import MainCard from '@/components/main-card';
-import { HorizontalForm } from '@/components/horizontal-form';
-import { ListView } from '@/components/list-view';
-import { ListViewWithSwitch } from '@/components/list-view-with-switch';
-import { PageHeader } from '@/components/page-header';
-import { ValidationForm } from '@/components/validation-form';
+import CardWrapper from '@/components/card-wrapper';
+import { ListView } from '@/components/form-view/list-view';
+import { ListViewWithSwitch } from '@/components/form-view/list-view-with-switch';
+import { PageHeader } from '@/components/navigation/page-header';
+import BasicForm from '@/components/form-view/basic-form';
+import { ValidationForm } from '@/components/form-view/validation-form';
+import { HorizontalForm } from '@/components/form-view/horizontal-form';
 
 export default function FormView() {
 	return (
@@ -18,25 +18,25 @@ export default function FormView() {
 			/>
 
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-				<MainCard title="Basic Form">
+				<CardWrapper title="Basic Form">
 					<BasicForm />
-				</MainCard>
-				<MainCard title="Validation">
+				</CardWrapper>
+				<CardWrapper title="Validation">
 					<ValidationForm />
-				</MainCard>
+				</CardWrapper>
 			</div>
 
-			<MainCard title="Horizontal Form">
+			<CardWrapper title="Horizontal Form">
 				<HorizontalForm />
-			</MainCard>
+			</CardWrapper>
 
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
-				<MainCard title="List View">
+				<CardWrapper title="List View">
 					<ListView />
-				</MainCard>
-				<MainCard title="List View with Switch">
+				</CardWrapper>
+				<CardWrapper title="List View with Switch">
 					<ListViewWithSwitch />
-				</MainCard>
+				</CardWrapper>
 			</div>
 		</>
 	);

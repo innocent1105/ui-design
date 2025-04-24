@@ -13,10 +13,10 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import RequiredAsterisk from './required-asterisk';
+import RequiredAsterisk from '../required-asterisk';
 import { z } from 'zod';
-import CustomFileUpload from './custom-controls/custom-file-upload';
 import { radioOptions } from '@/constants/FormConstants';
+import CustomFileUpload from '../custom-controls/custom-file-upload';
 
 type FormValues = z.infer<typeof formSchema>;
 

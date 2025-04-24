@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
-interface IMainCardProps {
+interface ICardWrapperProps {
 	title?: string;
 	children: React.ReactNode;
 	className?: string;
 }
 
-const MainCard: React.FC<IMainCardProps> = ({ title, children, className }) => {
+const CardWrapper: React.FC<ICardWrapperProps> = ({ title, children, className }) => {
 	return (
 		<Card className={className}>
 			{title && (
@@ -19,4 +19,4 @@ const MainCard: React.FC<IMainCardProps> = ({ title, children, className }) => {
 	);
 };
 
-export default MainCard;
+export default CardWrapper;
