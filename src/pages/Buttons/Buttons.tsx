@@ -15,7 +15,6 @@ export default function Buttons() {
 			/>
 
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-				{/* Regular Buttons */}
 				<MainCard title="Buttons">
 					<div className="flex flex-wrap gap-3">
 						<Button variant="default" variantClassName="primary">
@@ -45,7 +44,6 @@ export default function Buttons() {
 					</div>
 				</MainCard>
 
-				{/* Outline Buttons */}
 				<MainCard title="Buttons with Outline">
 					<div className="flex flex-wrap gap-3">
 						<Button variant="outline" variantClassName="primary">
@@ -75,7 +73,6 @@ export default function Buttons() {
 					</div>
 				</MainCard>
 
-				{/* Background Buttons */}
 				<MainCard title="Button with Background">
 					<div className="flex flex-wrap gap-3">
 						<div className="flex flex-wrap gap-3">
@@ -107,7 +104,6 @@ export default function Buttons() {
 					</div>
 				</MainCard>
 
-				{/* Icon Buttons */}
 				<MainCard title="Button with Icons">
 					<div className="flex flex-wrap items-center gap-4">
 						<Button
