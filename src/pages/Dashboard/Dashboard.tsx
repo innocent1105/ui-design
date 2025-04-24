@@ -1,9 +1,9 @@
 import { PageHeader } from '@/components/page-header';
 import MetricsCard from '@/components/metrics-card';
-import { BarChartComponent } from '@/components/bar-chart';
-import { PieChartComponent } from '@/components/pie-chart';
+import { BarChartComponent } from '@/components/bar-chart-component';
+import { PieChartComponent } from '@/components/pie-chart-component';
 import MainCard from '@/components/main-card';
-import { AreaChartComponent } from '@/components/area-chart';
+import { AreaChartComponent } from '@/components/area-chart-component';
 import { RevenueCard } from '@/components/revenue-card';
 import CreditScoreChart from '@/components/credit-score-chart';
 import { SubscriptionChart } from '@/components/subscription-chart';
