@@ -29,11 +29,14 @@ export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
 					<React.Fragment key={item.label}>
 						<BreadcrumbItem>
 							{item.href ? (
-								<BreadcrumbLink onClick={() => item.href && handleNavigation(item.href)}>
+								<BreadcrumbLink
+									className="cursor-pointer"
+									onClick={() => item.href && handleNavigation(item.href)}
+								>
 									{item.label}
 								</BreadcrumbLink>
 							) : (
-								<BreadcrumbPage>{item.label}</BreadcrumbPage>
+								<BreadcrumbPage className="cursor-pointer">{item.label}</BreadcrumbPage>
 							)}
 						</BreadcrumbItem>
 						{index < items.length - 1 && <BreadcrumbSeparator />}

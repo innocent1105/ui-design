@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @custom-variant dark (&:is(.dark *));
-
 @tailwind utilities;
 
 :root {
@@ -140,4 +139,8 @@
 
 .table-row-background {
 	background: var(--card);
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
