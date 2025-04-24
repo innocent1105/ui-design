@@ -60,16 +60,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 		setSelectedItem(url);
 		navigate(url);
 	};
+
 	useEffect(() => {
 		setSelectedItem(window.location.pathname);
 	}, [window.location.pathname]);
+
 	return (
 		<Sidebar collapsible="icon" {...props} data-slot="sidebar" data-state="expanded">
 			<SidebarHeader className="mb-1 py-3.5">
 				<SidebarMenu>
 					<SidebarMenuButton
 						size="lg"
-						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
+						onClick={() => navigate('/')}
 					>
 						<div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
 							<Smartphone className="size-4" />
@@ -90,13 +93,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 								<SidebarMenuButton
 									tooltip={item.title}
 									onClick={() => handleItemClick(item.url)}
-									className={
+									className={`cursor-pointer ${
 										selectedItem === item.url
 											? 'sidemenu-background !text-white'
 											: !open
 												? 'sidemenu-icon'
 												: 'sidemenu-icon-expanded'
-									}
+									}`}
 								>
 									{item.icon && <item.icon />}
 									<span>{item.title}</span>
