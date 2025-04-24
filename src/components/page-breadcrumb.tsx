@@ -7,6 +7,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
+import { useNavigate } from 'react-router-dom';
 
 interface IPageBreadcrumbProps {
 	items: {
@@ -16,6 +17,11 @@ interface IPageBreadcrumbProps {
 }
 
 export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
+	const navigate = useNavigate();
+
+	const handleNavigation = (path: string) => {
+		navigate(path);
+	};
 	return (
 		<Breadcrumb className="mb-0 items-center">
 			<BreadcrumbList>
@@ -23,7 +29,9 @@ export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
 					<React.Fragment key={item.label}>
 						<BreadcrumbItem>
 							{item.href ? (
-								<BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+								<BreadcrumbLink onClick={() => item.href && handleNavigation(item.href)}>
+									{item.label}
+								</BreadcrumbLink>
 							) : (
 								<BreadcrumbPage>{item.label}</BreadcrumbPage>
 							)}
