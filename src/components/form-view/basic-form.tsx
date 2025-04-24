@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { z } from 'zod';
-import RequiredAsterisk from './required-asterisk';
+import RequiredAsterisk from '../required-asterisk';
 
 const formSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Please enter a valid email address'),
@@ -37,6 +37,7 @@ const BasicForm: React.FC = () => {
 	});
 
 	function onSubmit(data: FormValues) {
+		console.log('data', data);
 		// Handle form submission
 	}
 

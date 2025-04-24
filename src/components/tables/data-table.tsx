@@ -9,9 +9,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
-import CustomSelect from './custom-controls/custom-select';
 import { IEmployee } from '@/types/IEmployee';
 import { format } from 'date-fns';
+import CustomSelect from '../custom-controls/custom-select';
 
 interface IDataTableProps {
 	data: IEmployee[];
@@ -22,14 +22,14 @@ interface IDataTableProps {
 	employeesData: IEmployee[];
 }
 
-export function DataTable({
+const DataTable = ({
 	data,
 	currentPage,
 	totalPages,
 	onPageChange,
 	setEmployeesData,
 	employeesData
-}: IDataTableProps) {
+}: IDataTableProps) => {
 	return (
 		<div className="space-y-4">
 			<div className="w-full">
@@ -120,4 +120,6 @@ export function DataTable({
 			</div>
 		</div>
 	);
-}
+};
+
+export default DataTable;

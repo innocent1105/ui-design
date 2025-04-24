@@ -6,7 +6,7 @@ interface ICreditScoreChartProps {
 	score: number;
 }
 
-const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
+const CreditScoreCard: React.FC<ICreditScoreChartProps> = ({ score }) => {
 	const options: ApexOptions = {
 		colors: ['var(--primary)'],
 		chart: {
@@ -66,4 +66,4 @@ const CreditScoreChart: React.FC<ICreditScoreChartProps> = ({ score }) => {
 	);
 };
 
-export default CreditScoreChart;
+export default CreditScoreCard;

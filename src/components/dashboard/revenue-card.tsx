@@ -1,7 +1,6 @@
-import { revenueChartData } from '@/constants/ChartConstants';
-import { LineChart, Line } from 'recharts';
+import LineChartComponent from './line-chart-component';
 
-export function RevenueCard() {
+const RevenueCard = () => {
 	return (
 		<>
 			<div className="space-y-2">
@@ -11,10 +10,10 @@ export function RevenueCard() {
 				<p className="text-muted-foreground text-sm">+20.1% from last month</p>
 			</div>
 			<div className="mt-10 flex h-[120px] items-center justify-center">
-				<LineChart width={320} height={120} data={revenueChartData}>
-					<Line type="monotone" dataKey="pv" stroke="var(--primary)" strokeWidth={2} />
-				</LineChart>
+				<LineChartComponent />
 			</div>
 		</>
 	);
-}
+};
+
+export default RevenueCard;

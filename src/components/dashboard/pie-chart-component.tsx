@@ -21,7 +21,7 @@ const chartConfig = pieChartData
 		{} as Record<string, string>
 	) as unknown as ChartConfig;
 
-export function PieChartComponent() {
+const PieChartComponent = () => {
 	const totalVisitors = React.useMemo(() => {
 		return pieChartData.reduce((acc, curr) => acc + curr.visitors, 0);
 	}, []);
@@ -83,4 +83,6 @@ export function PieChartComponent() {
 			</div>
 		</>
 	);
-}
+};
+
+export default PieChartComponent;

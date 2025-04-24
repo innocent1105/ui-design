@@ -8,7 +8,6 @@ import {
 	positionOptions,
 	statusOptions
 } from '@/constants/TableConstants';
-import CustomDatePicker from './custom-controls/custom-date-picker';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -20,6 +19,7 @@ import {
 	FormLabel,
 	FormMessage
 } from '@/components/ui/form';
+import CustomDatePicker from '../custom-controls/custom-date-picker';
 
 interface IAddEmployeeProps {
 	onOpenChange: (open: boolean) => void;
@@ -39,7 +39,7 @@ const formSchema = z.object({
 	doj: z.string({ required_error: 'Please select date of joining.' })
 });
 
-export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
+const AddEmployee = ({ onOpenChange, onSubmit }: IAddEmployeeProps) => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -201,6 +201,6 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 			</form>
 		</Form>
 	);
-}
+};
 
 export default AddEmployee;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Music, Rabbit, Cigarette, MessageSquare } from 'lucide-react';
 
-export function ListViewWithSwitch() {
+const ListViewWithSwitch = () => {
 	const [preferences, setPreferences] = useState({
 		music: true,
 		pets: true,
@@ -55,4 +55,6 @@ export function ListViewWithSwitch() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default ListViewWithSwitch;

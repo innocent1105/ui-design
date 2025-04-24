@@ -1,12 +1,12 @@
 import { statsData } from '@/constants/ChartConstants';
-import MainCard from './main-card';
-import { Button } from './ui/button';
+import CardWrapper from '../card-wrapper';
+import { Button } from '../ui/button';
 
 const MetricsCard = () => {
 	return (
 		<>
 			{statsData.map((item) => (
-				<MainCard key={item.title}>
+				<CardWrapper key={item.title}>
 					<div className="flex items-start justify-between space-y-2">
 						<div>
 							<p className="text-muted-foreground mb-2 text-sm font-medium">{item.title}</p>
@@ -22,7 +22,7 @@ const MetricsCard = () => {
 							<item.icon className="h-6 w-6" />
 						</Button>
 					</div>
-				</MainCard>
+				</CardWrapper>
 			))}
 		</>
 	);

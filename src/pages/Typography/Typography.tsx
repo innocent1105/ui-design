@@ -1,7 +1,7 @@
-import MainCard from '@/components/main-card';
-import { PageHeader } from '@/components/page-header';
+import CardWrapper from '@/components/card-wrapper';
+import PageHeader from '@/components/navigation/page-header';
 
-export default function Typography() {
+const Typography = () => {
 	return (
 		<>
 			<PageHeader
@@ -12,7 +12,7 @@ export default function Typography() {
 				heading="Typography"
 			/>
 			<div className="grid gap-4">
-				<MainCard title="Body Copy">
+				<CardWrapper title="Body Copy">
 					<p className="mb-4 text-lg">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget
 						dolor. Aenean massa.
@@ -31,9 +31,9 @@ export default function Typography() {
 						Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed
 						consequat, leo eget bibendum sodales, augue velit cursus nunc.
 					</p>
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard title="Headings">
+				<CardWrapper title="Headings">
 					<div className="space-y-6">
 						<div>
 							<h1 className="text-4xl font-bold">Headline 1</h1>
@@ -51,9 +51,9 @@ export default function Typography() {
 							<h4 className="text-xl font-semibold">Headline 4</h4>
 						</div>
 					</div>
-				</MainCard>
+				</CardWrapper>
 
-				<MainCard title="Subtitle">
+				<CardWrapper title="Subtitle">
 					<div className="space-y-4">
 						<div>
 							<h5 className="text-base font-medium">Subtitle 1</h5>
@@ -67,8 +67,10 @@ export default function Typography() {
 							<p className="text-xs font-medium">Subtitle 3</p>
 						</div>
 					</div>
-				</MainCard>
+				</CardWrapper>
 			</div>
 		</>
 	);
-}
+};
+
+export default Typography;

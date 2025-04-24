@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-export function ListView() {
+const ListView = () => {
 	return (
 		<div className="space-y-4">
 			<div className="flex items-center gap-4">
@@ -30,4 +30,6 @@ export function ListView() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default ListView;

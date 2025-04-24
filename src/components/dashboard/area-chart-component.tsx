@@ -29,7 +29,7 @@ const timeRanges = [
 	{ value: '365d', label: 'Year' }
 ] as const;
 
-export function AreaChartComponent() {
+const AreaChartComponent = () => {
 	const [selectedView, setSelectedView] = useState('365d');
 
 	const filteredData = areaChartData.filter((item) => {
@@ -148,4 +148,6 @@ export function AreaChartComponent() {
 			</ChartContainer>
 		</div>
 	);
-}
+};
+
+export default AreaChartComponent;
