@@ -38,7 +38,7 @@ const formSchema = z.object({
 		)
 });
 
-export function HorizontalForm() {
+const HorizontalForm = () => {
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -183,4 +183,6 @@ export function HorizontalForm() {
 			</form>
 		</Form>
 	);
-}
+};
+
+export default HorizontalForm;

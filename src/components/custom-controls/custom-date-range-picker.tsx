@@ -16,12 +16,12 @@ interface IDateRangePickerProps {
 	placeholder?: string;
 }
 
-export function CustomDateRangePicker({
+const CustomDateRangePicker = ({
 	date,
 	onDateChange,
 	className,
 	placeholder
-}: IDateRangePickerProps) {
+}: IDateRangePickerProps) =>{
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(date);
 	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
 	const [open, setOpen] = useState(false);
@@ -199,4 +199,5 @@ export function CustomDateRangePicker({
 			</Popover>
 		</div>
 	);
-}
+};
+export default CustomDateRangePicker;

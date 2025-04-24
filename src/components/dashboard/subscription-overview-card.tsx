@@ -1,7 +1,7 @@
 import { subscriptionData } from '@/constants/ChartConstants';
 import { Progress } from '../ui/progress';
 
-export function SubscriptionOverviewCard() {
+const SubscriptionOverviewCard = () => {
 	return (
 		<div className="mt-5 space-y-8">
 			{subscriptionData.map((item) => (
@@ -22,4 +22,6 @@ export function SubscriptionOverviewCard() {
 			))}
 		</div>
 	);
-}
+};
+
+export default SubscriptionOverviewCard;

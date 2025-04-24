@@ -1,6 +1,6 @@
-import { LineChartComponent } from './line-chart-component';
+import LineChartComponent from './line-chart-component';
 
-export function RevenueCard() {
+const RevenueCard = () => {
 	return (
 		<>
 			<div className="space-y-2">
@@ -14,4 +14,6 @@ export function RevenueCard() {
 			</div>
 		</>
 	);
-}
+};
+
+export default RevenueCard;

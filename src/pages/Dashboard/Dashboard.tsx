@@ -1,11 +1,11 @@
-import { PageHeader } from '@/components/navigation/page-header';
+import PageHeader from '@/components/navigation/page-header';
 import MetricsCard from '@/components/dashboard/metrics-card';
-import { BarChartComponent } from '@/components/dashboard/bar-chart-component';
-import { PieChartComponent } from '@/components/dashboard/pie-chart-component';
+import BarChartComponent from '@/components/dashboard/bar-chart-component';
+import PieChartComponent from '@/components/dashboard/pie-chart-component';
 import CardWrapper from '@/components/card-wrapper';
-import { AreaChartComponent } from '@/components/dashboard/area-chart-component';
-import { RevenueCard } from '@/components/dashboard/revenue-card';
-import { SubscriptionOverviewCard } from '@/components/dashboard/subscription-overview-card';
+import AreaChartComponent from '@/components/dashboard/area-chart-component';
+import RevenueCard from '@/components/dashboard/revenue-card';
+import SubscriptionOverviewCard from '@/components/dashboard/subscription-overview-card';
 import CreditScoreCard from '@/components/dashboard/credit-score-chart';
 
 const Dashboard = () => {

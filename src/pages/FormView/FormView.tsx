@@ -1,12 +1,12 @@
 import CardWrapper from '@/components/card-wrapper';
-import { ListView } from '@/components/form-view/list-view';
-import { ListViewWithSwitch } from '@/components/form-view/list-view-with-switch';
-import { PageHeader } from '@/components/navigation/page-header';
+import ListView from '@/components/form-view/list-view';
+import ListViewWithSwitch from '@/components/form-view/list-view-with-switch';
+import PageHeader from '@/components/navigation/page-header';
 import BasicForm from '@/components/form-view/basic-form';
-import { ValidationForm } from '@/components/form-view/validation-form';
-import { HorizontalForm } from '@/components/form-view/horizontal-form';
+import ValidationForm from '@/components/form-view/validation-form';
+import HorizontalForm from '@/components/form-view/horizontal-form';
 
-export default function FormView() {
+const FormView = () => {
 	return (
 		<>
 			<PageHeader
@@ -40,4 +40,6 @@ export default function FormView() {
 			</div>
 		</>
 	);
-}
+};
+
+export default FormView;

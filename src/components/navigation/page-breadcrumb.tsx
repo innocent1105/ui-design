@@ -16,7 +16,7 @@ interface IPageBreadcrumbProps {
 	}[];
 }
 
-export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
+const PageBreadcrumb = ({ items }: IPageBreadcrumbProps) => {
 	const navigate = useNavigate();
 
 	const handleNavigation = (path: string) => {
@@ -45,4 +45,6 @@ export function PageBreadcrumb({ items }: IPageBreadcrumbProps) {
 			</BreadcrumbList>
 		</Breadcrumb>
 	);
-}
+};
+
+export default PageBreadcrumb;

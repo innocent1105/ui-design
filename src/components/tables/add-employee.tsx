@@ -11,14 +11,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import CustomDatePicker from '../custom-controls/custom-date-picker';
 
 interface IAddEmployeeProps {
@@ -30,16 +23,13 @@ const formSchema = z.object({
 	name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
 	position: z.string({ required_error: 'Please select a position.' }),
 	office: z.string({ required_error: 'Please select an office.' }),
-	age: z
-		.number()
-		.min(18, { message: 'Age must be at least 18.' })
-		.max(65, { message: 'Age must be less than 65.' }),
+	age: z.number().min(18, { message: 'Age must be at least 18.' }).max(65, { message: 'Age must be less than 65.' }),
 	status: z.nativeEnum(EmployeeStatus, { required_error: 'Please select a status.' }),
 	level: z.string({ required_error: 'Please select a level.' }),
 	doj: z.string({ required_error: 'Please select date of joining.' })
 });
 
-export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
+const AddEmployee = ({ onOpenChange, onSubmit }: IAddEmployeeProps) => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -144,10 +134,7 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 						<FormItem className="grid grid-cols-4 items-center gap-4">
 							<FormLabel className="text-right">Date of Joining</FormLabel>
 							<FormControl className="col-span-3">
-								<CustomDatePicker
-									value={field.value as unknown as Date}
-									onChange={field.onChange}
-								/>
+								<CustomDatePicker value={(field.value as unknown) as Date} onChange={field.onChange} />
 							</FormControl>
 							<FormMessage className="col-span-3 col-start-2" />
 						</FormItem>
@@ -164,7 +151,7 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 								<CustomSelect
 									value={field.value}
 									onValueChange={field.onChange}
-									options={statusOptions as unknown as { value: string; label: string }[]}
+									options={(statusOptions as unknown) as { value: string; label: string }[]}
 									placeholder="Select status"
 								/>
 							</FormControl>
@@ -201,6 +188,6 @@ export function AddEmployee({ onOpenChange, onSubmit }: IAddEmployeeProps) {
 			</form>
 		</Form>
 	);
-}
+};
 
 export default AddEmployee;

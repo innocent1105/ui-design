@@ -1,4 +1,4 @@
-import { PageBreadcrumb } from './page-breadcrumb';
+import PageBreadcrumb from './page-breadcrumb';
 
 interface IBreadcrumbItem {
 	label: string;
@@ -11,7 +11,7 @@ interface IPageHeaderProps {
 	children?: React.ReactNode;
 }
 
-export function PageHeader({ items, heading, children }: IPageHeaderProps) {
+const PageHeader = ({ items, heading, children }: IPageHeaderProps) => {
 	document.title =
 		(items?.length > 1 && items.find((_, index) => index === items.length - 1)?.label) || heading;
 	return (
@@ -29,4 +29,6 @@ export function PageHeader({ items, heading, children }: IPageHeaderProps) {
 			</div>
 		</>
 	);
-}
+};
+
+export default PageHeader;

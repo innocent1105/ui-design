@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button';
-import { PageHeader } from '@/components/navigation/page-header';
+import PageHeader from '@/components/navigation/page-header';
 import CardWrapper from '@/components/card-wrapper';
 import { Folder } from 'lucide-react';
 
-export default function Buttons() {
+const Buttons = () => {
 	return (
 		<>
 			<PageHeader
@@ -167,4 +167,6 @@ export default function Buttons() {
 			</div>
 		</>
 	);
-}
+};
+
+export default Buttons;

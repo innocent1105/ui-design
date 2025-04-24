@@ -1,7 +1,7 @@
 import CardWrapper from '@/components/card-wrapper';
-import { PageHeader } from '@/components/navigation/page-header';
+import PageHeader from '@/components/navigation/page-header';
 
-export default function Typography() {
+const Typography = () => {
 	return (
 		<>
 			<PageHeader
@@ -71,4 +71,6 @@ export default function Typography() {
 			</div>
 		</>
 	);
-}
+};
+
+export default Typography;

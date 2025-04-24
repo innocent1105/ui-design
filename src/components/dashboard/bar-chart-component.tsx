@@ -9,7 +9,7 @@ const chartConfig = {
 	}
 } satisfies ChartConfig;
 
-export function BarChartComponent() {
+const BarChartComponent = () => {
 	return (
 		<ChartContainer config={chartConfig} className="mt-2 max-h-[300px] w-full">
 			<BarChart accessibilityLayer data={barChartData} barSize={20}>
@@ -33,3 +33,5 @@ export function BarChartComponent() {
 		</ChartContainer>
 	);
 }
+
+export default BarChartComponent;

@@ -1,14 +1,14 @@
-import { PageHeader } from '@/components/navigation/page-header';
+import PageHeader from '@/components/navigation/page-header';
 import { PlusIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import CustomSearch from '@/components/custom-controls/custom-search';
 import { DateRange } from 'react-day-picker';
-import { CustomDateRangePicker } from '@/components/custom-controls/custom-date-range-picker';
+import CustomDateRangePicker from '@/components/custom-controls/custom-date-range-picker';
 import { employees } from '@/constants/TableConstants';
 import { IEmployee } from '@/types/IEmployee';
 import CustomDialogWrapper from '@/components/custom-controls/custom-dialog-wrapper';
-import { DataTable } from '@/components/tables/data-table';
+import DataTable from '@/components/tables/data-table';
 import AddEmployee from '@/components/tables/add-employee';
 
 const ITEMS_PER_PAGE = 5;

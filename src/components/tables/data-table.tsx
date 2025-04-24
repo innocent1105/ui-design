@@ -1,11 +1,4 @@
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow
-} from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
@@ -22,14 +15,14 @@ interface IDataTableProps {
 	employeesData: IEmployee[];
 }
 
-export function DataTable({
+const DataTable = ({
 	data,
 	currentPage,
 	totalPages,
 	onPageChange,
 	setEmployeesData,
 	employeesData
-}: IDataTableProps) {
+}: IDataTableProps) => {
 	return (
 		<div className="space-y-4">
 			<div className="w-full">
@@ -68,8 +61,11 @@ export function DataTable({
 										defaultValue={employee.status}
 										onValueChange={(value) => {
 											setEmployeesData(
-												employeesData.map((emp) =>
-													emp.id === employee.id ? { ...emp, status: value as EmployeeStatus } : emp
+												employeesData.map(
+													(emp) =>
+														emp.id === employee.id
+															? { ...emp, status: value as EmployeeStatus }
+															: emp
 												)
 											);
 										}}
@@ -79,13 +75,11 @@ export function DataTable({
 											color: option.color
 										}))}
 										placeholder="Select status"
-										className={`w-[150px] !border-none ${
-											employee.status === EmployeeStatus.Assigned
-												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-												: employee.status === EmployeeStatus.NotAssigned
-													? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-													: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-										}`}
+										className={`w-[150px] !border-none ${employee.status === EmployeeStatus.Assigned
+											? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+											: employee.status === EmployeeStatus.NotAssigned
+												? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+												: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
 									/>
 								</TableCell>
 								<TableCell>
@@ -120,4 +114,6 @@ export function DataTable({
 			</div>
 		</div>
 	);
-}
+};
+
+export default DataTable;

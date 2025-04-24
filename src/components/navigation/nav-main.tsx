@@ -23,7 +23,7 @@ interface INavItem {
 	}[];
 }
 
-export function NavMain({ item, selectedItem }: { item: INavItem; selectedItem: string | null }) {
+const NavMain = ({ item, selectedItem }: { item: INavItem; selectedItem: string | null }) => {
 	const { open } = useSidebar();
 	return (
 		<SidebarGroup>
@@ -69,4 +69,6 @@ export function NavMain({ item, selectedItem }: { item: INavItem; selectedItem: 
 			</SidebarMenu>
 		</SidebarGroup>
 	);
-}
+};
+
+export default NavMain;
