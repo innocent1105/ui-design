@@ -17,8 +17,8 @@ import {
 	SidebarMenuButton,
 	useSidebar
 } from '@/components/ui/sidebar';
+import { useNavigate } from 'react-router-dom';
 
-// This is sample data.
 const data = {
 	navMain: [
 		{
@@ -54,10 +54,11 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
 	const { open } = useSidebar();
-	console.log(open);
+	const navigate = useNavigate();
+
 	const handleItemClick = (url: string) => {
 		setSelectedItem(url);
-		window.location.href = url; // Navigate to the selected URL
+		navigate(url);
 	};
 	useEffect(() => {
 		setSelectedItem(window.location.pathname);

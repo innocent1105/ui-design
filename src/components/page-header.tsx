@@ -12,6 +12,7 @@ interface IPageHeaderProps {
 }
 
 export function PageHeader({ items, heading, children }: IPageHeaderProps) {
+	document.title = (items?.length > 1 && items.reverse().pop()?.label) || heading;
 	return (
 		<>
 			<PageBreadcrumb items={items} />

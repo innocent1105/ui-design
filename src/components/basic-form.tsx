@@ -37,7 +37,6 @@ const BasicForm: React.FC = () => {
 	});
 
 	function onSubmit(data: FormValues) {
-		console.log(data);
 		// Handle form submission
 	}
 

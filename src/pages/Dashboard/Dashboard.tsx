@@ -1,5 +1,5 @@
 import { PageHeader } from '@/components/page-header';
-import MatricsCard from '@/components/matrics-card';
+import MetricsCard from '@/components/metrics-card';
 import { BarChartComponent } from '@/components/bar-chart';
 import { PieChartComponent } from '@/components/pie-chart';
 import MainCard from '@/components/main-card';
@@ -19,7 +19,7 @@ const Dashboard = () => {
 				heading="Hello Everyone!"
 			/>
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-				<MatricsCard />
+				<MetricsCard />
 			</div>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">

@@ -2,7 +2,7 @@ import { statsData } from '@/constants/ChartConstants';
 import MainCard from './main-card';
 import { Button } from './ui/button';
 
-const MatricsCard = () => {
+const MetricsCard = () => {
 	return (
 		<>
 			{statsData.map((item) => (
@@ -28,4 +28,4 @@ const MatricsCard = () => {
 	);
 };
 
-export default MatricsCard;
+export default MetricsCard;
