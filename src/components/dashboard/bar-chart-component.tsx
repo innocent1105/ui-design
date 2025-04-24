@@ -32,6 +32,6 @@ const BarChartComponent = () => {
 			</BarChart>
 		</ChartContainer>
 	);
-}
+};
 
 export default BarChartComponent;

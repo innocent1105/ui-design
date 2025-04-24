@@ -21,7 +21,7 @@ const CustomDateRangePicker = ({
 	onDateChange,
 	className,
 	placeholder
-}: IDateRangePickerProps) =>{
+}: IDateRangePickerProps) => {
 	const [dateRange, setDateRange] = useState<DateRange | undefined>(date);
 	const [tempDateRange, setTempDateRange] = useState<DateRange | undefined>(date);
 	const [open, setOpen] = useState(false);

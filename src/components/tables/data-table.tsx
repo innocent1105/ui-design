@@ -1,4 +1,11 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow
+} from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EmployeeStatus, statusOptions } from '@/constants/TableConstants';
@@ -61,11 +68,8 @@ const DataTable = ({
 										defaultValue={employee.status}
 										onValueChange={(value) => {
 											setEmployeesData(
-												employeesData.map(
-													(emp) =>
-														emp.id === employee.id
-															? { ...emp, status: value as EmployeeStatus }
-															: emp
+												employeesData.map((emp) =>
+													emp.id === employee.id ? { ...emp, status: value as EmployeeStatus } : emp
 												)
 											);
 										}}
@@ -75,11 +79,13 @@ const DataTable = ({
 											color: option.color
 										}))}
 										placeholder="Select status"
-										className={`w-[150px] !border-none ${employee.status === EmployeeStatus.Assigned
-											? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
-											: employee.status === EmployeeStatus.NotAssigned
-												? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
-												: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'}`}
+										className={`w-[150px] !border-none ${
+											employee.status === EmployeeStatus.Assigned
+												? 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+												: employee.status === EmployeeStatus.NotAssigned
+													? 'bg-red-500/10 text-red-500 [&>svg]:!text-red-500'
+													: 'bg-blue-500/10 text-blue-500 [&>svg]:!text-blue-500'
+										}`}
 									/>
 								</TableCell>
 								<TableCell>
