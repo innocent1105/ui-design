@@ -27,7 +27,7 @@ A modern React application built with Tailwind CSS and shadcn/ui components.
 ### Prerequisites
 
 - Node.js 18+
-- npm 9+
+- yarn 1.22+
 
 ### Installation
 
@@ -40,22 +40,22 @@ git clone https://github.com/yourusername/your-project-name.git
 2. Install dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 3. Start the development server:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn preview` - Preview production build
+- `yarn lint` - Run ESLint
+- `yarn format` - Format code with Prettier
+- `yarn format:check` - Check code formatting

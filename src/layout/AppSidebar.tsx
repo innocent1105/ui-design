@@ -17,7 +17,7 @@ import {
 	SidebarMenuButton,
 	useSidebar
 } from '@/components/ui/sidebar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 const data = {
 	navMain: [
