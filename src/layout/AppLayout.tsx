@@ -1,6 +1,6 @@
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/layout/AppSidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import AppHeader from './AppHeader';
 
 const AppLayout: React.FC = () => {

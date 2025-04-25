@@ -7,7 +7,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 interface IPageBreadcrumbProps {
 	items: {
