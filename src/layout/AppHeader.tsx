@@ -16,7 +16,7 @@ const AppHeader: React.FC = () => {
 						<Smartphone className="size-4" />
 					</div>
 					<div className="grid text-sm leading-tight">
-						<span className="truncate font-semibold">MOBISOFT INFOTECH</span>
+						<span className="truncate font-semibold">MI COOL PILLS</span>
 					</div>
 				</div>
 			</div>
