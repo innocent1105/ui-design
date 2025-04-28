@@ -2,6 +2,7 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/layout/AppSidebar';
 import { Outlet } from 'react-router';
 import AppHeader from './AppHeader';
+import AppFooter from '@/components/layout/AppFooter';
 
 const AppLayout: React.FC = () => {
 	return (
@@ -12,6 +13,7 @@ const AppLayout: React.FC = () => {
 				<div className="flex-1 space-y-4 p-4 px-5">
 					<Outlet />
 				</div>
+				<AppFooter />
 			</SidebarInset>
 		</SidebarProvider>
 	);
