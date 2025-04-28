@@ -26,7 +26,7 @@ const AppFooter: React.FC = () => {
 				<div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
 					<div className="text-center md:text-left">
 						<p className="text-muted-foreground text-sm">
-							© {currentYear} Mobisoft Infotech. All rights reserved.
+							© {currentYear} MI Cool Pills. All rights reserved.
 						</p>
 					</div>
 					<div className="flex items-center gap-8">
