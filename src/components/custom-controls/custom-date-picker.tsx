@@ -24,7 +24,7 @@ const CustomDatePicker = ({ value, onChange, className }: ICustomDatePickerProps
 					)}
 				>
 					<CalendarIcon className="mr-2 h-4 w-4" />
-					{value ? format(value, 'PPP') : 'Pick a date'}
+					{value ? format(value, 'MMM do, yyyy') : 'Pick a date'}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-auto p-0" align="start">

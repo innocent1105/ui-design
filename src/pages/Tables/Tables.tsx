@@ -32,7 +32,7 @@ const Tables = () => {
 	}, [employeesData]);
 
 	useEffect(() => {
-		if (search?.length >= 3) {
+		if (search?.length > 0) {
 			setCurrentPage(1);
 			const filteredData = employeesData.filter((employee) =>
 				employee.name.toLowerCase().includes(search.toLowerCase())
@@ -76,7 +76,7 @@ const Tables = () => {
 							value={search}
 							onChange={setSearch}
 							className="w-full sm:w-[200px]"
-							placeholder="Search name here"
+							placeholder="Search by Name"
 						/>
 
 						<div className="flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center">

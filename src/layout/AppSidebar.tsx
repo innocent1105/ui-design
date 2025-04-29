@@ -4,7 +4,6 @@ import {
 	ToggleLeftIcon,
 	TypeIcon,
 	LayoutDashboard,
-	Smartphone
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -18,6 +17,10 @@ import {
 	useSidebar
 } from '@/components/ui/sidebar';
 import { useNavigate } from 'react-router';
+import LogoLight from '@/assets/logo-light-theme.svg';
+import LogoDark from '@/assets/logo-dark-theme.svg';
+import { useTheme } from '@/context/ThemeContext';
+import LogoSidebar from '@/assets/logo-icon.svg';
 
 const data = {
 	navMain: [
@@ -55,6 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
 	const { open } = useSidebar();
 	const navigate = useNavigate();
+	const { theme } = useTheme();
 
 	const handleItemClick = (url: string) => {
 		setSelectedItem(url);
@@ -74,12 +78,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
 						onClick={() => navigate('/')}
 					>
-						<div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-							<Smartphone className="size-4" />
-						</div>
-						<div className="grid flex-1 text-left text-sm leading-tight">
-							<span className="truncate font-semibold">MI COOL PILLS</span>
-						</div>
+						{!open ? (
+							<div className=" flex aspect-square size-8 items-center justify-center rounded-lg">
+								<img
+									src={LogoSidebar}
+									alt="Logo Light"
+									className="block h-[60px] w-[60px] p-1"
+								/>
+							</div>
+						) : (
+							<div className="grid flex-1">
+								<img
+									src={theme !== 'dark' ? LogoDark : LogoLight}
+									alt="Logo Light"
+									className="block h-6 w-[150px]"
+								/>
+							</div>
+						)}
 					</SidebarMenuButton>
 				</SidebarMenu>
 			</SidebarHeader>
