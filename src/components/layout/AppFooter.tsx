@@ -2,13 +2,6 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 const AppFooter: React.FC = () => {
-	const footerLinks = [
-		{
-			href: 'https://mobisoftinfotech.com/privacy-policy',
-			label: 'Privacy Policy'
-		}
-	];
-
 	return (
 		<footer
 			data-slot="app-footer"
@@ -19,7 +12,7 @@ const AppFooter: React.FC = () => {
 		>
 			<div className="container mx-auto px-8">
 				<div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
-					<div className="text-center md:text-right w-full">
+					<div className="w-full text-center md:text-right">
 						<p className="text-muted-foreground text-sm">
 							Powered By:{' '}
 							<a
