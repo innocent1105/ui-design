@@ -19,7 +19,7 @@ const AppFooter: React.FC = () => {
 		>
 			<div className="container mx-auto px-8">
 				<div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
-					<div className="text-center md:text-left">
+					<div className="text-center md:text-right w-full">
 						<p className="text-muted-foreground text-sm">
 							Powered By:{' '}
 							<a
@@ -31,19 +31,6 @@ const AppFooter: React.FC = () => {
 								Mobisoft Infotech
 							</a>
 						</p>
-					</div>
-					<div className="flex items-center gap-8">
-						{footerLinks.map((link) => (
-							<a
-								key={link.href}
-								href={link.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-							>
-								{link.label}
-							</a>
-						))}
 					</div>
 				</div>
 			</div>
