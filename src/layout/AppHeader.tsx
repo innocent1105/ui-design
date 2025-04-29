@@ -2,7 +2,9 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useTheme } from '@/context/ThemeContext';
-import { MoonIcon, Smartphone, SunIcon } from 'lucide-react';
+import { MoonIcon, SunIcon } from 'lucide-react';
+import LogoLight from '../assets/logo-light-theme.svg';
+import LogoDark from '../assets/logo-dark-theme.svg';
 
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -11,13 +13,13 @@ const AppHeader: React.FC = () => {
 			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 				<SidebarTrigger className="-ml-1 cursor-pointer" />
 				<Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
+
 				<div className="flex w-full items-center justify-center gap-2 sm:w-auto">
-					<div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-						<Smartphone className="size-4" />
-					</div>
-					<div className="grid text-sm leading-tight">
-						<span className="truncate font-semibold">MI COOL PILLS</span>
-					</div>
+					<img
+						src={theme !== 'dark' ? LogoDark : LogoLight}
+						alt="Logo Light"
+						className="block w-[150px] h-6"
+					/>
 				</div>
 			</div>
 			<div className="flex grow flex-col items-center justify-end pr-2 lg:flex-row lg:px-6">
