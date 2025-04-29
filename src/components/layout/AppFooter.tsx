@@ -13,7 +13,7 @@ const AppFooter: React.FC = () => {
 		<footer
 			data-slot="app-footer"
 			className={cn(
-				'border-t bg-background mt-6 py-6',
+				'bg-background mt-6 border-t py-6',
 				'data-[state=open]:animate-in data-[state=closed]:animate-out'
 			)}
 		>

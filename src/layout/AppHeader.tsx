@@ -3,8 +3,8 @@ import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useTheme } from '@/context/ThemeContext';
 import { MoonIcon, SunIcon } from 'lucide-react';
-import LogoLight from '../assets/logo-light-theme.svg';
-import LogoDark from '../assets/logo-dark-theme.svg';
+import LogoLight from '@/assets/logo-light-theme.svg';
+import LogoDark from '@/assets/logo-dark-theme.svg';
 
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -18,7 +18,7 @@ const AppHeader: React.FC = () => {
 					<img
 						src={theme !== 'dark' ? LogoDark : LogoLight}
 						alt="Logo Light"
-						className="block w-[150px] h-6"
+						className="block h-6 w-[150px]"
 					/>
 				</div>
 			</div>
