@@ -5,10 +5,12 @@ import { useTheme } from '@/context/ThemeContext';
 import { MoonIcon, SunIcon } from 'lucide-react';
 import CustomSearch from '@/components/custom-controls/custom-search';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
 	const [ searchQuery, setSearchQuery ] = useState('');
+	const navigate = useNavigate();
 
 	const handleSearch = (value: string) => {
 		setSearchQuery(value);
@@ -24,6 +26,10 @@ const AppHeader: React.FC = () => {
 					onChange={handleSearch}
 					placeholder="Type keywords..."
 					className="w-full !border-[1px] !border-border"
+					onKeyDownEnter={() => {
+						navigate(`/`);
+						setSearchQuery('');
+					}}
 				/>
 			</div>
 
