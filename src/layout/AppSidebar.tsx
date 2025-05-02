@@ -1,10 +1,4 @@
-import {
-	Table,
-	FormInputIcon,
-	ToggleLeftIcon,
-	TypeIcon,
-	LayoutDashboard,
-} from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import NavMain from '@/components/navigation/nav-main';
@@ -56,7 +50,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	const [selectedItem, setSelectedItem] = useState<string | null>(null);
-	const { open } = useSidebar();
+	const { open, isMobile } = useSidebar();
 	const navigate = useNavigate();
 	const { theme } = useTheme();
 
@@ -69,6 +63,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 		setSelectedItem(window.location.pathname);
 	}, [window.location.pathname]);
 
+	const renderLogo = () => {
+		if (isMobile || open) {
+			return (
+				<div className="grid flex-1">
+					<img
+						src={theme !== 'dark' ? LogoDark : LogoLight}
+						alt="Logo"
+						className="block h-6 w-[150px]"
+					/>
+				</div>
+			);
+		}
+		return (
+			<div className="flex aspect-square size-8 items-center justify-center rounded-lg">
+				<img src={LogoSidebar} alt="Logo Icon" className="block h-[40px] w-[40px] p-1" />
+			</div>
+		);
+	};
+
 	return (
 		<Sidebar collapsible="icon" {...props} data-slot="sidebar" data-state="expanded">
 			<SidebarHeader className="mb-1 py-3.5">
@@ -78,23 +91,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
 						onClick={() => navigate('/')}
 					>
-						{!open ? (
-							<div className=" flex aspect-square size-8 items-center justify-center rounded-lg">
-								<img
-									src={LogoSidebar}
-									alt="Logo Light"
-									className="block h-[60px] w-[60px] p-1"
-								/>
-							</div>
-						) : (
-							<div className="grid flex-1">
-								<img
-									src={theme !== 'dark' ? LogoDark : LogoLight}
-									alt="Logo Light"
-									className="block h-6 w-[150px]"
-								/>
-							</div>
-						)}
+						{renderLogo()}
 					</SidebarMenuButton>
 				</SidebarMenu>
 			</SidebarHeader>
