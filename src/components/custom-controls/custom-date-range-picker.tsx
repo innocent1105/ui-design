@@ -1,7 +1,7 @@
 import { format, isValid } from 'date-fns';
 import { Calendar as CalendarIcon, X } from 'lucide-react';
 import { DateRange } from 'react-day-picker';
-import { cn } from '@/lib/utils';
+import { cn, useIsMobile } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -30,7 +30,7 @@ const CustomDateRangePicker = ({
 		dateRange?.from ? format(dateRange.from, 'yyyy-MM-dd') : ''
 	);
 	const [toDate, setToDate] = useState(dateRange?.to ? format(dateRange.to, 'yyyy-MM-dd') : '');
-
+	const isMobile = useIsMobile();
 	// Generate years array (e.g., current year ± 10 years)
 	const years = Array.from({ length: 21 }, (_, i) => {
 		const year = new Date().getFullYear() - 10 + i;
@@ -121,9 +121,9 @@ const CustomDateRangePicker = ({
 						)}
 					</div>
 				</PopoverTrigger>
-				<PopoverContent className="w-auto p-0" align="start">
-					<div className="flex items-center justify-between gap-2 border-b p-3">
-						<div className="flex items-center gap-2">
+				<PopoverContent className="w-[calc(100vw-2rem)] max-w-[500px] p-0" align="start">
+					<div className="flex flex-col gap-2 border-b p-3 sm:flex-row sm:items-center sm:justify-between">
+						<div className="flex flex-col gap-2 sm:flex-row sm:items-center">
 							<CustomDatePicker
 								value={tempDateRange?.from || new Date()}
 								onChange={(date) => {
@@ -139,9 +139,9 @@ const CustomDateRangePicker = ({
 										}
 									}
 								}}
-								className="w-[150px]"
+								className="w-full sm:w-[150px]"
 							/>
-							<span className="text-muted-foreground">to</span>
+							<span className="text-muted-foreground text-center">to</span>
 							<CustomDatePicker
 								value={tempDateRange?.to || new Date()}
 								onChange={(date) => {
@@ -157,7 +157,7 @@ const CustomDateRangePicker = ({
 										}
 									}
 								}}
-								className="w-[150px]"
+								className="w-full sm:w-[150px]"
 							/>
 						</div>
 						<CustomSelect
@@ -165,24 +165,26 @@ const CustomDateRangePicker = ({
 							defaultValue={currentMonth.getFullYear().toString()}
 							onValueChange={handleYearChange}
 							placeholder=""
-							className="w-[100px]"
+							className="w-full sm:w-[100px]"
 						/>
 					</div>
 
-					<Calendar
-						initialFocus
-						mode="range"
-						defaultMonth={currentMonth}
-						month={currentMonth}
-						onMonthChange={setCurrentMonth}
-						selected={tempDateRange}
-						onSelect={(range) => {
-							setTempDateRange(range);
-							if (range?.from) setFromDate(format(range.from, 'yyyy-MM-dd'));
-							if (range?.to) setToDate(format(range.to, 'yyyy-MM-dd'));
-						}}
-						numberOfMonths={2}
-					/>
+					<div className="overflow-x-auto">
+						<Calendar
+							initialFocus
+							mode="range"
+							defaultMonth={currentMonth}
+							month={currentMonth}
+							onMonthChange={setCurrentMonth}
+							selected={tempDateRange}
+							onSelect={(range) => {
+								setTempDateRange(range);
+								if (range?.from) setFromDate(format(range.from, 'yyyy-MM-dd'));
+								if (range?.to) setToDate(format(range.to, 'yyyy-MM-dd'));
+							}}
+							numberOfMonths={isMobile ? 1 : 2}
+						/>
+					</div>
 					<div className="flex items-center justify-end gap-2 border-t p-3">
 						<Button variant="outline" size="sm" onClick={handleCancelClick}>
 							Cancel
