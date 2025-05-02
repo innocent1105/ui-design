@@ -74,7 +74,7 @@ const buttonVariants = cva(
 					danger: 'bg-red-600/10 text-red-400 hover:bg-red-600/20',
 					warning: 'bg-yellow-400/10 text-yellow-400 hover:bg-yellow-500/20',
 					info: 'bg-sky-500/10 text-sky-400 hover:bg-sky-500/20',
-					light: 'bg-zinc-200/10 text-zinc-700 hover:bg-zinc-200/20 dark:text-zinc-300',
+					light: 'bg-zinc-400/10 text-zinc-700 hover:bg-zinc-400/20 dark:text-zinc-300',
 					dark: 'bg-zinc-950/10 text-zinc-900 hover:bg-zinc-700/20 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-900/20'
 				}[variantClassName]
 			}))
