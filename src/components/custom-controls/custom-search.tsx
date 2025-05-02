@@ -10,12 +10,7 @@ interface ICustomSearchProps {
 }
 const CustomSearch = ({ value, onChange, placeholder, className }: ICustomSearchProps) => {
 	return (
-		<div
-			className={cn(
-				'!bg-input-background relative w-full flex-1 rounded-md border-none sm:max-w-xs',
-				className
-			)}
-		>
+		<div className={cn('!bg-input-background relative w-full flex-1 rounded-md sm:max-w-xs', className)}>
 			<Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform" />
 			<Input
 				placeholder={placeholder}
