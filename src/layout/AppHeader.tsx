@@ -59,12 +59,12 @@ const AppHeader: React.FC = () => {
 					<DropdownMenuTrigger asChild>
 						<Button
 							variant="ghost"
-							className="ml-2  py-1 min-w-[48px] h-10 rounded-full flex items-center overflow-hidden"
+							variantClassName="light"
+							className="ml-2 min-w-[48px] h-8 rounded-full flex items-center"
 						>
-							<Avatar>
-								<AvatarImage alt="User" />
-								<AvatarFallback className="bg-primary text-white font-bold">MI</AvatarFallback>
-							</Avatar>
+							<div className="bg-primary ml-[-11px] text-white font-bold flex items-center justify-center rounded-full w-8 h-8 text-sm">
+								MI
+							</div>
 							<ChevronDownIcon className="h-2 w-2 text-muted-foreground" />
 						</Button>
 					</DropdownMenuTrigger>
