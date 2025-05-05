@@ -10,7 +10,7 @@ const AppFooter: React.FC = () => {
 				'data-[state=open]:animate-in data-[state=closed]:animate-out'
 			)}
 		>
-			<div className="container mx-auto px-8">
+			<div className="px-8">
 				<div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
 					<div className="w-full text-center md:text-right">
 						<p className="text-muted-foreground text-sm">
