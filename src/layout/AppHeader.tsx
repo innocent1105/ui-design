@@ -12,7 +12,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const dropdownMenuItems = [
 	{ label: 'Profile', icon: UserIcon },
