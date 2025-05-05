@@ -2,10 +2,23 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useTheme } from '@/context/ThemeContext';
-import { MoonIcon, SunIcon } from 'lucide-react';
+import { MoonIcon, SunIcon, SettingsIcon, ChevronDownIcon, UserIcon, LogOutIcon } from 'lucide-react';
 import CustomSearch from '@/components/custom-controls/custom-search';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+
+const dropdownMenuItems = [
+	{ label: 'Profile', icon: UserIcon },
+	{ label: 'Settings', icon: SettingsIcon },
+	{ label: 'Logout', icon: LogOutIcon }
+];
 
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -33,15 +46,41 @@ const AppHeader: React.FC = () => {
 				/>
 			</div>
 
-			<div className="flex grow flex-col items-center justify-end pr-2 lg:flex-row lg:px-6">
+			<div className="flex items-center gap-2 pr-2 lg:px-6">
 				<Button
 					variant="ghost"
 					variantClassName="light"
 					size="icon"
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 				>
-					{theme === 'dark' ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
+					{theme === 'dark' ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
 				</Button>
+				<DropdownMenu>
+					<DropdownMenuTrigger asChild>
+						<Button
+							variant="ghost"
+							className="ml-2  py-1 min-w-[48px] h-10 rounded-full flex items-center overflow-hidden"
+						>
+							<Avatar>
+								<AvatarImage alt="User" />
+								<AvatarFallback className="bg-primary text-white font-bold">MI</AvatarFallback>
+							</Avatar>
+							<ChevronDownIcon className="h-2 w-2 text-muted-foreground" />
+						</Button>
+					</DropdownMenuTrigger>
+					<DropdownMenuContent align="end" className="py-2 px-3 min-w-[180px]">
+						<div className="px-2 pt-1 pb-2 border-b border-muted mb-2">
+							<div className="font-semibold text-sm text-foreground">Mobisoft Infotech</div>
+							<div className="text-xs text-muted-foreground">business@mobisoftinfotech.com</div>
+						</div>
+						{dropdownMenuItems.map(({ label, icon: Icon }) => (
+							<DropdownMenuItem key={label}>
+								<Icon className="mr-2 h-4 w-4" />
+								{label}
+							</DropdownMenuItem>
+						))}
+					</DropdownMenuContent>
+				</DropdownMenu>
 			</div>
 		</header>
 	);
