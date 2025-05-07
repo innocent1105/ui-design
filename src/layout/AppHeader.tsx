@@ -14,16 +14,16 @@ import CustomSearch from '@/components/custom-controls/custom-search';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
 const dropdownMenuItems = [
-	{ label: 'Profile', icon: UserIcon },
-	{ label: 'Settings', icon: SettingsIcon },
-	{ label: 'Logout', icon: LogOutIcon }
+  { label: 'Profile', icon: UserIcon },
+  { label: 'Settings', icon: SettingsIcon },
+  { label: 'Logout', icon: LogOutIcon, link: '/login' }
 ];
 
 const AppHeader: React.FC = () => {
@@ -31,9 +31,9 @@ const AppHeader: React.FC = () => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const navigate = useNavigate();
 
-	const handleSearch = (value: string) => {
-		setSearchQuery(value);
-	};
+  const handleSearch = (value: string) => {
+    setSearchQuery(value);
+  };
 
 	return (
 		<header className="bg-background sticky top-0 z-10 flex w-full border-b-0 py-3">
