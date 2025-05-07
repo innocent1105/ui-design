@@ -5,6 +5,7 @@ import FormView from './pages/FormView/FormView';
 import Typography from './pages/Typography/Typography';
 import Buttons from './pages/Buttons/Buttons';
 import Tables from './pages/Tables/Tables';
+import FAQPage from './pages/Faq/Faq';
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 					<Route path="/typography" element={<Typography />} />
 					<Route path="/buttons" element={<Buttons />} />
 					<Route path="/tables" element={<Tables />} />
+					<Route path="/faq" element={<FAQPage />} />
 				</Route>
 			</Routes>
 		</Router>
