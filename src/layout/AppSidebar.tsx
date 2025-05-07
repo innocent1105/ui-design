@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   Sidebar,
@@ -42,6 +42,11 @@ const data = {
       title: 'Typography',
       url: '/typography',
       icon: TypeIcon
+    },
+    {
+      title: 'FAQ',
+      url: '/faq',
+      icon: HelpCircle
     },
     {
       title: 'Extras',

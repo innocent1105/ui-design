@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import RecoverPassword from './pages/RecoverPassword';
+import FAQPage from './pages/Faq/Faq';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/typography" element={<Typography />} />
           <Route path="/buttons" element={<Buttons />} />
           <Route path="/tables" element={<Tables />} />
+          <Route path="/faq" element={<FAQPage />} />
         </Route>
       </Routes>
     </Router>
