@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   Sidebar,
@@ -61,6 +61,11 @@ const data = {
           title: 'Forgot Password',
           url: '/forgot-password',
           icon: KeyRound
+        },
+        {
+          title: 'Recover Password',
+          url: '/recover-password',
+          icon: RotateCcw
         }
       ]
     }

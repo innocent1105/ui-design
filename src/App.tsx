@@ -8,6 +8,7 @@ import Tables from './pages/Tables/Tables';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
+import RecoverPassword from './pages/RecoverPassword';
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/recover-password" element={<RecoverPassword />} />
         <Route element={<AppLayout />}>
           <Route index path="/" element={<Dashboard />} />
           <Route path="/form-view" element={<FormView />} />
