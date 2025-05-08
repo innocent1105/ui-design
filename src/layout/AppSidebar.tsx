@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle, Calendar } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   Sidebar,
@@ -37,6 +37,11 @@ const data = {
       title: 'Buttons',
       url: '/buttons',
       icon: ToggleLeftIcon
+    },
+    {
+      title: 'Calendar',
+      url: '/calendar',
+      icon: Calendar
     },
     {
       title: 'Typography',
