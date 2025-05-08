@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import RecoverPassword from './pages/RecoverPassword';
 import FAQPage from './pages/Faq/Faq';
+import Profile from './pages/Profile/Profile';
 function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/buttons" element={<Buttons />} />
           <Route path="/tables" element={<Tables />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </Router>
