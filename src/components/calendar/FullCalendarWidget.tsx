@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { COLORS, INITIAL_EVENTS } from './CalendarConstants';
+import { Card } from '../ui/card';
 
 const FullCalendarWidget: React.FC = () => {
 	const [ events, setEvents ] = useState(INITIAL_EVENTS);
@@ -77,7 +78,7 @@ const FullCalendarWidget: React.FC = () => {
 	return (
 		<div className="flex flex-col lg:flex-row gap-4">
 			<div className="hidden lg:block lg:w-1/4 space-y-4">
-				<div className="bg-card rounded shadow p-4">
+				<Card className="p-4">
 					<h3 className="font-semibold mb-2">Draggable Events</h3>
 					<div ref={externalEventsRef}>
 						{externalEvents.map((event, idx) => (
@@ -102,8 +103,8 @@ const FullCalendarWidget: React.FC = () => {
 							remove after drop
 						</label>
 					</div>
-				</div>
-				<div className="bg-card rounded shadow p-4">
+				</Card>
+				<Card className="p-4">
 					<h3 className="font-semibold mb-2">Create Event</h3>
 					<div className="flex gap-2 mb-2">
 						{COLORS.map((c) => (
@@ -129,9 +130,9 @@ const FullCalendarWidget: React.FC = () => {
 							Add
 						</Button>
 					</div>
-				</div>
+				</Card>
 			</div>
-			<div className="flex-1 bg-card rounded shadow p-2 sm:p-4">
+			<Card className="flex-1 p-2 sm:p-4">
 				<style>
 					{`
 						
@@ -152,7 +153,7 @@ const FullCalendarWidget: React.FC = () => {
 					height="auto"
 					aspectRatio={1.35}
 				/>
-			</div>
+			</Card>
 		</div>
 	);
 };

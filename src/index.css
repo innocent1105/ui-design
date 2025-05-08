@@ -166,8 +166,14 @@
 	border-color: var(--calendar-border-color) !important;
 }
 
+.fc-theme-standard .fc-col-header-cell {
+	background-color: var(--background) !important;
+	font-weight: 400 !important;
+}
+
 .fc-theme-standard .fc-col-header-cell-cushion {
 	color: var(--card-foreground) !important;
+	font-weight: 400 !important;
 }
 
 .fc-theme-standard .fc-col-header,
