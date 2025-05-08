@@ -306,3 +306,31 @@
 	}
 
 }
+
+.fc .fc-toolbar-chunk .fc-button-group {
+	border-radius: calc(var(--radius) * 2) !important;
+	overflow: hidden;
+
+	.fc-button {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		text-align: center !important;
+	}
+
+	.fc-button:last-child {
+		border-top-right-radius: calc(var(--radius) * 2) !important;
+		border-bottom-right-radius: calc(var(--radius) * 2) !important;
+	}
+
+	.fc-button:first-child {
+		border-top-left-radius: calc(var(--radius) * 2) !important;
+		border-bottom-left-radius: calc(var(--radius) * 2) !important;
+	}
+
+	.fc-button-active {
+		background-color: var(--primary) !important;
+		border-color: var(--primary) !important;
+		color: var(--primary-foreground) !important;
+	}
+}
