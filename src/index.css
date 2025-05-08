@@ -214,7 +214,7 @@
 }
 
 .fc .fc-button-primary {
-	background-color: var(--background) !important;
+	background-color: transparent !important;
 	border-color: var(--border) !important;
 	color: var(--foreground) !important;
 }
@@ -225,10 +225,10 @@
 
 .fc .fc-button-primary:not(:disabled):active,
 .fc .fc-button-primary:not(:disabled).fc-button-active {
-	background-color: var(--card) !important;
+	background-color: var(--primary) !important;
+	color: var(--primary-foreground) !important;
 	border-color: var(--border) !important;
 }
-
 
 .fc .fc-today-button {
 	background-color: var(--primary) !important;
@@ -322,6 +322,7 @@
 		align-items: center !important;
 		justify-content: center !important;
 		text-align: center !important;
+		background-color: transparent !important;
 	}
 
 	.fc-button:last-child {
