@@ -131,58 +131,60 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuButton>
         </SidebarMenu>
       </SidebarHeader>
-      {data.navMain.map((item) => {
-        const hasChildren = item?.items && item?.items.length > 0;
-        const isExpanded = expandedMenu === item.title;
-        return (
-          <div key={item.title}>
-            {hasChildren ? (
-              <>
+      <div className="flex-1 overflow-y-auto hide-scrollbar">
+        {data.navMain.map((item) => {
+          const hasChildren = item?.items && item?.items.length > 0;
+          const isExpanded = expandedMenu === item.title;
+          return (
+            <div key={item.title}>
+              {hasChildren ? (
+                <>
+                  <SidebarGroup key={item.title}>
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      onClick={() => toggleSubmenu(item.title)}
+                      className={`cursor-pointer ${!open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
+                    >
+                      {item.icon && <item.icon />}
+                      <span>{item.title}</span>
+                      <span className="ml-auto flex items-center">
+                        {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                      </span>
+                    </SidebarMenuButton>
+                  </SidebarGroup>
+                  {isExpanded && (
+                    <div className={`mt-1 space-y-1 ${open ? 'ml-4' : 'pl-0'}`}>
+                      {item.items.map((subItem) => (
+                        <SidebarGroup key={subItem.title}>
+                          <SidebarMenuButton
+                            tooltip={subItem.title}
+                            onClick={() => handleItemClick(subItem.url)}
+                            className={`cursor-pointer flex items-center ${selectedItem === subItem.url ? 'sidemenu-background !text-white' : !open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
+                          >
+                            {subItem.icon && <subItem.icon />}
+                            <span className={`ml-2`}>{subItem.title}</span>
+                          </SidebarMenuButton>
+                        </SidebarGroup>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : (
                 <SidebarGroup key={item.title}>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    onClick={() => toggleSubmenu(item.title)}
-                    className={`cursor-pointer ${!open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
+                    onClick={() => handleItemClick(item.url)}
+                    className={`cursor-pointer ${selectedItem === item.url ? 'sidemenu-background !text-white' : !open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
                   >
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
-                    <span className="ml-auto flex items-center">
-                      {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </span>
                   </SidebarMenuButton>
                 </SidebarGroup>
-                {isExpanded && (
-                  <div className={`mt-1 space-y-1 ${open ? 'ml-4' : 'pl-0'}`}>
-                    {item.items.map((subItem) => (
-                      <SidebarGroup key={subItem.title}>
-                        <SidebarMenuButton
-                          tooltip={subItem.title}
-                          onClick={() => handleItemClick(subItem.url)}
-                          className={`cursor-pointer flex items-center ${selectedItem === subItem.url ? 'sidemenu-background !text-white' : !open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
-                        >
-                          {subItem.icon && <subItem.icon />}
-                          <span className={`ml-2`}>{subItem.title}</span>
-                        </SidebarMenuButton>
-                      </SidebarGroup>
-                    ))}
-                  </div>
-                )}
-              </>
-            ) : (
-              <SidebarGroup key={item.title}>
-                <SidebarMenuButton
-                  tooltip={item.title}
-                  onClick={() => handleItemClick(item.url)}
-                  className={`cursor-pointer ${selectedItem === item.url ? 'sidemenu-background !text-white' : !open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
-                >
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                </SidebarMenuButton>
-              </SidebarGroup>
-            )}
-          </div>
-        );
-      })}
+              )}
+            </div>
+          );
+        })}
+      </div>
     </Sidebar>
   );
 }
