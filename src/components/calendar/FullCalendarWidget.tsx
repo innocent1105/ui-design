@@ -78,7 +78,7 @@ const FullCalendarWidget: React.FC = () => {
 	return (
 		<div className="flex flex-col lg:flex-row gap-4">
 			<div className="hidden lg:block lg:w-1/4 space-y-4">
-				<Card className="p-4">
+				<Card className="flex flex-col gap-2 p-4">
 					<h3 className="font-semibold mb-2">Draggable Events</h3>
 					<div ref={externalEventsRef}>
 						{externalEvents.map((event, idx) => (
@@ -92,7 +92,7 @@ const FullCalendarWidget: React.FC = () => {
 							</div>
 						))}
 					</div>
-					<div className="flex items-center mt-2">
+					<div className="flex items-center mt-2 mb-2">
 						<Checkbox
 							id="remove-after-drop"
 							checked={removeAfterDrop}
@@ -104,7 +104,7 @@ const FullCalendarWidget: React.FC = () => {
 						</label>
 					</div>
 				</Card>
-				<Card className="p-4">
+				<Card className="p-4 flex flex-col gap-2">
 					<h3 className="font-semibold mb-2">Create Event</h3>
 					<div className="flex gap-2 mb-2">
 						{COLORS.map((c) => (
@@ -118,7 +118,7 @@ const FullCalendarWidget: React.FC = () => {
 							/>
 						))}
 					</div>
-					<div className="flex gap-2">
+					<div className="flex gap-2 mb-2">
 						<Input
 							type="text"
 							className="flex-1"
