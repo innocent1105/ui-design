@@ -39,6 +39,12 @@
 	--chart-5: #bedcfe;
 	--calendar-header-bg: var(--card);
 	--calendar-header-fg: var(--card-foreground);
+	--color-success: #00a63e;
+	--color-warning: #f0b100;
+	--color-error: #e7000b;
+	--color-info: #0000ff;
+	--color-bg-muted: #616a72;
+
 }
 
 .dark {

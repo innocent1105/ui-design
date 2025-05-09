@@ -9,7 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Card } from '../ui/card';
 import { COLORS, INITIAL_EVENTS } from '@/constants/CalendarConstants';
 
-const FullCalendarWidget: React.FC = () => {
+const CalendarWidget: React.FC = () => {
 	const [ events, setEvents ] = useState(INITIAL_EVENTS);
 	const [ externalEvents, setExternalEvents ] = useState([
 		{ title: 'Lunch', color: COLORS[1].className, fcColor: COLORS[1].value },
@@ -158,4 +158,4 @@ const FullCalendarWidget: React.FC = () => {
 	);
 };
 
-export default FullCalendarWidget;
+export default CalendarWidget;
