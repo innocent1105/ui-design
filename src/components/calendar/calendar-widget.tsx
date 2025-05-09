@@ -6,28 +6,28 @@ import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import { COLORS, INITIAL_EVENTS } from './CalendarConstants';
 import { Card } from '../ui/card';
+import { COLORS, INITIAL_EVENTS } from '@/constants/CalendarConstants';
 
 const FullCalendarWidget: React.FC = () => {
-	const [events, setEvents] = useState(INITIAL_EVENTS);
-	const [externalEvents, setExternalEvents] = useState([
+	const [ events, setEvents ] = useState(INITIAL_EVENTS);
+	const [ externalEvents, setExternalEvents ] = useState([
 		{ title: 'Lunch', color: COLORS[1].className, fcColor: COLORS[1].value },
 		{ title: 'Go home', color: COLORS[2].className, fcColor: COLORS[2].value },
 		{ title: 'Do homework', color: COLORS[4].className, fcColor: COLORS[4].value },
 		{ title: 'Work on UI design', color: COLORS[0].className, fcColor: COLORS[0].value },
 		{ title: 'Sleep tight', color: COLORS[3].className, fcColor: COLORS[3].value }
 	]);
-	const [removeAfterDrop, setRemoveAfterDrop] = useState(false);
-	const [newEventTitle, setNewEventTitle] = useState('');
-	const [newEventColor, setNewEventColor] = useState(COLORS[0]);
+	const [ removeAfterDrop, setRemoveAfterDrop ] = useState(false);
+	const [ newEventTitle, setNewEventTitle ] = useState('');
+	const [ newEventColor, setNewEventColor ] = useState(COLORS[0]);
 	const externalEventsRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (externalEventsRef.current) {
 			const draggable = new Draggable(externalEventsRef.current, {
 				itemSelector: '.fc-event',
-				eventData: function (eventEl) {
+				eventData: function(eventEl) {
 					return {
 						title: eventEl.getAttribute('data-title'),
 						color: eventEl.getAttribute('data-fc-color'),
@@ -110,9 +110,9 @@ const FullCalendarWidget: React.FC = () => {
 						{COLORS.map((c) => (
 							<button
 								key={c.value}
-								className={`h-6 w-6 rounded-full border-2 ${
-									newEventColor.value === c.value ? 'border-black' : 'border-transparent'
-								} ${c.className}`}
+								className={`h-6 w-6 rounded-full border-2 ${newEventColor.value === c.value
+									? 'border-black'
+									: 'border-transparent'} ${c.className}`}
 								onClick={() => setNewEventColor(c)}
 								title={c.name}
 							/>
@@ -139,7 +139,7 @@ const FullCalendarWidget: React.FC = () => {
 					`}
 				</style>
 				<FullCalendar
-					plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+					plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
 					headerToolbar={{
 						left: 'prev,next today',
 						center: 'title',

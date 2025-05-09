@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeader from '@/components/navigation/page-header';
-import FullCalendarWidget from '@/components/calendar/FullCalendarWidget';
+import CalendarWidget from '@/components/calendar/calendar-widget';
 
 const CalendarPage: React.FC = () => (
 	<>
@@ -11,7 +11,7 @@ const CalendarPage: React.FC = () => (
 			]}
 			heading="Calendar"
 		/>
-		<FullCalendarWidget />
+		<CalendarWidget />
 	</>
 );
 
