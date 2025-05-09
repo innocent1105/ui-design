@@ -37,6 +37,8 @@
 	--chart-3: #3b86f7;
 	--chart-4: #90c7fe;
 	--chart-5: #bedcfe;
+	--calendar-header-bg: var(--card);
+	--calendar-header-fg: var(--card-foreground);
 }
 
 .dark {
@@ -152,4 +154,190 @@
 .hide-scrollbar {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+}
+
+:root {
+	--calendar-border-color: var(--border);
+}
+
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard td,
+.fc-theme-standard th {
+	border-color: var(--calendar-border-color) !important;
+}
+
+.fc-theme-standard .fc-col-header-cell {
+	background-color: var(--background) !important;
+	font-weight: 400 !important;
+}
+
+.fc-theme-standard .fc-col-header-cell-cushion {
+	color: var(--card-foreground) !important;
+	font-weight: 400 !important;
+}
+
+.fc-theme-standard .fc-col-header,
+.fc-theme-standard .fc-col-header-cell {
+	background-color: var(--calendar-header-bg) !important;
+	color: var(--calendar-header-fg) !important;
+}
+
+.fc .fc-button:focus,
+.fc .fc-button:active:focus,
+.fc .fc-button-primary:focus,
+.fc .fc-button-primary:active:focus {
+	box-shadow: none !important;
+	outline: none !important;
+
+}
+
+.fc .fc-button {
+	box-shadow: none !important;
+	border-color: var(--border) !important;
+}
+
+.fc .fc-button {
+	padding: 0.25rem 0.5rem !important;
+	/* font-size: 0.875rem !important; */
+}
+
+.fc .fc-toolbar-chunk {
+	display: flex;
+	gap: 0.25rem;
+}
+
+.fc .fc-toolbar-title {
+	margin-top: 0.5rem !important;
+	font-size: 1.2rem !important;
+	margin-bottom: 0.5rem !important;
+	font-weight: 600 !important;
+}
+
+.fc .fc-button-primary {
+	background-color: transparent !important;
+	border-color: var(--border) !important;
+	color: var(--foreground) !important;
+}
+
+.fc .fc-button-primary:hover {
+	background-color: var(--card) !important;
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+	background-color: var(--primary) !important;
+	color: var(--primary-foreground) !important;
+	border-color: var(--border) !important;
+}
+
+.fc .fc-today-button {
+	background-color: var(--primary) !important;
+	border-color: var(--primary) !important;
+	color: var(--primary-foreground) !important;
+	border-radius: calc(var(--radius) * 2) !important;
+}
+
+.fc .fc-today-button:hover {
+	background-color: var(--primary-hover) !important;
+	border-color: var(--primary-hover) !important;
+}
+
+.fc .fc-today-button:disabled {
+	background-color: var(--primary) !important;
+	border-color: var(--primary) !important;
+	color: var(--primary-foreground) !important;
+	opacity: 0.7 !important;
+}
+
+.fc .fc-toolbar-chunk {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.fc .fc-prev-button {
+	margin-right: 0.25rem !important;
+	border-radius: calc(var(--radius) * 2) !important;
+}
+
+.fc .fc-next-button {
+	margin-left: 0.25rem !important;
+	border-radius: calc(var(--radius) * 2) !important;
+}
+
+.fc .fc-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.fc .fc-toolbar-chunk {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.fc .fc-prev-button,
+.fc .fc-next-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2rem;
+	width: 2rem;
+	padding: 0 !important;
+}
+
+@media (max-width: 640px) {
+	.fc .fc-toolbar {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.fc .fc-toolbar-chunk {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.fc .fc-toolbar-title {
+		font-size: 1.1rem !important;
+	}
+
+	.fc .fc-button {
+		padding: 0.25rem 0.5rem !important;
+		font-size: 0.875rem !important;
+	}
+
+	.fc .fc-view-harness {
+		min-height: 400px;
+	}
+
+}
+
+.fc .fc-toolbar-chunk .fc-button-group {
+	border-radius: calc(var(--radius) * 2) !important;
+	overflow: hidden;
+
+	.fc-button {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		text-align: center !important;
+		background-color: transparent !important;
+	}
+
+	.fc-button:last-child {
+		border-top-right-radius: calc(var(--radius) * 2) !important;
+		border-bottom-right-radius: calc(var(--radius) * 2) !important;
+	}
+
+	.fc-button:first-child {
+		border-top-left-radius: calc(var(--radius) * 2) !important;
+		border-bottom-left-radius: calc(var(--radius) * 2) !important;
+	}
+
+	.fc-button-active {
+		background-color: var(--primary) !important;
+		border-color: var(--primary) !important;
+		color: var(--primary-foreground) !important;
+	}
 }

@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle, Calendar } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   Sidebar,
@@ -39,6 +39,11 @@ const data = {
       icon: ToggleLeftIcon
     },
     {
+      title: 'Calendar',
+      url: '/calendar',
+      icon: Calendar
+    },
+    {
       title: 'Typography',
       url: '/typography',
       icon: TypeIcon
@@ -54,11 +59,6 @@ const data = {
           icon: LogIn
         },
         {
-          title: 'FAQ',
-          url: '/faq',
-          icon: HelpCircle
-        },
-        {
           title: 'Register',
           url: '/register',
           icon: UserPlus
@@ -72,7 +72,12 @@ const data = {
           title: 'Recover Password',
           url: '/recover-password',
           icon: RotateCcw
-        }
+        },
+           {
+          title: 'FAQ',
+          url: '/faq',
+          icon: HelpCircle
+        },
       ]
     }
   ]
