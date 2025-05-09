@@ -7,4 +7,3 @@ For more information please check the [Pills of Zen Admin Theme Docs](https://mo
 You can check the [Live Demo Here](https://mobisoftinfotech.com/tools/pills-of-zen-admin-theme-demo/)
 
 **License**: MIT
-

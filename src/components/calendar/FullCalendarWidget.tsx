@@ -10,24 +10,24 @@ import { COLORS, INITIAL_EVENTS } from './CalendarConstants';
 import { Card } from '../ui/card';
 
 const FullCalendarWidget: React.FC = () => {
-	const [ events, setEvents ] = useState(INITIAL_EVENTS);
-	const [ externalEvents, setExternalEvents ] = useState([
+	const [events, setEvents] = useState(INITIAL_EVENTS);
+	const [externalEvents, setExternalEvents] = useState([
 		{ title: 'Lunch', color: COLORS[1].className, fcColor: COLORS[1].value },
 		{ title: 'Go home', color: COLORS[2].className, fcColor: COLORS[2].value },
 		{ title: 'Do homework', color: COLORS[4].className, fcColor: COLORS[4].value },
 		{ title: 'Work on UI design', color: COLORS[0].className, fcColor: COLORS[0].value },
 		{ title: 'Sleep tight', color: COLORS[3].className, fcColor: COLORS[3].value }
 	]);
-	const [ removeAfterDrop, setRemoveAfterDrop ] = useState(false);
-	const [ newEventTitle, setNewEventTitle ] = useState('');
-	const [ newEventColor, setNewEventColor ] = useState(COLORS[0]);
+	const [removeAfterDrop, setRemoveAfterDrop] = useState(false);
+	const [newEventTitle, setNewEventTitle] = useState('');
+	const [newEventColor, setNewEventColor] = useState(COLORS[0]);
 	const externalEventsRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (externalEventsRef.current) {
 			const draggable = new Draggable(externalEventsRef.current, {
 				itemSelector: '.fc-event',
-				eventData: function(eventEl) {
+				eventData: function (eventEl) {
 					return {
 						title: eventEl.getAttribute('data-title'),
 						color: eventEl.getAttribute('data-fc-color'),
@@ -76,15 +76,15 @@ const FullCalendarWidget: React.FC = () => {
 	};
 
 	return (
-		<div className="flex flex-col lg:flex-row gap-4">
-			<div className="hidden lg:block lg:w-1/4 space-y-4">
+		<div className="flex flex-col gap-4 lg:flex-row">
+			<div className="hidden space-y-4 lg:block lg:w-1/4">
 				<Card className="flex flex-col gap-2 p-4">
-					<h3 className="font-semibold mb-2">Draggable Events</h3>
+					<h3 className="mb-2 font-semibold">Draggable Events</h3>
 					<div ref={externalEventsRef}>
 						{externalEvents.map((event, idx) => (
 							<div
 								key={idx}
-								className={`fc-event cursor-move px-3 py-2 rounded mb-2 text-white ${event.color}`}
+								className={`fc-event mb-2 cursor-move rounded px-3 py-2 text-white ${event.color}`}
 								data-title={event.title}
 								data-fc-color={event.fcColor}
 							>
@@ -92,7 +92,7 @@ const FullCalendarWidget: React.FC = () => {
 							</div>
 						))}
 					</div>
-					<div className="flex items-center mt-2 mb-2">
+					<div className="mt-2 mb-2 flex items-center">
 						<Checkbox
 							id="remove-after-drop"
 							checked={removeAfterDrop}
@@ -104,21 +104,21 @@ const FullCalendarWidget: React.FC = () => {
 						</label>
 					</div>
 				</Card>
-				<Card className="p-4 flex flex-col gap-2">
-					<h3 className="font-semibold mb-2">Create Event</h3>
-					<div className="flex gap-2 mb-2">
+				<Card className="flex flex-col gap-2 p-4">
+					<h3 className="mb-2 font-semibold">Create Event</h3>
+					<div className="mb-2 flex gap-2">
 						{COLORS.map((c) => (
 							<button
 								key={c.value}
-								className={`w-6 h-6 rounded-full border-2 ${newEventColor.value === c.value
-									? 'border-black'
-									: 'border-transparent'} ${c.className}`}
+								className={`h-6 w-6 rounded-full border-2 ${
+									newEventColor.value === c.value ? 'border-black' : 'border-transparent'
+								} ${c.className}`}
 								onClick={() => setNewEventColor(c)}
 								title={c.name}
 							/>
 						))}
 					</div>
-					<div className="flex gap-2 mb-2">
+					<div className="mb-2 flex gap-2">
 						<Input
 							type="text"
 							className="flex-1"
@@ -139,7 +139,7 @@ const FullCalendarWidget: React.FC = () => {
 					`}
 				</style>
 				<FullCalendar
-					plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+					plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 					headerToolbar={{
 						left: 'prev,next today',
 						center: 'title',
