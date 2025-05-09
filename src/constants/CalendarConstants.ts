@@ -1,9 +1,9 @@
 export const COLORS = [
-	{ name: 'Primary', className: 'bg-primary', value: 'var(--color-primary, #3b82f6)' },
-	{ name: 'Success', className: 'bg-green-500', value: 'var(--color-success, #22c55e)' },
-	{ name: 'Warning', className: 'bg-yellow-500', value: 'var(--color-warning, #fbbf24)' },
-	{ name: 'Danger', className: 'bg-red-500', value: 'var(--color-danger, #ef4444)' },
-	{ name: 'Muted', className: 'bg-gray-500', value: 'var(--color-muted,rgb(97, 98, 100))' }
+	{ name: 'Primary', className: 'bg-primary', value: 'var(--color-primary)' },
+	{ name: 'Success', className: 'bg-green-600', value: 'var(--color-success)' },
+	{ name: 'Warning', className: 'bg-yellow-500', value: 'var(--color-warning)' },
+	{ name: 'Danger', className: 'bg-red-600', value: 'var(--color-error)' },
+	{ name: 'Muted', className: 'bg-secondary', value: 'var(--color-bg-muted)' }
 ];
 
 export const INITIAL_EVENTS = [
