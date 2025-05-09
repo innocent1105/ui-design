@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -10,12 +9,43 @@ import logoLightTheme from '@/assets/logo-light-theme.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { useNavigate } from 'react-router';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage
+} from '@/components/ui/form';
+import RequiredAsterisk from '@/components/required-asterisk';
+
+const loginSchema = z.object({
+  email: z.string().min(1, 'Email is required').email('Invalid email'),
+  password: z.string().min(1, 'Password is required'),
+  remember: z.boolean().optional()
+});
+
+type LoginFormValues = z.infer<typeof loginSchema>;
+
 const Login = () => {
   const { theme, setTheme } = useTheme();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
   const navigate = useNavigate();
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      remember: false
+    }
+  });
+
+  function onSubmit(data: LoginFormValues) {
+    navigate('/');
+  }
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-background">
       <div className="absolute top-4 right-4">
@@ -28,40 +58,76 @@ const Login = () => {
           {theme === 'dark' ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
         </Button>
       </div>
-      <img
-        src={theme === 'dark' ? logoLightTheme : logoDarkTheme}
-        alt="Logo"
-        className="mb-4 w-32 md:w-32 transition-all duration-200"
-      />
       <Card className="w-full max-w-md mx-auto shadow-lg">
         <CardContent className="flex flex-col gap-4 py-6">
           <div className="flex flex-col items-center gap-2">
+            <img
+              src={theme === 'dark' ? logoLightTheme : logoDarkTheme}
+              alt="Logo"
+              className="mb-2 w-32 md:w-32 transition-all duration-200"
+            />
             <p className="text-muted-foreground text-sm">Sign in to start your session</p>
           </div>
-          <form className="flex flex-col gap-3">
-            <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-              autoFocus
-            />
-            <Input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
-            <div className="flex items-center gap-2">
-              <Checkbox id="remember" checked={remember} onCheckedChange={checked => setRemember(checked === true)} />
-              <label htmlFor="remember" className="text-sm font-medium select-none cursor-pointer">Remember Me</label>
-            </div>
-            <Button type="submit" className="w-full" variantClassName="primary" onClick={() => {
-              navigate('/');
-            }}>Sign In</Button>
-          </form>
+          <Form {...form}>
+            <form className="flex flex-col gap-3" onSubmit={form.handleSubmit(onSubmit)}>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">Email <RequiredAsterisk /></FormLabel>
+                    <FormControl>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="Email"
+                        autoFocus
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium">Password <RequiredAsterisk /></FormLabel>
+                    <FormControl>
+                      <Input
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="remember"
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-2">
+                    <FormControl>
+                      <Checkbox
+                        id="remember"
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel htmlFor="remember" className="text-sm font-medium select-none cursor-pointer">Remember Me</FormLabel>
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full" variantClassName="primary">
+                Sign In
+              </Button>
+            </form>
+          </Form>
           <div className="flex items-center gap-2 my-2">
             <div className="flex-1 h-px bg-border" />
             <span className="text-xs text-muted-foreground">OR</span>

@@ -11,6 +11,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import RecoverPassword from './pages/RecoverPassword';
 import FAQPage from './pages/Faq/Faq';
 import CalendarPage from './pages/Calendar/Calendar';
+import Profile from './pages/Profile';
 
 function App() {
 	return (
@@ -25,9 +26,10 @@ function App() {
 					<Route path="/form-view" element={<FormView />} />
 					<Route path="/typography" element={<Typography />} />
 					<Route path="/buttons" element={<Buttons />} />
-					<Route path="/calendar" element={<CalendarPage />} />
 					<Route path="/tables" element={<Tables />} />
 					<Route path="/faq" element={<FAQPage />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/calendar" element={<CalendarPage />} />
 				</Route>
 			</Routes>
 		</Router>

@@ -48,11 +48,7 @@ const data = {
       url: '/typography',
       icon: TypeIcon
     },
-    {
-      title: 'FAQ',
-      url: '/faq',
-      icon: HelpCircle
-    },
+
     {
       title: 'Extras',
       icon: DiamondPlus,
@@ -61,6 +57,11 @@ const data = {
           title: 'Login',
           url: '/login',
           icon: LogIn
+        },
+        {
+          title: 'FAQ',
+          url: '/faq',
+          icon: HelpCircle
         },
         {
           title: 'Register',
@@ -166,7 +167,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             className={`cursor-pointer flex items-center ${selectedItem === subItem.url ? 'sidemenu-background !text-white' : !open ? 'sidemenu-icon' : 'sidemenu-icon-expanded'}`}
                           >
                             {subItem.icon && <subItem.icon />}
-                            <span className={`${!open ? 'hidden' : 'inline'} ml-2`}>{subItem.title}</span>
+                            <span className={`ml-2`}>{subItem.title}</span>
                           </SidebarMenuButton>
                         </SidebarGroup>
                       ))}
