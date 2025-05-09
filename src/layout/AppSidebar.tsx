@@ -59,11 +59,6 @@ const data = {
           icon: LogIn
         },
         {
-          title: 'FAQ',
-          url: '/faq',
-          icon: HelpCircle
-        },
-        {
           title: 'Register',
           url: '/register',
           icon: UserPlus
@@ -77,7 +72,12 @@ const data = {
           title: 'Recover Password',
           url: '/recover-password',
           icon: RotateCcw
-        }
+        },
+           {
+          title: 'FAQ',
+          url: '/faq',
+          icon: HelpCircle
+        },
       ]
     }
   ]

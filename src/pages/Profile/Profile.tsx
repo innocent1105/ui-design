@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import PageHeader from '@/components/navigation/page-header';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import ProfileSidebar from '@/components/profile/ProfileSidebar';
-import ProfileActivity from '@/components/profile/ProfileActivity';
-import ProfileTimeline from '@/components/profile/ProfileTimeline';
-import ProfileSettings from '@/components/profile/ProfileSettings';
-import type { TimelineBlock, TimelineItem } from '@/components/profile/ProfileTimeline';
+import ProfileSidebar from '@/components/profile/profile-sidebar';
+import ProfileActivity from '@/components/profile/profile-activity';
+import ProfileTimeline from '@/components/profile/profile-timeline';
+import ProfileSettings from '@/components/profile/profile-settings';
+import type { TimelineBlock } from '@/components/profile/profile-timeline';
 import profileImage from '@/assets/profile-photo.png';
 import postImage1 from '@/assets/post-image-1.png';
 import postImage2 from '@/assets/post-image-2.png';

@@ -5,13 +5,13 @@ import FormView from './pages/FormView/FormView';
 import Typography from './pages/Typography/Typography';
 import Buttons from './pages/Buttons/Buttons';
 import Tables from './pages/Tables/Tables';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ForgotPassword from './pages/ForgotPassword';
-import RecoverPassword from './pages/RecoverPassword';
-import FAQPage from './pages/Faq/Faq';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import RecoverPassword from './pages/RecoverPassword/RecoverPassword';
+import Profile from './pages/Profile/Profile';
 import CalendarPage from './pages/Calendar/Calendar';
-import Profile from './pages/Profile';
+import FAQPage from './pages/Faq/Faq';
 
 function App() {
 	return (
