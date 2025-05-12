@@ -77,7 +77,7 @@ const CalendarWidget: React.FC = () => {
 
 	return (
 		<div className="flex flex-col gap-4 lg:flex-row">
-			<div className="hidden space-y-4 lg:block lg:w-1/4">
+			<div className="space-y-4 lg:block lg:w-1/4">
 				<Card className="flex flex-col gap-2 p-4">
 					<h3 className="mb-2 font-semibold">Draggable Events</h3>
 					<div ref={externalEventsRef}>
