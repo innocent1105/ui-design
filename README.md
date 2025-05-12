@@ -6,5 +6,13 @@ For more information please check the [Pills of Zen Admin Theme Docs](https://mo
 
 You can check the [Live Demo Here](https://mobisoftinfotech.com/tools/pills-of-zen-admin-theme-demo/)
 
+## Inspiration
+
+The design and functionality of few pages within the Pills of Zen Admin Theme draw inspiration from AdminLTE.
+
+- [AdminLTE Official Website](https://adminlte.io/)
+- [AdminLTE GitHub Repository](https://github.com/ColorlibHQ/AdminLTE)
+
 **License**: MIT
+
 

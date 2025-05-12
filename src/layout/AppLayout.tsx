@@ -2,7 +2,7 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/layout/AppSidebar';
 import { Outlet } from 'react-router';
 import AppHeader from './AppHeader';
-import AppFooter from '@/components/layout/AppFooter';
+import AppFooter from '@/components/layout/app-footer';
 
 const AppLayout: React.FC = () => {
 	return (
