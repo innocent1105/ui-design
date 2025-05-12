@@ -22,7 +22,6 @@ import {
 
 const dropdownMenuItems = [
   { label: 'Profile', icon: UserIcon, link: '/profile' },
-  { label: 'Settings', icon: SettingsIcon },
   { label: 'Logout', icon: LogOutIcon, link: '/login' }
 ];
 

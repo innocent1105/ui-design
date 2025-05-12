@@ -11,35 +11,35 @@ import postImage1 from '@/assets/post-image-1.png';
 import postImage2 from '@/assets/post-image-2.png';
 
 const user = {
-  name: 'Nina Mcintire',
-  title: 'Software Engineer',
+  name: 'Julia Williams',
+  title: 'Senior Frontend Developer',
   avatar: profileImage,
-  followers: 1322,
-  following: 543,
-  friends: 13287,
-  education: 'B.S. in Computer Science from the University of Tennessee at Knoxville',
-  location: 'Malibu, California',
-  skills: 'UI Design Coding Javascript PHP Node.js',
-  notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.'
+  followers: 2845,
+  following: 892,
+  friends: 15678,
+  education: 'M.S. in Computer Science from Stanford University',
+  location: 'San Francisco, California',
+  skills: 'React TypeScript Next.js GraphQL UI/UX Design',
+  notes: 'Passionate about building scalable web applications and contributing to open-source projects. Currently working on improving developer experience and accessibility in web development.'
 };
 
 const activityFeed = [
   {
-    user: 'Jonathan Burke Jr.',
+    user: 'Emma Thompson',
     type: 'post',
-    time: '7:30 PM today',
-    content: 'Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.'
+    time: '2 hours ago',
+    content: 'Just completed a major refactoring of our component library using React Server Components. The performance improvements are incredible! 🚀 #WebDev #React #Performance'
   },
   {
-    user: 'Sarah Ross',
+    user: 'Michael Rodriguez',
     type: 'message',
-    time: '3 days ago',
-    content: 'Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.'
+    time: '1 day ago',
+    content: 'Thanks for your help with the TypeScript migration! Your suggestions on handling complex type definitions were exactly what we needed. Looking forward to collaborating on more projects.'
   },
   {
-    user: 'Adam Jones',
+    user: 'Sophie Anderson',
     type: 'photos',
-    time: '5 days ago',
+    time: '3 days ago',
     photos: [
       postImage1,
       postImage2
@@ -49,40 +49,40 @@ const activityFeed = [
 
 const timeline: TimelineBlock[] = [
   {
-    date: '10 Feb. 2014',
+    date: '15 Mar. 2024',
     items: [
       {
         type: 'email',
-        user: 'Support Team',
-        content: 'Your order has been shipped, we will send you a tracking number shortly.',
-        time: '12:05'
+        user: 'GitHub',
+        content: 'Your pull request #1234 has been merged into the main branch.',
+        time: '09:30'
       },
       {
         type: 'friend',
-        user: 'Sarah Young',
-        content: 'accepted your friend request',
-        time: '5 mins ago'
+        user: 'David Kim',
+        content: 'accepted your connection request',
+        time: '2 hours ago'
       },
       {
         type: 'comment',
-        user: 'Jay White',
-        content: 'Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!',
-        time: '27 mins ago'
+        user: 'Lisa Wang',
+        content: 'Great presentation at the React Conf! Your insights on state management were really helpful. Looking forward to implementing these patterns in our project.',
+        time: '5 hours ago'
       }
     ]
   },
   {
-    date: '3 Jan. 2014',
+    date: '10 Mar. 2024',
     items: [
       {
         type: 'photos',
-        user: 'Mina Lee',
-        content: 'uploaded new photos',
+        user: 'Team Offsite',
+        content: 'shared photos from the annual team retreat',
         photos: [
           postImage1,
           postImage2,
         ],
-        time: '2 days ago'
+        time: '3 days ago'
       }
     ]
   }
