@@ -9,7 +9,7 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import RequiredAsterisk from '@/components/required-asterisk';
 const forgotSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Invalid email')
@@ -79,12 +79,12 @@ const ForgotPassword = () => {
 						</form>
 					</Form>
 					<div className="flex flex-col gap-1 text-sm text-center mt-2">
-						<a href="/login" className="text-blue-600">
+						<Link to="/login" className="text-blue-600">
 							Remember your password? Login
-						</a>
-						<a href="/register" className="text-blue-600">
+						</Link>
+						<Link to="/register" className="text-blue-600">
 							Register a new account
-						</a>
+						</Link>
 					</div>
 				</CardContent>
 			</Card>
