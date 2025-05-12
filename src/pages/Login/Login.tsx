@@ -8,7 +8,7 @@ import logoDarkTheme from '@/assets/logo-dark-theme.svg';
 import logoLightTheme from '@/assets/logo-light-theme.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -142,12 +142,12 @@ const Login = () => {
 						</Button>
 					</div>
 					<div className="flex flex-col gap-1 text-sm text-center mt-2">
-						<a href="/forgot-password" className="text-blue-600">
+						<Link to="/forgot-password" className="text-blue-600">
 							I forgot my password
-						</a>
-						<a href="/register" className="text-blue-600">
+						</Link>
+						<Link to="/register" className="text-blue-600">
 							Register a new account
-						</a>
+						</Link>
 					</div>
 				</CardContent>
 			</Card>

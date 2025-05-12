@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import RequiredAsterisk from '@/components/required-asterisk';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const recoverSchema = z
 	.object({
@@ -107,9 +107,9 @@ const RecoverPassword = () => {
 						</form>
 					</Form>
 					<div className="flex flex-col gap-1 text-sm text-center mt-2">
-						<a href="/login" className="text-blue-600">
+						<Link to="/login" className="text-blue-600">
 							Login
-						</a>
+						</Link>
 					</div>
 				</CardContent>
 			</Card>
