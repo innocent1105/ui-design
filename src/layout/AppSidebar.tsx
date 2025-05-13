@@ -101,8 +101,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   };
 
   useEffect(() => {
-    setSelectedItem(window.location.pathname);
-  }, [window.location.pathname]);
+    const currentPath = location.hash.replace('#', '') || '/';
+    setSelectedItem(currentPath);
+  }, [location.pathname]);
+
+
 
   const renderLogo = () => {
     if (isMobile || open) {
