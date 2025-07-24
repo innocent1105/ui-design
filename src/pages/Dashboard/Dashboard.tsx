@@ -7,8 +7,40 @@ import AreaChartComponent from '@/components/dashboard/area-chart-component';
 import RevenueCard from '@/components/dashboard/revenue-card';
 import SubscriptionOverviewCard from '@/components/dashboard/subscription-overview-card';
 import CreditScoreCard from '@/components/dashboard/credit-score-chart';
+import { useNavigate } from "react-router-dom";
+
+import { useEffect } from 'react';
+import Localbase from 'localbase';
+
+
+
+
+
+
+
+
 
 const Dashboard = () => {
+	const db = new Localbase('precisionDB');
+	const navigate = useNavigate();
+
+	
+	const SystemAuth = async (db) =>{
+		const [user] = await db.collection('user').get();
+
+		console.log(user);
+		if(user.status != "success"){
+			navigate('/login');
+		}else{
+			console.log("online auth here!");
+		}
+	}
+
+	useEffect(() => {
+		SystemAuth(db);
+	}, []);
+	 
+	
 	return (
 		<>
 			<PageHeader
@@ -16,11 +48,16 @@ const Dashboard = () => {
 					{ label: 'Home', href: '/' },
 					{ label: 'Dashboard', href: '/' }
 				]}
-				heading="Hello Everyone!"
+				heading="Hello, Innocent"
 			/>
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 				<MetricsCard />
 			</div>
+
+			
+			<CardWrapper className="col-span-1 lg:col-span-4" title="Overall Revenue">
+				<AreaChartComponent />
+			</CardWrapper>
 
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
 				<CardWrapper className="col-span-1 lg:col-span-4" title="Monthly Target">
@@ -46,9 +83,6 @@ const Dashboard = () => {
 				</CardWrapper>
 			</div>
 
-			<CardWrapper className="col-span-1 lg:col-span-4" title="Overall Revenue">
-				<AreaChartComponent />
-			</CardWrapper>
 		</>
 	);
 };

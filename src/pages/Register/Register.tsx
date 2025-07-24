@@ -14,6 +14,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import RequiredAsterisk from '@/components/required-asterisk';
 import { useNavigate, Link } from 'react-router';
+import axios from 'axios';
+import {useEffect, useState } from 'react';
+
+
+
 
 const registerSchema = z
 	.object({
@@ -33,6 +38,8 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 const Register = () => {
 	const { theme, setTheme } = useTheme();
 	const navigate = useNavigate();
+	const BASE_URL : any = "http://localhost/precision-v2/UI-DESIGN/backend/";
+	
 	const form = useForm<RegisterFormValues>({
 		resolver: zodResolver(registerSchema),
 		defaultValues: {
@@ -44,9 +51,27 @@ const Register = () => {
 		}
 	});
 
-	function onSubmit(data: RegisterFormValues) {
-		console.log(data);
-		navigate('/login');
+	const [submittingForm, setSubmittingForm] = useState(false);
+	const [formErrorState, setFormErrorState] = useState(false);
+	const [requestError, setRequestError] = useState("");
+
+	async function onSubmit(data: RegisterFormValues) {
+
+
+		setSubmittingForm(true);
+		setFormErrorState(false);
+
+		const res : any = await axios.post(`${BASE_URL}/index.php`, {data});
+
+		if(res.data.success){
+			setSubmittingForm(false);
+			navigate('/login');
+		}else{
+			let formError = res.data.message;
+			setRequestError(formError);
+			setFormErrorState(true);
+			console.log(formError);
+		}
 	}
 
 	return (
@@ -72,6 +97,13 @@ const Register = () => {
 						<p className="text-muted-foreground text-sm">Register a new account</p>
 					</div>
 					<Form {...form}>
+						{formErrorState ? (
+							<div className=' border p-2 px-4 rounded border-orange-400 dark:bg-gray-900 dark:border-gray-500 bg-orange-50 text-sm font-semibold'>
+								{requestError} Hello
+							</div>
+						) : (
+							<div className=""></div>
+						)}
 						<form className="flex flex-col gap-3" onSubmit={form.handleSubmit(onSubmit)}>
 							<FormField
 								control={form.control}
@@ -170,9 +202,17 @@ const Register = () => {
 									</FormItem>
 								)}
 							/>
-							<Button type="submit" className="w-full" variantClassName="primary">
-								Register
-							</Button>
+							{submittingForm ? (
+								<Button className="w-full" variantClassName="primary">
+									Please wait...
+								</Button>
+							) : (
+								<Button type="submit" className="w-full" variantClassName="primary">
+									Register
+								</Button>
+							)}
+							
+
 						</form>
 					</Form>
 					<div className="flex items-center gap-2 my-2">

@@ -14,6 +14,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form';
 import RequiredAsterisk from '@/components/required-asterisk';
+import axios from 'axios';
+import {useEffect, useState } from 'react';
+import Localbase from 'localbase';
+
 
 const loginSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Invalid email'),
@@ -23,9 +27,13 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
+const db = new Localbase('precisionDB');
+
 const Login = () => {
 	const { theme, setTheme } = useTheme();
 	const navigate = useNavigate();
+	const BASE_URL : any = "http://localhost/precision-v2/UI-DESIGN/backend/";
+
 	const form = useForm<LoginFormValues>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
@@ -35,9 +43,32 @@ const Login = () => {
 		}
 	});
 
-	function onSubmit(data: LoginFormValues) {
-		console.log(data);
-		navigate('/');
+
+	const [submitting, setSubmitting] = useState(false);
+	const [errorState, setErrorState] = useState(false);
+	const [formRes, setFormRes] = useState("");
+
+	async function onSubmit(data: LoginFormValues) {
+		setSubmitting(true);
+
+		const res : any = await axios.post(`${BASE_URL}/login.php`, {data});
+
+		if (typeof res.data === "object" && res.data.status === "success") {
+			await db.collection('user').delete();
+			await db.collection('user').add(res.data);
+			navigate('/');
+		} else if (res.data === "error-1") {
+			setFormRes("User not found.");
+		} else if (res.data === "wrong-password") {
+			setFormRes("Incorrect password.");
+		} else if (res.data === "error-3") {
+			setFormRes("Password is required.");
+		} else {
+			setFormRes("Something went wrong.");
+		}
+		
+		console.log(res.data);
+	
 	}
 
 	return (
@@ -63,6 +94,14 @@ const Login = () => {
 						<p className="text-muted-foreground text-sm">Sign in to start your session</p>
 					</div>
 					<Form {...form}>
+						{errorState ? (
+							<div className=' border-2 rounded border-orange-400 dark:border-gray-500 bg-orange-50 dark:bg-gray-900 p-2 px-4 text-sm font-semibold'>
+								{formRes}
+							</div>
+						) : (
+							<div className=""></div>
+						)}
+						
 						<form className="flex flex-col gap-3" onSubmit={form.handleSubmit(onSubmit)}>
 							<FormField
 								control={form.control}
@@ -115,9 +154,16 @@ const Login = () => {
 									</FormItem>
 								)}
 							/>
-							<Button type="submit" className="w-full" variantClassName="primary">
-								Sign In
-							</Button>
+							{submitting ? (
+								<Button className="w-full" variantClassName="primary">
+									Please wait...
+								</Button>
+							) : (
+								<Button type="submit" className="w-full" variantClassName="primary">
+									Sign In
+								</Button>
+							)}
+				
 						</form>
 					</Form>
 					<div className="flex items-center gap-2 my-2">

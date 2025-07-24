@@ -13,6 +13,13 @@ import Profile from './pages/Profile/Profile';
 import CalendarPage from './pages/Calendar/Calendar';
 import FAQPage from './pages/Faq/Faq';
 
+import ImportData from './pages/Import/Import';
+import ProjectSettingsScreen from './pages/ProjectSettings/ProjectSettings';
+import ForecastTargetScreen from './pages/DataTraining/DataTraing';
+import TrainingScreen from './pages/TrainingScreen/Training';
+import PredictionScreen from './pages/Predictions/Prediction';
+
+
 function App() {
 	return (
 		<Router>
@@ -23,6 +30,13 @@ function App() {
 				<Route path="/recover-password" element={<RecoverPassword />} />
 				<Route element={<AppLayout />}>
 					<Route index path="/" element={<Dashboard />} />
+					<Route path="/import-excel-data" element={<ImportData />} />
+					<Route path="/project-settings" element={<ProjectSettingsScreen />} />
+					<Route path="/data-training" element={<ForecastTargetScreen />} />
+					<Route path="/training" element={<TrainingScreen />} />
+					<Route path="/predictions" element={<PredictionScreen />} />
+
+
 					<Route path="/form-view" element={<FormView />} />
 					<Route path="/typography" element={<Typography />} />
 					<Route path="/buttons" element={<Buttons />} />

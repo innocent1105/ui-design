@@ -17,7 +17,7 @@ const dropdownMenuItems = [
 	{ label: 'Profile', icon: UserIcon, link: '/profile' },
 	{ label: 'Logout', icon: LogOutIcon, link: '/login' }
 ];
-
+ 
 const AppHeader: React.FC = () => {
 	const { theme, setTheme } = useTheme();
 	const [ searchQuery, setSearchQuery ] = useState('');

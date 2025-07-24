@@ -2,6 +2,7 @@ import { statsData } from '@/constants/ChartConstants';
 import CardWrapper from '../card-wrapper';
 import { Button } from '../ui/button';
 
+console.log(statsData);
 const MetricsCard = () => {
 	return (
 		<>
@@ -13,9 +14,9 @@ const MetricsCard = () => {
 							<p className="mb-2 text-2xl font-bold">{item.value}</p>
 							<p className="text-muted-foreground text-sm">
 								<span className={`${Number(item.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>
-									{item.change}%
+									{item.change}
 								</span>{' '}
-								from last month
+								{item.message}
 							</p>
 						</div>
 						<Button variant="default" size="icon" variantClassName={'primary'}>

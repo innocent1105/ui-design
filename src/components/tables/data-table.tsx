@@ -61,7 +61,9 @@ const DataTable = ({
 									<h6 className="text-sm font-medium">{employee.age}</h6>
 								</TableCell>
 								<TableCell>
-									<h6 className="text-sm font-medium">{format(employee.doj, 'dd MMM yyyy')}</h6>
+									<h6 className="text-sm font-medium">
+										{format(new Date(employee.doj), 'dd MMM yyyy')}
+									</h6>
 								</TableCell>
 								<TableCell>
 									<CustomSelect

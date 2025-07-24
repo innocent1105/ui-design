@@ -13,7 +13,7 @@
 	--primary: #6180e4;
 	--primary-foreground: #e8e8e8;
 	--secondary: #616a72;
-	--secondary-foreground: #f5f6f6;
+	--secondary-foreground: #ffffff;
 	--muted: #f5f4f4;
 	--muted-foreground: #71717b;
 	--accent: #f5f4f4;
@@ -41,8 +41,8 @@
 	--calendar-header-fg: var(--card-foreground);
 	--color-success: #00a63e;
 	--color-warning: #f0b100;
-	--color-error: #e7000b;
-	--color-info: #0000ff;
+	--color-error: #f34850;
+	--color-info: #4949ff;
 	--color-bg-muted: #616a72;
 
 }

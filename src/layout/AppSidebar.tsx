@@ -29,6 +29,11 @@ const data = {
       items: []
     },
     {
+      title: 'Import data',
+      url: '/import-excel-data',
+      icon: Table
+    },
+    {
       title: 'Form View',
       url: '/form-view',
       icon: FormInputIcon
