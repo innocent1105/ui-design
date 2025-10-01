@@ -6,10 +6,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: POST");
 
-// Receive JSON input
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Check if required fields exist
 if (!isset($data['user_id']) || !isset($data['request']) || !isset($data['data'])) {
     echo json_encode([
         "status" => "error",

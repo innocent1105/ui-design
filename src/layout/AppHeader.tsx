@@ -32,16 +32,12 @@ const AppHeader: React.FC = () => {
 			<div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
 				<SidebarTrigger className="-ml-1 cursor-pointer" />
 				<Separator orientation="vertical" className="!bg-secondary mx-2 data-[orientation=vertical]:h-4" />
-				<CustomSearch
-					value={searchQuery}
-					onChange={handleSearch}
-					placeholder="Type keywords..."
-					className="!border-border w-full !border-[1px]"
-					onKeyDownEnter={() => {
-						navigate(`/`);
-						setSearchQuery('');
-					}}
-				/>
+
+				<div className="border flex gap-2 ">
+					<div className="border p-2"></div>
+					<div className="border p-2"></div>
+					<div className="border p-2"></div>
+				</div>
 			</div>
 
 			<div className="flex items-center gap-2 pr-2 lg:px-6">
@@ -61,15 +57,15 @@ const AppHeader: React.FC = () => {
 							className="ml-2 flex h-8 min-w-[48px] items-center rounded-full"
 						>
 							<div className="bg-primary ml-[-11px] flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white">
-								MI
+								
 							</div>
 							<ChevronDownIcon className="text-muted-foreground h-2 w-2" />
 						</Button>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent align="end" className="min-w-[180px] px-3 py-2">
 						<div className="border-muted mb-2 border-b px-2 pt-1 pb-2">
-							<div className="text-foreground text-sm font-semibold">Mobisoft Infotech</div>
-							<div className="text-muted-foreground text-xs">business@mobisoftinfotech.com</div>
+							<div className="text-foreground text-sm font-semibold">Cynite Technologies</div>
+							<div className="text-muted-foreground text-xs">Cynitetechnologies@gmail.com</div>
 						</div>
 						{dropdownMenuItems.map(({ label, icon: Icon, link }) => (
 							<DropdownMenuItem key={label} onClick={() => navigate(link || '')}>

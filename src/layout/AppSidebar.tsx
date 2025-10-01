@@ -1,4 +1,4 @@
-import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle, Calendar } from 'lucide-react';
+import { Table, FormInputIcon, ToggleLeftIcon, TypeIcon,FolderPlus,Sparkle, LayoutDashboard, ChevronDown, ChevronUp, LogIn, UserPlus, KeyRound, DiamondPlus, RotateCcw, HelpCircle, Calendar } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   Sidebar,
@@ -23,68 +23,95 @@ const data = {
       isActive: true
     },
     {
-      title: 'Tables',
-      url: '/tables',
+      title: 'TaxScope AI',
+      // title: 'Precision AI',
+      url: '/precision',
+      icon: Sparkle,
+      isActive: true
+    },
+    // {
+    //   title: 'Tables',
+    //   url: '/tables',
+    //   icon: Table,
+    //   items: []
+    // },
+    {
+      title: 'Dataset',
+      url: '/data-tables',
       icon: Table,
       items: []
     },
     {
-      title: 'Import data',
+      title: 'Projects',
+      url: '/projects',
+      icon: FolderPlus,
+      items: []
+    },
+    {
+      title: 'Timeseries data',
       url: '/import-excel-data',
       icon: Table
     },
     {
-      title: 'Form View',
-      url: '/form-view',
-      icon: FormInputIcon
-    },
-    {
-      title: 'Buttons',
-      url: '/buttons',
-      icon: ToggleLeftIcon
-    },
-    {
-      title: 'Calendar',
-      url: '/calendar',
-      icon: Calendar
-    },
-    {
-      title: 'Typography',
-      url: '/typography',
-      icon: TypeIcon
-    },
-
-    {
-      title: 'Extras',
-      icon: DiamondPlus,
-      items: [
-        {
-          title: 'Login',
-          url: '/login',
-          icon: LogIn
-        },
-        {
-          title: 'Register',
-          url: '/register',
-          icon: UserPlus
-        },
-        {
-          title: 'Forgot Password',
-          url: '/forgot-password',
-          icon: KeyRound
-        },
-        {
-          title: 'Recover Password',
-          url: '/recover-password',
-          icon: RotateCcw
-        },
-           {
-          title: 'FAQ',
-          url: '/faq',
-          icon: HelpCircle
-        },
-      ]
+      title: 'Import logic data',
+      url: '/import-training-data',
+      icon: Table
     }
+
+
+
+    // {
+    //   title: 'Form View',
+    //   url: '/form-view',
+    //   icon: FormInputIcon
+    // },
+    // {
+    //   title: 'Buttons',
+    //   url: '/buttons',
+    //   icon: ToggleLeftIcon
+    // },
+    // {
+    //   title: 'Calendar',
+    //   url: '/calendar',
+    //   icon: Calendar
+    // },
+    // {
+    //   title: 'Typography',
+    //   url: '/typography',
+    //   icon: TypeIcon
+    // },
+
+    // {
+    //   title: 'Extras',
+    //   icon: DiamondPlus,
+    //   items: [
+    //     {
+    //       title: 'Login',
+    //       url: '/login',
+    //       icon: LogIn
+    //     },
+    //     {
+    //       title: 'Register',
+    //       url: '/register',
+    //       icon: UserPlus
+    //     },
+    //     {
+    //       title: 'Forgot Password',
+    //       url: '/forgot-password',
+    //       icon: KeyRound
+    //     },
+    //     {
+    //       title: 'Recover Password',
+    //       url: '/recover-password',
+    //       icon: RotateCcw
+    //     },
+    //        {
+    //       title: 'FAQ',
+    //       url: '/faq',
+    //       icon: HelpCircle
+    //     },
+    //   ]
+    // }
   ]
 };
 

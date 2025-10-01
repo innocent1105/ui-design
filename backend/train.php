@@ -1,21 +1,16 @@
 <?php
-
-// === CORS HEADERS ===
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-// === Handle preflight requests ===
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// === Setup ===
 include("connection.php");
 header("Content-Type: application/json");
 
-// === Read and decode raw input ===
 $rawInput = file_get_contents("php://input");
 $data = json_decode($rawInput, true);
 
@@ -25,120 +20,100 @@ if (!$data) {
     exit();
 }
 
+// === Extract user info ===
 $user_data = $data['user_data']['data'];
-$user_id = $user_data['user_id'];
-$email = $user_data['email'];
-$status = $user_data['status'];
+$user_id   = $user_data['user_id'] ?? null;
+$email     = $user_data['email'] ?? null;
+$status    = $user_data['status'] ?? null;
 
-function cleanAndPrepareForProphet($ds_raw, $y_raw){
-    $cleaned_ds = [];
-    $cleaned_y = [];
-
-    for ($i = 0; $i < count($ds_raw); $i++) {
-        $val = $ds_raw[$i];
-        $parsed = null;
-
-        // Try to parse date directly
-        if (strtotime($val)) {
-            $parsed = date('Y-m-d', strtotime($val));
-        }
-        // Check if it's just a year like "2022"
-        elseif (ctype_digit($val) && strlen($val) == 4) {
-            $parsed = $val . '-01-01';
-        }else{
-            $parsed = 2025 . '-01-01'; 
-        }
-
-        // Add only if ds and y are valid
-        $y_val = $y_raw[$i];
-        if ($parsed !== null && is_numeric($y_val)) {
-            $cleaned_ds[] = $parsed;
-            $cleaned_y[] = (float) $y_val;
-        }else{
-            $cleaned_ds[] = $parsed;
-            preg_match('/\d+(\.\d+)?/', $y_val, $y_val);
-            $cleaned_y[] = (float) $y_val; 
-        }
-    }
-
-    // Combine into structured array (like a DataFrame)
+function cleanAndPrepareForProphet($ds_raw, $y_raw) {
     $data = [];
-    for ($i = 0; $i < count($cleaned_ds); $i++) {
-        $data[] = [
-            'ds' => $cleaned_ds[$i],
-            'y' => $cleaned_y[$i]
-        ];
+
+    $maxIndex = min(count($ds_raw), count($y_raw));
+
+    for ($i = 0; $i < $maxIndex; $i++) {
+        $dateVal = trim($ds_raw[$i]);
+        $yVal    = trim($y_raw[$i]);
+
+        if (strtotime($dateVal)) {
+            $parsedDate = date('Y-m-d', strtotime($dateVal));
+        } elseif (ctype_digit($dateVal) && strlen($dateVal) == 4) {
+            $parsedDate = $dateVal . '-01-01';
+        } else {
+            continue; // skip invalid date rows
+        }
+
+        // Parse numeric value
+        if (!is_numeric($yVal)) {
+            preg_match('/\d+(\.\d+)?/', $yVal, $matches);
+            $yVal = $matches[0] ?? null;
+        }
+
+        if ($parsedDate && is_numeric($yVal)) {
+            $data[] = [
+                'ds' => $parsedDate,
+                'y'  => (float)$yVal
+            ];
+        }
     }
 
-    // Sort by 'ds' date
-    usort($data, function($a, $b) {
-        return strtotime($a['ds']) - strtotime($b['ds']);
-    });
+    // Sort chronologically
+    usort($data, fn($a, $b) => strtotime($a['ds']) - strtotime($b['ds']));
 
     return $data;
 }
 
-if($status == "success"){
-        
-    // === Extract key fields ===
-    $targetColumnId = $data['target']['id'];
-    $targetColumn = $data['targetColumn']['data'];
-    $datetimeId = $data['datetime']['id'];
-    $datetime = $data['import_data']['data']['data'][$datetimeId];
+if ($status === "success") {
+
+    $targetColumn = $data['targetColumn']['data'] ?? [];
+    $datetime = $data['import_data']['data']['data'][$data['datetime']['id']] ?? [];
+
+    $main_dataset_ = json_encode($data['import_data']['data']['data'] ?? []);
 
 
+   
 
-    // === Remove headers like "Values" or "Timeline"
     array_shift($targetColumn);
     array_shift($datetime);
+    $alignedDates = [];
+    $alignedValues = [];
+    $maxIndex = min(count($targetColumn), count($datetime));
 
-
-    // === Decode projectData ===
-    $projectDataJson = $data['project_data']['data'];
-    $projectData = json_decode($projectDataJson, true);
-
-    $projectDetails = $projectData['projectDetails'] ?? [];
-    $forecastSettings = $projectData['forecastSettings']['settings'] ?? [];
-
-    $projectId = rand(1000, 7000);
-    $ProjectName = $projectDetails['projectName'];
-    $interval = 5;
-
-
-    $cleanDataset = [];
-    $cleanDatetime = [];
-
-    for ($i = 0; $i < count($targetColumn); $i++) {
-        if (!is_null($targetColumn[$i]) && isset($datetime[$i])) {
-            $cleanDataset[] = $targetColumn[$i];
-            $cleanDatetime[] = $datetime[$i];
+    for ($i = 0; $i < $maxIndex; $i++) {
+        if (is_numeric($targetColumn[$i]) && strtotime($datetime[$i])) {
+            $alignedValues[] = (float)$targetColumn[$i];
+            $alignedDates[]  = $datetime[$i];
         }
     }
 
+
     file_put_contents('debug.log', json_encode([
-        'datetime_raw' => $cleanDatetime,
-        'values_raw' => $cleanDataset
+        'aligned_dates_count' => count($alignedDates),
+        'aligned_values_count' => count($alignedValues),
+        'sample_dates' => array_slice($alignedDates, 0, 5),
+        'sample_values' => array_slice($alignedValues, 0, 5)
     ], JSON_PRETTY_PRINT));
+
     
+    $clean_dataset = cleanAndPrepareForProphet($alignedDates, $alignedValues);
 
-    $clean_dataset = cleanAndPrepareForProphet($cleanDatetime, $cleanDataset);
-
+    $projectData    = json_decode($data['project_data']['data'] ?? '{}', true);
+    $projectDetails = $projectData['projectDetails'] ?? [];
+    $projectId      = rand(1000, 7000);
+    $ProjectName    = $projectDetails['projectName'] ?? 'Untitled Project';
+    $projectDes     = $projectDetails['projectDes'] ?? '';
 
     $payload = [
-        "system" => "Precision-ai",
-        "dataset" => $cleanDataset,
-        "date_values" => $cleanDatetime,
-        "project_id" => $projectId
+        "system"      => "Precision-ai",
+        "dataset"     => $alignedValues,
+        "date_values" => $alignedDates,
+        "project_id"  => $projectId
     ];
 
-
-    $ch = curl_init("http://localhost:7000/api");
+    $ch = curl_init("http://127.0.0.1:7000/api");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json'
-    ]);
-
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
@@ -146,51 +121,54 @@ if($status == "success"){
     http_response_code($httpCode);
 
     $responseData = json_decode($response, true);
-
     if (!$responseData) {
         echo json_encode(["error" => "Invalid JSON response from Python"]);
         exit();
     }
 
-
+    // === Save model and project ===
     $accuracy     = $responseData['message']['accuracy'];
     $mape         = $responseData['message']['mape'];
     $modelName    = $responseData['message']['model_name'];
     $modelType    = $responseData['message']['model_type'];
     $forecastData = $responseData['message']['forecasts'];
+    $model_id     = (rand(20000, 700000) / 4) * rand(100, 500);
 
-    $model_id = (rand(20000, 700000) / 4) * rand(100, 500);
+    $clean_dataset = json_encode($clean_dataset);
 
-    $sql = "insert into models (user_id, model_id, model_name, model_type) values ('$user_id', '$model_id', '$modelName', '$modelType')";
-    $result = mysqli_query($con, $sql);
+    $sql = "INSERT INTO models (user_id, model_id, model_name, model_type, accuracy, metric, training_dataset) 
+            VALUES ('$user_id', '$model_id', '$modelName', '$modelType', '$accuracy', '$mape', '$clean_dataset')";
+    if (mysqli_query($con, $sql)) {
+        $qry = "INSERT INTO projects (user_id, project_name, project_des, model_name, model_id) 
+                VALUES ('$user_id', '$ProjectName', '$projectDes', '$modelName', '$model_id')";
+        if (mysqli_query($con, $qry)) {
 
-    if($result){
-        echo json_encode([
-            "accuracy" => $accuracy,
-            "mape" => $mape,
-            "model_name" => $modelName,
-            "model_id" => $model_id,
-            "model_type" => $modelType,
-            "forecasts" => $forecastData,
-            "dataset" => $clean_dataset,
-            "status" => "success"
-        ]);
-        exit; 
-    }else{
-        echo json_encode([
-            "status" => "error - failed to save model"
-        ]);
-        exit; 
+            $save_dataset = "insert into datasets (user_id, model_id, dataset, dataset_type)
+                values ('$user_id', '$model_id', '$main_dataset_', 'excel-data') 
+            ";
+            $save_result = mysqli_query($con, $save_dataset);
+            if ($save_result) {
+                echo json_encode([
+                    "accuracy"   => $accuracy,
+                    "mape"       => $mape,
+                    "model_name" => $modelName,
+                    "model_id"   => $model_id,
+                    "model_type" => $modelType,
+                    "forecasts"  => $forecastData,
+                    "dataset"    => $clean_dataset,
+                    "status"     => "success"
+                ]);
+            }
+
+
+           
+        } else {
+            echo json_encode(["status" => "error - failed to save project"]);
+        }
+    } else {
+        echo json_encode(["status" => "error - failed to save model"]);
     }
 
-}else{
-    echo json_encode("unknown user");
-    exit;
+} else {
+    echo json_encode(["status" => "unknown user"]);
 }
-
-
-
-
-
-
-

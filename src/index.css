@@ -12,16 +12,16 @@
 	--popover-foreground: #0b0809;
 	--primary: #6180e4;
 	--primary-foreground: #e8e8e8;
-	--secondary: #616a72;
+	--secondary: #6180e4;
 	--secondary-foreground: #ffffff;
 	--muted: #f5f4f4;
-	--muted-foreground: #71717b;
+	--muted-foreground: #8367fd;
 	--accent: #f5f4f4;
 	--accent-foreground: #1b1718;
 	--destructive: #e7000b;
-	--border: #e7e3e4;
+	--border: #e3e4e7;
 	--input: #e7e3e4;
-	--ring: #9f9fa9;
+	--ring: #b2a9d9;
 	--sidebar: #f5f5f5;
 	--sidebar-foreground: #0b0809;
 	--sidebar-primary: #6180e4;
@@ -31,7 +31,7 @@
 	--sidebar-border: #e7e3e4;
 	--sidebar-ring: oklch(0.705 0.015 286.067);
 	--sidebar-menu-icon: #ededed;
-	--linear-gradient: linear-gradient(to right, #5a81ea, #d56676);
+	--linear-gradient: linear-gradient(to right, #5a81ea, #AFDBF5);
 	--chart-1: #2563eb;
 	--chart-2: #60a8fb;
 	--chart-3: #3b86f7;
@@ -43,7 +43,7 @@
 	--color-warning: #f0b100;
 	--color-error: #f34850;
 	--color-info: #4949ff;
-	--color-bg-muted: #616a72;
+	--color-bg-muted: #F0E68C;
 
 }
 
@@ -59,7 +59,7 @@
 	--secondary-foreground: #f5f6f6;
 	--muted: #2a2627;
 	--muted-foreground: #9f9fa9;
-	--accent: #2a2627;
+	--accent: #121212;
 	--accent-foreground: #fafafa;
 	--destructive: #ff6467;
 	--border: #ffffff1a;
@@ -71,7 +71,7 @@
 	--sidebar-accent: #2a2627;
 	--sidebar-accent-foreground: #fafafa;
 	--sidebar-border: #ffffff1a;
-	--sidebar-ring: #71717b;
+	--sidebar-ring: rgb(137, 137, 137);
 	--sidebar-menu-icon: #282828;
 	--chart-1: #2563eb;
 	--chart-2: #60a8fb;
@@ -130,7 +130,7 @@
 }
 
 .heading {
-	background: -webkit-linear-gradient(45deg, #5a81ea, #d56676);
+	background: -webkit-linear-gradient(45deg, #3662db, #AFDBF5);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
@@ -347,3 +347,51 @@
 		color: var(--primary-foreground) !important;
 	}
 }
+
+.ai-chat-box{
+	height: 70vh;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for ai-chat-box */
+@layer utilities {
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px; /* width of scrollbar */
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent; /* transparent track */
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-color, #888); /* dynamic color via CSS var */
+    border-radius: 9999px; /* fully rounded */
+    transition: background 0.3s ease;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scroll-hover, #555); /* darker on hover */
+  }
+
+  /* Firefox support */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-color, #888) transparent;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

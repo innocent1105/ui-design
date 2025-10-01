@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include("./connection.php");
 header("Content-Type: application/json");
 
-// === Read and decode raw input ===
 $rawInput = file_get_contents("php://input");
 $data = json_decode($rawInput, true);
 
@@ -35,7 +34,7 @@ if ($result && $result->num_rows > 0) {
         "model_name" => $model_name
     ];
 
-    $ch = curl_init("http://127.0.0.1:5001/predict");
+    $ch = curl_init("http://127.0.0.1:7078/predict");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
     curl_setopt($ch, CURLOPT_HTTPHEADER, [

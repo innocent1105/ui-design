@@ -1,26 +1,52 @@
 import { IStatCard } from '@/types/IStatsCard';
 import { ISubscriptionData } from '@/types/ISubscriptionData';
 import { Activity, DollarSign, ShoppingCart, Users, BarChart2, TrendingUp, LineChart, Briefcase  } from 'lucide-react';
+// import useSystemAuth from '@/pages/Auth/FrontendAuth';
+import axios from 'axios';
+import {useEffect, useState } from 'react';
+import Localbase from 'localbase';
+
+
+
+
+
+
+
+
+
+
 
 export const areaChartData = [
-	{ date: '2024-06-06', desktop: 294, mobile: 0 },
-	{ date: '2024-06-07', desktop: 323, mobile: 0 },
-	{ date: '2024-06-08', desktop: 385, mobile: 0 },
-	{ date: '2024-06-09', desktop: 438, mobile: 0 },
-	{ date: '2024-06-10', desktop: 155, mobile: 0 },
-	{ date: '2024-06-11', desktop: 92, mobile: 0 },
-	{ date: '2024-06-12', desktop: 492, mobile: 0 },
-	{ date: '2024-06-13', desktop: 81, mobile: 0 },
-	{ date: '2024-06-14', desktop: 426, mobile: 0 },
-	{ date: '2024-06-15', desktop: 307, mobile: 0 },
-	{ date: '2024-06-16', desktop: 371, mobile: 0 },
-	{ date: '2024-06-17', desktop: 475, mobile: 0 },
-	{ date: '2024-06-18', desktop: 0, mobile: 170 },
-	{ date: '2024-06-19', desktop: 0, mobile: 290 },
-	{ date: '2024-06-20', desktop: 0, mobile: 450 },
-	{ date: '2024-06-21', desktop: 0, mobile: 210 },
-	{ date: '2024-06-22', desktop: 0, mobile: 270 },
+	{ date: '2024-06-06', dataset: 294, predictions: 0 },
+	{ date: '2024-06-06', dataset: 234, predictions: 0 },
+	{ date: '2024-06-06', dataset: 264, predictions: 0 },
+	{ date: '2024-06-06', dataset: 254, predictions: 0 },
+	{ date: '2024-06-06', dataset: 274, predictions: 0 },
+	{ date: '2024-06-06', dataset: 344, predictions: 0 },
+	{ date: '2024-06-06', dataset: 254, predictions: 0 },
+	{ date: '2024-06-06', dataset: 214, predictions: 0 },
+	{ date: '2024-06-06', dataset: 274, predictions: 0 },
+
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const pieChartData = [
 	{ browser: 'Chrome', visitors: 275, fill: 'var(--chart-1)' },
@@ -48,7 +74,7 @@ export const barChartData = [
 export const statsData: IStatCard[] = [
 	{
 		title: 'Forecasted Revenue',
-		value: 'K65,300.00',
+		value: '-',
 		change: '+12.4%',
 		message: " Growth trend expected",
 		icon: TrendingUp
@@ -76,6 +102,26 @@ export const statsData: IStatCard[] = [
 	}
 ];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const subscriptionData: ISubscriptionData[] = [
 	{
 		country: 'USA',
@@ -100,7 +146,7 @@ export const subscriptionData: ISubscriptionData[] = [
 export const revenueChartData = [
 	{
 		name: 'Page A',
-		uv: 4000,
+		uv: 200,
 		pv: 2400,
 		amt: 2400
 	},
@@ -113,7 +159,7 @@ export const revenueChartData = [
 	{
 		name: 'Page C',
 		uv: 2000,
-		pv: 9800,
+		pv: 500,
 		amt: 2290
 	},
 	{

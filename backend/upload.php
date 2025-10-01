@@ -34,10 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Convert images array to JSON string
     $images_json = json_encode($uploaded_image_paths);
 
-    // Insert post with image paths as JSON string
     $stmt = $con->prepare("INSERT INTO posts (user_id, post_text, location, images) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $user_id, $post_text, $location, $images_json);
 

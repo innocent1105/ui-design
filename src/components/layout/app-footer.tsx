@@ -14,14 +14,15 @@ const AppFooter: React.FC = () => {
 				<div className="flex flex-col-reverse items-center justify-between gap-8 md:flex-row">
 					<div className="w-full text-center md:text-right">
 						<p className="text-muted-foreground text-sm">
-							From {' '}
+							{/* From {' '} */} ZRA {' '} 
 							<a
-								href="https://mobisoftinfotech.com"
+								href="#"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-blue-600"
 							>
-								Cynite Technologies
+								{/* Cynite Technologies */}
+								TaxScope AI
 							</a>
 						</p>
 					</div>

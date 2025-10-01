@@ -26,6 +26,7 @@ CREATE TABLE `users` (
   `user_id` bigint(150) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `active_project` varchar(255) DEFAULT NULL,
   `phone_number` varchar(45) DEFAULT NULL,
   `whatsapp` varchar(45) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
@@ -45,7 +46,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-CREATE TABLE `project_details` (
+CREATE TABLE `projects` (
   `id` int(11) NOT NULL,
   `user_id` varchar (50) NOT NULL,
   `project_name` varchar(150) NOT NULL,
@@ -65,6 +66,44 @@ CREATE TABLE `models` (
   `model_id` varchar (50) NOT NULL,
   `model_name` varchar(150) NOT NULL,
   `model_type` varchar(255) NOT NULL,
+  `accuracy` varchar(255) NOT NULL,
+  `metric_name` varchar(255) NOT NULL,
+  `metric` varchar(255) NOT NULL,
+  `training_dataset` text (20000) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `datasets` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar (50) NOT NULL,
+  `model_id` varchar (50) NOT NULL,
+  `dataset` text (200000) NOT NULL,
+  `dataset_type` varchar (150),
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+CREATE TABLE `logic_based_datasets` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar (50) NOT NULL,
+  `model_id` varchar (50) NOT NULL DEFAULT "",
+  `dataset_name` varchar (200) NOT NULL DEFAULT "",
+  `dataset` text (200000) NOT NULL,
+  `dataset_type` varchar (150),
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+
+CREATE TABLE `ai_chats` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar (50) NOT NULL,
+  `prompt` text (20000) NOT NULL,
+  `ai_response` text (20000) NOT NULL,
+  `sender` varchar (50) NOT NULL,
+  `model_name` varchar (50) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -74,7 +113,7 @@ CREATE TABLE `predictions` (
   `user_id` varchar (50) NOT NULL,
   `model_id` varchar (50) NOT NULL,
   `predictions` longtext NOT NULL,
-  `interval` varchar(255) NOT NULL,
+  `forecast_interval` varchar(255) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

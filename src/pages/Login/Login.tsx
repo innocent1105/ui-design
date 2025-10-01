@@ -36,10 +36,10 @@ const Login = () => {
 
 	const form = useForm<LoginFormValues>({
 		resolver: zodResolver(loginSchema),
-		defaultValues: {
-			email: '',
-			password: '',
-			remember: false
+		defaultValues: { 
+			email: '', 
+			password: '', 
+			remember: false 
 		}
 	});
 
