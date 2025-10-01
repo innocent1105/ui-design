@@ -89,7 +89,7 @@ const TrainingScreen = () => {
 	const [isLastIndex, setLastIndex] = useState(false);
 	const scanDataset = ()=>{
 		if (!animationStarted.current && transformedData.length > 0) {
-			animationStarted.current = true; // ⚠️ prevent multiple loops`
+			animationStarted.current = true;
 			let currentIndex = 0;
 
 
@@ -105,10 +105,10 @@ const TrainingScreen = () => {
 				// }
 				if (currentIndex >= transformedData.length) {
 					clearInterval(interval);
-					setTimeout(() => setHighlightedIndex(null), 500); // Clear last highlight
+					setTimeout(() => setHighlightedIndex(null), 500);
 					
 				}
-			}, 700); // Adjust speed
+			}, 700); 
 		}
 	}
 
@@ -119,6 +119,7 @@ const TrainingScreen = () => {
 		scanDataset();
 		setIsTraining(true);
 	
+		console.log(data)
 		try {
 			const res = await axios.post(`${BASE_URL}train.php`, data);
 			console.log(res.data);

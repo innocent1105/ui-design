@@ -18,7 +18,10 @@ import ProjectSettingsScreen from './pages/ProjectSettings/ProjectSettings';
 import ForecastTargetScreen from './pages/DataTraining/DataTraing';
 import TrainingScreen from './pages/TrainingScreen/Training';
 import PredictionScreen from './pages/Predictions/Prediction';
-
+import ProjectsScreen from './pages/Projects/Projects';
+import Precision from './pages/PrecisionAI/Precision';
+import DataTables from './pages/DataTable/DataTables';
+import ImportExData from './pages/ExternalData/Import';
 
 function App() {
 	return (
@@ -35,6 +38,10 @@ function App() {
 					<Route path="/data-training" element={<ForecastTargetScreen />} />
 					<Route path="/training" element={<TrainingScreen />} />
 					<Route path="/predictions" element={<PredictionScreen />} />
+					<Route path="/projects" element={<ProjectsScreen />} />
+					<Route path="/precision" element={<Precision />} />
+					<Route path="/data-tables" element={<DataTables />} />
+					<Route path="/import-training-data" element={<ImportExData />} />
 
 
 					<Route path="/form-view" element={<FormView />} />

@@ -81,7 +81,7 @@ const ForecastTargetScreen = () => {
 	const processTargetCol = (tdata) => {
 		let newCol = [];
 		for (let index = 0; index < tdata.length; index++) {
-			const num = tdata[index];
+			let num = tdata[index];
 			
 			if(true){
 				if(num == 0 ){
@@ -109,12 +109,10 @@ const ForecastTargetScreen = () => {
 	}
 
 	const handleContinue = () => {
-
-		// setIsProcessing(true);
 		setColumnError("");
 
         if (targetColumnId === '' || dateColumnId === '') {
-            // alert('Please select both target and date columns.');
+            
 			setColumnError("Error : Select the target column and the date/time column.");
 			setIsProcessing(false);
             return;
@@ -127,9 +125,6 @@ const ForecastTargetScreen = () => {
         const datetime = columnHeaders[dateIndex];
     
 		const project_data = localStorage.getItem("projectData");
-        
-        
-
 		let targetDataset = process_data.data[targetColumnId];
 
 

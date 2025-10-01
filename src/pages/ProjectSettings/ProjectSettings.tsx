@@ -108,6 +108,7 @@ const ProjectSettingsScreen = () => {
       }
     };
 
+    
     localStorage.setItem("projectData", JSON.stringify(projectData));
 
 

@@ -12,7 +12,8 @@ def predict():
         # Parse incoming JSON
         data = request.get_json()
         model_name = data.get("model_name")
-        periods = int(data.get("periods", 5))  # Default to 5 if not provided
+        model_id = data.get("model_id")
+        periods = int(data.get("interval", 5))  # Default to 5 if not provided
 
         if not model_name:
             return jsonify({"error": "Model name is required."}), 400
@@ -25,12 +26,10 @@ def predict():
 
         # Load model using joblib
         model = joblib.load(model_path)
+        future = model.make_future_dataframe(periods=periods, freq='Y')
 
-        # Make future dataframe and predict
-        future = model.make_future_dataframe(periods=periods)
         forecast = model.predict(future)
 
-        # Prepare and return only the forecasted part
         result = forecast[['ds', 'yhat']].tail(periods).to_dict(orient="records")
         return jsonify({"forecast": result}), 200
 
@@ -39,4 +38,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(port=7070, debug=True)
+    app.run(port=7078, debug=True)

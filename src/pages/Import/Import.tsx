@@ -12,24 +12,19 @@ import RevenueCard from '@/components/dashboard/revenue-card';
 import SubscriptionOverviewCard from '@/components/dashboard/subscription-overview-card';
 import CreditScoreCard from '@/components/dashboard/credit-score-chart';
 import { Button } from '@/components/ui/button';
+import useSystemAuth from '../Auth/FrontendAuth'
+
 
 const ImportData = () => {
+	useSystemAuth();
+
 	const db = new Localbase('precisionDB');
 	const navigate = useNavigate();
 	const [excelData, setExcelData] = useState<any[]>([]);
     let processedColumns : Array<T> = [];
     const [processedData, setProcessedData] = useState([]);
 
-	const SystemAuth = async (db: any) => {
-		const [user] = await db.collection('user').get();
-		if (!user || user.status !== 'success') {
-			navigate('/login');
-		}
-	};
-
-	useEffect(() => {
-		SystemAuth(db);
-	}, []);
+	
 
 	const handleExcelImport = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
@@ -66,7 +61,7 @@ const ImportData = () => {
 	const handleSaveToIndexedDB = async () => {
         setTraining(true)
 
-        const import_id = Math.floor(Math.random() * 170);
+        const import_id = Math.floor(Math.random() * 1700);
 
         localStorage.setItem('import_id', import_id);
 
@@ -75,12 +70,20 @@ const ImportData = () => {
             data : excelData
         });
 
-        await db.collection('process_data').add({
-            import_id : import_id,
-            data : processedData
-        });
+        const delete_ = await db.collection('process_data').delete();
+
+        console.log("delete_ ", delete_)
+
+        if(delete_.success){
+            await db.collection('process_data').add({
+                import_id : import_id,
+                data : processedData
+            });
+            
+            navigate('/project-settings');
+        }
+
         
-        navigate('/project-settings');
 	};
 
 	return (
@@ -93,7 +96,6 @@ const ImportData = () => {
 				heading="Hello, Innocent"
 			/>
 
-			{/* Excel Import Section */}
             <CardWrapper className="mt-2 p-4 px-2 shadow-md border border-muted rounded-2xl ">
                <div className="flex gap-4 justify-between w-full">
                     <h2 className="text-lg w-full font-semibold mb-4 text-foreground">Import Excel Data</h2>
@@ -156,7 +158,6 @@ const ImportData = () => {
                             </table>
                         </div>
 
-                        {/* 👇 This is where the Train Button looks best */}
                         <div className="flex justify-end mt-4">
                             <Button
                                 onClick={handleSaveToIndexedDB}

@@ -10,32 +10,47 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# 🔧 Clean & convert date values to proper datetimes
+from datetime import datetime
+import pandas as pd
+
 def clean_and_prepare_for_prophet(ds_raw, y_raw):
     cleaned_ds = []
 
     for val in ds_raw:
         try:
-            # Try parsing directly
-            parsed = pd.to_datetime(val, errors='coerce')
+            if isinstance(val, pd.Timestamp) or isinstance(val, datetime):
+                cleaned_ds.append(val)
+                continue
 
-            # If it's just a year
-            if pd.isna(parsed) and str(val).isdigit() and len(str(val)) == 4:
-                parsed = datetime(int(val), 1, 1)
+            val_str = str(val).strip()
 
-            cleaned_ds.append(parsed)
+        
+            if val_str == '' or pd.isna(val):
+                cleaned_ds.append(None)
+                continue
+
+            if val_str.isdigit() and len(val_str) == 4:
+                cleaned_ds.append(datetime(int(val_str), 1, 1))
+                continue
+
+            parsed = pd.to_datetime(val_str, errors='coerce')
+            cleaned_ds.append(parsed if not pd.isna(parsed) else None)
+
         except:
             cleaned_ds.append(None)
 
     df = pd.DataFrame({'ds': cleaned_ds, 'y': y_raw})
     df = df.dropna(subset=['ds', 'y'])
+
+    # if y is a number
     df['y'] = pd.to_numeric(df['y'], errors='coerce')
     df = df.dropna(subset=['y'])
 
-    # Sort chronologically
+    # remove dates far in the past
+    # df = df[df['ds'] >= pd.Timestamp("2000-01-01")]
+
     df = df.sort_values('ds').reset_index(drop=True)
     return df
-
 
 @app.route('/api', methods=['POST'])
 def process():
@@ -43,33 +58,28 @@ def process():
         data = request.json
 
         system_name = data.get('system', 'Guest')
-        interval = data.get('interval', 5)  # how many steps to forecast
-        dataset = data.get('dataset', [])   # list of y values
-        date_values = data.get('date_values', [])  # list of raw date values
+        interval = data.get('interval', 5)  
+        dataset = data.get('dataset', [])  
+        date_values = data.get('date_values', []) 
         project_id = data.get('project_id', 777)
 
         if len(dataset) != len(date_values):
             return jsonify({"error": "Length of dataset and date_values must be equal"}), 400
 
-        # ✅ Clean and prepare dataset for Prophet
         df = clean_and_prepare_for_prophet(date_values, dataset)
 
         if df.empty:
             return jsonify({"error": "No valid date/value pairs after cleaning"}), 400
 
-        # ✅ Train Prophet model
         model = Prophet()
         model.fit(df)
 
-        # ✅ Forecast future steps
-        future = model.make_future_dataframe(periods=interval, freq='Y')  # yearly forecast
+        future = model.make_future_dataframe(periods=interval, freq='Y') 
         forecast = model.predict(future)
 
-        # Get only future forecasted values
         future_forecast = forecast[forecast['ds'] > df['ds'].max()]
         forecast_values = future_forecast[['ds', 'yhat']].to_dict(orient='records')
 
-        # ✅ Simple accuracy estimate using naive method
         train_size = int(len(df) * 0.4)
         train, test = df['y'][:train_size], df['y'][train_size:]
 
@@ -82,7 +92,6 @@ def process():
             mape = None
             accuracy = None
 
-        # ✅ Save the model
         save_folder = "models"
         os.makedirs(save_folder, exist_ok=True)
         model_name = f"timeseries_{project_id}"

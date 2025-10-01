@@ -1,0 +1,18 @@
+{
+    "aligned_dates_count": 1258,
+    "aligned_values_count": 1258,
+    "sample_dates": [
+        "Apr 28, 2023",
+        "Apr 27, 2023",
+        "Apr 26, 2023",
+        "Apr 25, 2023",
+        "Apr 24, 2023"
+    ],
+    "sample_values": [
+        33797.43,
+        33381.66,
+        33596.34,
+        33828.34,
+        33805.04
+    ]
+}
